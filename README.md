@@ -45,13 +45,14 @@ functions/
                                 validates, filters bots, and sends via Resend
 
 public/
-├── hero.png                   Photographic hero background (lantern on dock)
-├── logo-horizontal.png        Trimmed horizontal brand lockup (header)
-├── favicon.png                Lantern-only icon (PNG favicon + Apple touch)
+├── hero.jpg                   Photographic hero background (lantern on dock, 142KB)
+├── logo-horizontal.png        Trimmed horizontal brand lockup (header, 69KB)
+├── favicon.png                Lantern-only icon (PNG favicon + Apple touch, 14KB)
 ├── favicon.svg                SVG favicon fallback
-├── social-card.png            Open Graph / Twitter card image
+├── social-card.jpg            Open Graph / Twitter card image (flattened on harbor navy, 36KB)
 ├── Logo.png                   Full square lockup (raster, for reference)
 ├── lantern_harbor_logo.svg    Earlier-round vector lockup (for reference)
+├── new images/                Original uncompressed brand assets (source of truth)
 └── robots.txt
 ```
 
@@ -192,7 +193,7 @@ function logs.
 - [ ] Find/commission 2–3 South Shore coastal photos to sprinkle into home and about later
 - [ ] Swap Google Fonts CDN for `@fontsource` self-hosting (faster, more private)
 - [ ] Submit `sitemap-index.xml` to Google Search Console
-- [ ] Compress `hero.png` (currently ~2.1MB) — target ~400KB via WebP or JPEG at 85 quality
+- [x] ~~Compress `hero.png`~~ — done (2.1MB PNG → 142KB JPEG); favicon.png 1.4MB → 14KB; social-card.png 2.0MB → 36KB
 
 ---
 

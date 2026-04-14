@@ -33,7 +33,7 @@ const fullTitle = pageKey === 'home' ? title : `${title} — ${siteName}`;
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content={new URL('/social-card.png', Astro.site).toString()} />
+    <meta property="og:image" content={new URL('/social-card.jpg', Astro.site).toString()} />
     <meta property="og:image:width" content="1536" />
     <meta property="og:image:height" content="1024" />
     <meta property="og:image:alt" content="Lantern Harbor — lantern lit against a dark harbor" />
@@ -42,7 +42,7 @@ const fullTitle = pageKey === 'home' ? title : `${title} — ${siteName}`;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL('/social-card.png', Astro.site).toString()} />
+    <meta name="twitter:image" content={new URL('/social-card.jpg', Astro.site).toString()} />
 
     <!-- Favicon — PNG first (new illustrated lantern), SVG as fallback -->
     <link rel="icon" type="image/png" sizes="1024x1024" href="/favicon.png" />
