@@ -141,6 +141,16 @@ const { eyebrow, headline, tagline, ctaPrimary, ctaSecondary } = Astro.props;
       padding-top: var(--space-7);
       padding-bottom: var(--space-8);
     }
+    /* The photo's 3:2 aspect gets aggressively cropped sideways inside a
+       narrow portrait viewport. Default `object-position: center` slices
+       out the lantern entirely. The image is scaleX(-1) flipped, so the
+       lantern-source (originally on the LEFT of the photo) renders on the
+       RIGHT of the frame. Pinning the pre-flip object-position to "left
+       center" keeps that portion of the source in view, surfacing the
+       lantern glow on the right side of the mobile hero. */
+    .hero__bg img {
+      object-position: left center;
+    }
     .hero__bg::after {
       background: linear-gradient(
         to bottom,

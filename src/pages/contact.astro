@@ -62,7 +62,12 @@ const { title, description } = entry.data;
                   href="mailto:william@lanternharbor.co"
                   class="direct-contact__link"
                 >
-                  william@lanternharbor.co
+                  {/* <wbr /> gives the browser a preferred break point
+                      after the username so if the address ever needs to
+                      wrap in a narrow card it splits cleanly as
+                      "william" / "@lanternharbor.co" instead of breaking
+                      mid-domain at the last character. */}
+                  william<wbr />@lanternharbor.co
                 </a>
               </dd>
             </div>
@@ -197,14 +202,15 @@ const { title, description } = entry.data;
 
   /* Email is a single long token that can't break at a space, so it
      pinches the sidebar card at narrower desktop widths. Drop it to
-     body-font medium at step-0 and allow it to break at the @ if it
-     still needs to wrap. Phone (Lora-bold, step-1) stays confident. */
+     body-font medium at step-0; if it still needs to wrap, a <wbr/>
+     in the markup after the @ gives it a clean break point so the
+     domain doesn't split mid-word. Phone (Lora-bold, step-1) stays
+     confident — this rule is email-only. */
   a.direct-contact__link[href^="mailto:"] {
     font-family: var(--font-body);
     font-weight: 500;
     font-size: var(--step-0);
-    overflow-wrap: anywhere;
-    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .direct-contact__link:hover,
