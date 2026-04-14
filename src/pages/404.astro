@@ -1,0 +1,166 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Page not found"
+  description="The page you're looking for isn't here. Head back to the home page, or get in touch."
+>
+  <article class="notfound section">
+    <div class="container container--reading">
+      <div class="notfound__content">
+        <p class="notfound__eyebrow">404 — not found</p>
+        <h1 class="notfound__heading">This one's off the map.</h1>
+        <p class="notfound__body">
+          The page you're looking for isn't here — maybe it moved, maybe
+          it never existed, maybe I misspelled something somewhere.
+          Either way, the lantern's still lit.
+        </p>
+
+        <div class="notfound__actions">
+          <a href="/" class="notfound__link notfound__link--primary">
+            Back to the home page
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.25"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="/contact" class="notfound__link">Or drop a note →</a>
+        </div>
+
+        <ul class="notfound__map" aria-label="Sitemap">
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">What I help with</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Let's talk</a></li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .notfound {
+    padding-top: var(--space-9);
+    padding-bottom: var(--space-10);
+  }
+
+  .notfound__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .notfound__eyebrow {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+  }
+
+  .notfound__heading {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(2.25rem, 1.8rem + 1.8vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--color-harbor);
+    margin: 0;
+  }
+
+  .notfound__body {
+    margin: 0;
+    font-size: var(--step-1);
+    line-height: 1.6;
+    color: var(--color-slate);
+    max-width: 40em;
+  }
+
+  .notfound__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3) var(--space-5);
+    margin-top: var(--space-3);
+  }
+
+  .notfound__link {
+    color: var(--color-harbor);
+    text-decoration-color: rgba(184, 134, 75, 0.55);
+    text-underline-offset: 4px;
+    font-size: var(--step-0);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color var(--transition);
+  }
+
+  .notfound__link:hover,
+  .notfound__link:focus-visible {
+    color: var(--color-brass);
+  }
+
+  .notfound__link--primary {
+    background-color: var(--color-gold);
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius);
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(15, 42, 63, 0.08);
+  }
+
+  .notfound__link--primary:hover,
+  .notfound__link--primary:focus-visible {
+    background-color: var(--color-brass);
+    border-color: var(--color-brass);
+    color: var(--color-harbor);
+  }
+
+  .notfound__link--primary svg {
+    transition: transform 200ms ease;
+  }
+
+  .notfound__link--primary:hover svg {
+    transform: translateX(2px);
+  }
+
+  .notfound__map {
+    list-style: none;
+    padding: var(--space-5) 0 0;
+    margin: var(--space-5) 0 0;
+    border-top: 1px solid rgba(15, 42, 63, 0.12);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4) var(--space-6);
+    font-size: var(--step--1);
+  }
+
+  .notfound__map a {
+    color: var(--color-driftwood);
+    text-decoration-color: transparent;
+    text-underline-offset: 3px;
+    transition:
+      color var(--transition),
+      text-decoration-color var(--transition);
+  }
+
+  .notfound__map a:hover,
+  .notfound__map a:focus-visible {
+    color: var(--color-harbor);
+    text-decoration-color: rgba(184, 134, 75, 0.6);
+  }
+</style>
