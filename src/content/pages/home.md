@@ -3,8 +3,8 @@ title: Lantern Harbor
 description: Practical IT, AI, and automation help for small and mid-sized businesses on the South Shore of Massachusetts. Twelve years in enterprise healthcare IT, now close to home.
 hero:
   eyebrow: South Shore, Massachusetts
-  headline: Practical IT, AI, and automation help — close to home.
-  tagline: A one-person practice helping small and mid-sized businesses on the South Shore make good, practical decisions about technology — in person, in plain language, for work that ships.
+  headline: A steady light for practical technology decisions.
+  tagline: Lantern Harbor helps South Shore businesses navigate IT, AI, and automation with clear advice, plain language, and practical support close to home.
   ctaPrimary:
     label: Let's talk
     href: /contact
