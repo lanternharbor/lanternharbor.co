@@ -1,0 +1,375 @@
+/* ------------------------------------------------------------------
+   Lantern Harbor — global stylesheet
+   Hand-built, no framework.
+
+   Structure:
+   - Design tokens (:root)
+   - Minimal reset
+   - Base element styles
+   - Layout helpers (.container, .section, .on-dark)
+   - .prose for markdown-rendered content
+------------------------------------------------------------------ */
+
+/* ---- Design tokens ---- */
+:root {
+  /* Colors — sampled from lantern_harbor_logo.svg so site + logo harmonize */
+  --color-harbor:    #0F2A3F;   /* deep navy — primary dark surfaces */
+  --color-lantern:   #F5EFE4;   /* warm cream — primary light / page bg */
+  --color-gold:      #E5C067;   /* luminous gold from the logo — CTAs, accents */
+  --color-gold-soft: #F3E8C9;   /* cream highlight from the logo wordmark */
+  --color-brass:     #B8864B;   /* deeper muted gold — text accents, active nav */
+  --color-ember:     #7A3E2C;   /* deep warm — reserved for hover states */
+  --color-driftwood: #6B5D4F;   /* body text on cream */
+  --color-fog:       #D9D2C3;   /* dividers, subtle backgrounds */
+  --color-slate:     #2A3842;   /* secondary dark */
+  --color-mist:      #8E9AA8;   /* cool gray-blue — cloud tones from the logo */
+  --color-navyline:  #50627A;   /* matches the lantern frame lines in the logo */
+
+  /* Text colors tuned for the two main surfaces */
+  --text-on-light: var(--color-driftwood);
+  --heading-on-light: var(--color-harbor);
+  --text-on-dark: rgba(245, 239, 228, 0.88);
+  --heading-on-dark: var(--color-lantern);
+
+  /* Type families */
+  --font-heading: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+               'Helvetica Neue', Arial, sans-serif;
+
+  /* Fluid type scale — confident, generous on desktop, tight on mobile */
+  --step--1: clamp(0.875rem, 0.83rem + 0.22vw, 1rem);         /* small */
+  --step-0:  clamp(1rem, 0.95rem + 0.25vw, 1.125rem);          /* body */
+  --step-1:  clamp(1.125rem, 1.05rem + 0.4vw, 1.313rem);       /* large body / tagline */
+  --step-2:  clamp(1.375rem, 1.25rem + 0.6vw, 1.625rem);       /* h3 */
+  --step-3:  clamp(1.625rem, 1.45rem + 0.9vw, 2rem);           /* h2 */
+  --step-4:  clamp(2rem, 1.7rem + 1.5vw, 2.75rem);             /* h1 */
+  --step-5:  clamp(2.5rem, 2rem + 2.75vw, 4rem);               /* hero h1 */
+  --step-6:  clamp(3rem, 2.2rem + 4vw, 4.75rem);               /* oversized hero */
+
+  /* Spacing scale — 4px base, generous */
+  --space-1:  0.25rem;    /* 4 */
+  --space-2:  0.5rem;     /* 8 */
+  --space-3:  0.75rem;    /* 12 */
+  --space-4:  1rem;       /* 16 */
+  --space-5:  1.5rem;     /* 24 */
+  --space-6:  2rem;       /* 32 */
+  --space-7:  3rem;       /* 48 */
+  --space-8:  4rem;       /* 64 */
+  --space-9:  6rem;       /* 96 */
+  --space-10: 8rem;       /* 128 */
+  --space-11: 10rem;      /* 160 */
+
+  /* Layout widths */
+  --measure-reading: 45rem;    /* ~720px — comfortable reading column (~70ch) */
+  --measure-content: 58rem;    /* ~928px — wider content sections */
+  --measure-wide:    72rem;    /* ~1152px — landing sections */
+
+  /* Other */
+  --radius: 0.5rem;
+  --radius-pill: 999px;
+  --border-subtle: 1px solid var(--color-fog);
+  --border-subtle-dark: 1px solid rgba(245, 239, 228, 0.12);
+  --shadow-soft:
+    0 1px 2px rgba(15, 42, 63, 0.04),
+    0 8px 24px rgba(15, 42, 63, 0.08);
+  --shadow-gold-glow:
+    0 0 0 0 rgba(217, 164, 65, 0),
+    0 12px 32px -8px rgba(217, 164, 65, 0.3);
+  --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---- Minimal reset ---- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  scroll-behavior: smooth;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* ---- Base ---- */
+html {
+  font-family: var(--font-body);
+  font-size: 100%;
+  line-height: 1.65;
+  color: var(--text-on-light);
+  background-color: var(--color-lantern);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: var(--step-0);
+  font-weight: 400;
+  background-color: var(--color-lantern);
+}
+
+main { flex: 1; }
+
+/* Headings — Lora bold, harbor navy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--heading-on-light);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-2); }
+
+/* Links */
+a {
+  color: var(--color-harbor);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(15, 42, 63, 0.25);
+  transition: color var(--transition), text-decoration-color var(--transition);
+}
+
+a:hover, a:focus-visible {
+  color: var(--color-brass);
+  text-decoration-color: currentColor;
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: var(--border-subtle);
+  margin: var(--space-7) 0;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-harbor);
+}
+
+/* ---- Dark-surface overrides (used on hero + any dark sections) ---- */
+.on-dark {
+  color: var(--text-on-dark);
+}
+.on-dark h1, .on-dark h2, .on-dark h3,
+.on-dark h4, .on-dark h5, .on-dark h6 {
+  color: var(--heading-on-dark);
+}
+.on-dark a {
+  color: var(--color-gold);
+  text-decoration-color: rgba(217, 164, 65, 0.35);
+}
+.on-dark a:hover, .on-dark a:focus-visible {
+  color: var(--color-lantern);
+}
+.on-dark ::selection {
+  background-color: var(--color-gold);
+  color: var(--color-harbor);
+}
+.on-dark hr {
+  border-top: var(--border-subtle-dark);
+}
+
+/* ---- Layout helpers ---- */
+.container {
+  width: 100%;
+  max-width: var(--measure-wide);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+@media (min-width: 48rem) {
+  .container { padding-inline: var(--space-7); }
+}
+
+.container--reading { max-width: var(--measure-reading); }
+.container--content { max-width: var(--measure-content); }
+
+.section {
+  padding-block: var(--space-9);
+}
+.section--loose {
+  padding-block: var(--space-10);
+}
+.section--tight {
+  padding-block: var(--space-7);
+}
+@media (max-width: 47.99rem) {
+  .section { padding-block: var(--space-8); }
+  .section--loose { padding-block: var(--space-9); }
+}
+
+/* Surfaces */
+.surface-dark {
+  background-color: var(--color-harbor);
+  color: var(--text-on-dark);
+}
+.surface-light {
+  background-color: var(--color-lantern);
+}
+
+/* ---- Prose — markdown-rendered content ---- */
+.prose {
+  max-width: var(--measure-reading);
+  margin-inline: auto;
+  font-size: var(--step-1);
+  line-height: 1.75;
+}
+
+.prose > * + * { margin-top: var(--space-5); }
+
+.prose h1 {
+  font-size: var(--step-4);
+  margin-top: var(--space-9);
+  margin-bottom: var(--space-5);
+}
+.prose > h1:first-child { margin-top: 0; }
+
+.prose h2 {
+  font-size: var(--step-3);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
+}
+
+.prose h3 {
+  font-size: var(--step-2);
+  margin-top: var(--space-7);
+  margin-bottom: var(--space-3);
+}
+
+.prose p { margin-block: 0; }
+
+.prose ul, .prose ol {
+  margin-block: 0;
+  padding-left: var(--space-6);
+}
+
+.prose li + li { margin-top: var(--space-2); }
+
+.prose ul li::marker { color: var(--color-gold); }
+.prose ol li::marker { color: var(--color-brass); font-weight: 600; }
+
+.prose blockquote {
+  margin-inline: 0;
+  padding: var(--space-4) var(--space-6);
+  border-left: 3px solid var(--color-gold);
+  background-color: rgba(217, 164, 65, 0.06);
+  color: var(--color-harbor);
+  font-style: italic;
+  font-size: var(--step-1);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.prose strong {
+  color: var(--color-harbor);
+  font-weight: 600;
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose code {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background-color: var(--color-fog);
+  color: var(--color-harbor);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+.prose hr { margin: var(--space-7) 0; }
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--step-0);
+}
+.prose th, .prose td {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--border-subtle);
+}
+.prose th {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-harbor);
+}
+
+/* Links inside prose keep underline — readers expect it */
+.prose a {
+  color: var(--color-harbor);
+  text-decoration-color: rgba(184, 134, 75, 0.5);
+  font-weight: 500;
+}
+.prose a:hover, .prose a:focus-visible {
+  color: var(--color-brass);
+}
+
+/* ---- Eyebrow / small caps label ---- */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-brass);
+  display: inline-block;
+  margin-bottom: var(--space-3);
+}
+.on-dark .eyebrow {
+  color: var(--color-gold);
+}
+
+/* ---- Skip-link ---- */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-harbor);
+  color: var(--color-lantern);
+  text-decoration: none;
+  border-radius: var(--radius);
+  z-index: 100;
+  font-weight: 500;
+  box-shadow: var(--shadow-soft);
+}
+.skip-link:focus { top: var(--space-4); color: var(--color-lantern); }
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

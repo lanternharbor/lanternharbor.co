@@ -1,0 +1,224 @@
+---
+import { getEntry } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+/**
+ * Dedicated contact page — renders the form + direct-contact options rather
+ * than the markdown body. Title/description still come from contact.md so
+ * page metadata stays in one place with the other content.
+ */
+const entry = await getEntry('pages', 'contact');
+if (!entry) throw new Error('Missing content/pages/contact.md');
+const { title, description } = entry.data;
+---
+
+<Layout title={title} description={description} pageKey="contact">
+  <article class="contact-page section">
+    <div class="container container--content">
+      <header class="contact-page__intro">
+        <h1 class="contact-page__title">Let's talk</h1>
+        <p class="contact-page__lede">
+          Drop a note below, or call or text if you'd rather skip the typing.
+          I read every message personally and reply within one business day
+          — no autoresponder, no "your ticket has been opened."
+        </p>
+        <p class="contact-page__lede contact-page__lede--dim">
+          The first conversation is free and takes about thirty minutes.
+          No pitch, no obligation.
+        </p>
+      </header>
+
+      <div class="contact-page__grid">
+        <section class="contact-page__form-col" aria-labelledby="send-note">
+          <h2 id="send-note" class="contact-page__section-heading">
+            Send a note
+          </h2>
+          <ContactForm />
+        </section>
+
+        <aside class="contact-page__direct" aria-labelledby="direct-contact">
+          <h2 id="direct-contact" class="contact-page__section-heading">
+            Or reach me directly
+          </h2>
+
+          <dl class="direct-contact">
+            <div class="direct-contact__row">
+              <dt class="direct-contact__label">Call or text</dt>
+              <dd class="direct-contact__value">
+                <a href="tel:+17817242543" class="direct-contact__link">
+                  (781) 724-2543
+                </a>
+                <a href="sms:+17817242543" class="direct-contact__secondary">
+                  Text instead
+                </a>
+              </dd>
+            </div>
+
+            <div class="direct-contact__row">
+              <dt class="direct-contact__label">Email</dt>
+              <dd class="direct-contact__value">
+                <a
+                  href="mailto:william@lanternharbor.co"
+                  class="direct-contact__link"
+                >
+                  william@lanternharbor.co
+                </a>
+              </dd>
+            </div>
+
+            <div class="direct-contact__row">
+              <dt class="direct-contact__label">Based in</dt>
+              <dd class="direct-contact__value">Hingham, Massachusetts</dd>
+            </div>
+          </dl>
+
+          <p class="direct-contact__note">
+            If you're on the South Shore, I'll happily drive to you and talk
+            in person.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .contact-page {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-10);
+  }
+  @media (min-width: 48rem) {
+    .contact-page {
+      padding-top: var(--space-9);
+    }
+  }
+
+  .contact-page__intro {
+    max-width: 44rem;
+    margin-bottom: var(--space-8);
+  }
+
+  .contact-page__title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-5);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--color-harbor);
+    margin: 0 0 var(--space-4);
+  }
+
+  .contact-page__lede {
+    font-size: var(--step-1);
+    line-height: 1.6;
+    color: var(--color-slate);
+    margin: 0 0 var(--space-3);
+    max-width: 38em;
+  }
+
+  .contact-page__lede--dim {
+    color: var(--color-driftwood);
+    font-size: var(--step-0);
+  }
+
+  .contact-page__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  @media (min-width: 52rem) {
+    .contact-page__grid {
+      grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+      gap: var(--space-9);
+    }
+  }
+
+  .contact-page__section-heading {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-3);
+    color: var(--color-harbor);
+    margin: 0 0 var(--space-5);
+    line-height: 1.2;
+  }
+
+  /* Direct-contact sidebar styling */
+  .contact-page__direct {
+    padding: var(--space-6);
+    background-color: rgba(229, 192, 103, 0.08);
+    border: 1px solid rgba(229, 192, 103, 0.25);
+    border-radius: var(--radius);
+  }
+
+  .direct-contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin: 0;
+  }
+
+  .direct-contact__row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .direct-contact__label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--step--1);
+    color: var(--color-harbor);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .direct-contact__value {
+    margin: 0;
+    font-size: var(--step-0);
+    line-height: 1.5;
+    color: var(--color-slate);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .direct-contact__link {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-1);
+    color: var(--color-harbor);
+    text-decoration: none;
+    line-height: 1.3;
+    transition: color var(--transition);
+  }
+
+  .direct-contact__link:hover,
+  .direct-contact__link:focus-visible {
+    color: var(--color-brass);
+  }
+
+  .direct-contact__secondary {
+    font-size: var(--step--1);
+    color: var(--color-driftwood);
+    text-decoration-color: rgba(184, 134, 75, 0.5);
+    text-underline-offset: 3px;
+  }
+
+  .direct-contact__secondary:hover,
+  .direct-contact__secondary:focus-visible {
+    color: var(--color-harbor);
+  }
+
+  .direct-contact__note {
+    font-size: var(--step--1);
+    line-height: 1.6;
+    color: var(--color-driftwood);
+    font-style: italic;
+    margin: var(--space-5) 0 0;
+    padding-top: var(--space-4);
+    border-top: 1px solid rgba(15, 42, 63, 0.08);
+  }
+</style>

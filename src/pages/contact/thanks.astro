@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Thanks"
+  description="Your note has been sent. Lantern Harbor will reply within one business day."
+  pageKey="contact"
+>
+  <article class="thanks section">
+    <div class="container container--reading">
+      <div class="thanks__card">
+        <h1 class="thanks__heading">Thanks — message received.</h1>
+        <p class="thanks__body">
+          I'll get back to you within one business day. If it's time-sensitive,
+          feel free to call or text me directly at
+          <a href="tel:+17817242543">(781) 724-2543</a>.
+        </p>
+        <p class="thanks__body thanks__body--dim">
+          <a href="/">Back to the home page →</a>
+        </p>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .thanks {
+    padding-top: var(--space-9);
+    padding-bottom: var(--space-10);
+  }
+
+  .thanks__card {
+    padding: var(--space-7) var(--space-6);
+    background-color: #fdfaf3;
+    border: 1px solid rgba(229, 192, 103, 0.4);
+    border-radius: var(--radius);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .thanks__heading {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-4);
+    line-height: 1.1;
+    color: var(--color-harbor);
+    margin: 0;
+  }
+
+  .thanks__body {
+    margin: 0;
+    color: var(--color-slate);
+    font-size: var(--step-1);
+    line-height: 1.6;
+  }
+
+  .thanks__body--dim {
+    color: var(--color-driftwood);
+    font-size: var(--step-0);
+    margin-top: var(--space-3);
+  }
+
+  .thanks__body a {
+    color: var(--color-harbor);
+    text-decoration-color: rgba(184, 134, 75, 0.6);
+    text-underline-offset: 3px;
+  }
+
+  .thanks__body a:hover,
+  .thanks__body a:focus-visible {
+    color: var(--color-brass);
+  }
+</style>

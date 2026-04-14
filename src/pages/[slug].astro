@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('pages');
+  // 'home' has its own index.astro route, 'contact' has its own contact.astro
+  // route (with a form + direct-contact card instead of prose).
+  const excluded = new Set(['home', 'contact']);
+  return entries
+    .filter((entry) => !excluded.has(entry.id))
+    .map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, description } = entry.data;
+---
+
+<Layout title={title} description={description} pageKey={entry.id}>
+  <article class="page section">
+    <div class="container container--reading prose">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .page {
+    padding-top: var(--space-8);
+  }
+  @media (min-width: 48rem) {
+    .page {
+      padding-top: var(--space-9);
+    }
+  }
+</style>

@@ -1,0 +1,413 @@
+---
+/**
+ * Contact form with progressive enhancement:
+ *   - Works without JS as a standard POST to /api/contact
+ *   - With JS, submits via fetch() and shows inline success/error
+ *   - Includes a honeypot field to deflect basic bot submissions
+ */
+---
+
+<form
+  class="contact-form"
+  action="/api/contact"
+  method="POST"
+  novalidate
+  data-contact-form
+>
+  <div class="contact-form__row">
+    <label class="contact-form__field">
+      <span class="contact-form__label">Your name</span>
+      <input
+        type="text"
+        name="name"
+        required
+        autocomplete="name"
+        maxlength="120"
+        aria-required="true"
+      />
+    </label>
+
+    <label class="contact-form__field">
+      <span class="contact-form__label">Email</span>
+      <input
+        type="email"
+        name="email"
+        required
+        autocomplete="email"
+        maxlength="200"
+        aria-required="true"
+      />
+    </label>
+  </div>
+
+  <label class="contact-form__field">
+    <span class="contact-form__label">
+      Phone <span class="contact-form__hint">(optional)</span>
+    </span>
+    <input
+      type="tel"
+      name="phone"
+      autocomplete="tel"
+      maxlength="40"
+    />
+  </label>
+
+  <label class="contact-form__field">
+    <span class="contact-form__label">What's on your mind?</span>
+    <textarea
+      name="message"
+      rows="6"
+      required
+      maxlength="4000"
+      aria-required="true"
+    ></textarea>
+  </label>
+
+  <!-- Honeypot — hidden from humans and screen readers, tempting to bots. -->
+  <div class="contact-form__honeypot" aria-hidden="true">
+    <label>
+      Leave this field empty
+      <input type="text" name="company_website" tabindex="-1" autocomplete="off" />
+    </label>
+  </div>
+
+  <div class="contact-form__footer">
+    <button type="submit" class="contact-form__submit">
+      <span data-submit-label>Send note</span>
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.25"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </button>
+    <p class="contact-form__reassurance">
+      I read and reply to every message personally. Usually within a business day.
+    </p>
+  </div>
+
+  <div
+    class="contact-form__status"
+    data-form-status
+    role="status"
+    aria-live="polite"
+    hidden
+  >
+  </div>
+</form>
+
+<template data-success-template>
+  <div class="contact-form__success">
+    <h3>Thanks — message received.</h3>
+    <p>
+      I'll get back to you within one business day. If it's time-sensitive, feel free
+      to call or text me directly at
+      <a href="tel:+17817242543">(781) 724-2543</a>.
+    </p>
+  </div>
+</template>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+  const status = document.querySelector<HTMLElement>('[data-form-status]');
+  const successTemplate = document.querySelector<HTMLTemplateElement>('[data-success-template]');
+  const submitButton = form?.querySelector<HTMLButtonElement>('.contact-form__submit');
+  const submitLabel = submitButton?.querySelector<HTMLElement>('[data-submit-label]');
+  const originalLabel = submitLabel?.textContent ?? 'Send note';
+
+  const setStatus = (message: string, type: 'error' | '' = '') => {
+    if (!status) return;
+    if (!message) {
+      status.hidden = true;
+      status.textContent = '';
+      status.dataset.type = '';
+      return;
+    }
+    status.hidden = false;
+    status.textContent = message;
+    status.dataset.type = type;
+  };
+
+  const setSubmitting = (submitting: boolean) => {
+    if (!submitButton || !submitLabel) return;
+    submitButton.disabled = submitting;
+    submitLabel.textContent = submitting ? 'Sending…' : originalLabel;
+    submitButton.setAttribute('aria-busy', String(submitting));
+  };
+
+  if (form) {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      // Native HTML5 validity — surface any missing/invalid fields and stop.
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        setStatus('Please fill in the required fields.', 'error');
+        return;
+      }
+
+      setStatus('');
+      setSubmitting(true);
+
+      try {
+        const data = new FormData(form);
+        const payload = Object.fromEntries(data.entries());
+
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const result = await response.json().catch(() => ({ ok: false }));
+
+        if (!response.ok || !result.ok) {
+          const message =
+            result?.error ||
+            "Couldn't send just now. Please try again, or email me directly at william@lanternharbor.co.";
+          throw new Error(message);
+        }
+
+        // Success — swap form for the thanks message.
+        if (successTemplate && form.parentElement) {
+          const node = successTemplate.content.cloneNode(true);
+          form.replaceWith(node as Node);
+          const thanks = document.querySelector<HTMLElement>('.contact-form__success h3');
+          thanks?.focus?.();
+        } else {
+          setStatus('Thanks — message received.');
+          form.reset();
+        }
+      } catch (err) {
+        const message =
+          err instanceof Error
+            ? err.message
+            : "Couldn't send just now. Please try again, or email me directly.";
+        setStatus(message, 'error');
+        setSubmitting(false);
+      }
+    });
+  }
+</script>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .contact-form__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  @media (min-width: 34rem) {
+    .contact-form__row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .contact-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .contact-form__label {
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--color-harbor);
+    letter-spacing: 0.005em;
+  }
+
+  .contact-form__hint {
+    font-weight: 400;
+    color: var(--color-driftwood);
+    margin-left: 0.25rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-family: var(--font-body);
+    font-size: var(--step-0);
+    line-height: 1.5;
+    color: var(--color-harbor);
+    background-color: #fdfaf3;
+    border: 1px solid rgba(15, 42, 63, 0.15);
+    border-radius: var(--radius);
+    padding: var(--space-3) var(--space-4);
+    width: 100%;
+    transition:
+      border-color var(--transition),
+      box-shadow var(--transition),
+      background-color var(--transition);
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 9rem;
+  }
+
+  .contact-form input:hover,
+  .contact-form textarea:hover {
+    border-color: rgba(15, 42, 63, 0.3);
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-harbor);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(229, 192, 103, 0.28);
+  }
+
+  /* Error state — only shown after user has attempted to submit */
+  .contact-form.is-attempted input:invalid,
+  .contact-form.is-attempted textarea:invalid {
+    border-color: rgba(170, 65, 45, 0.5);
+  }
+
+  /* Honeypot — visually and accessibly hidden */
+  .contact-form__honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  /* Footer row with submit + reassurance */
+  .contact-form__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+    margin-top: var(--space-2);
+  }
+
+  @media (min-width: 40rem) {
+    .contact-form__footer {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--space-5);
+    }
+  }
+
+  .contact-form__submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: 0.875rem 1.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--step-0);
+    color: var(--color-harbor);
+    background-color: var(--color-gold);
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius);
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition:
+      background-color var(--transition),
+      border-color var(--transition),
+      transform 120ms ease,
+      box-shadow var(--transition);
+    box-shadow: 0 1px 2px rgba(15, 42, 63, 0.08);
+  }
+
+  .contact-form__submit:hover:not(:disabled) {
+    background-color: var(--color-brass);
+    border-color: var(--color-brass);
+  }
+
+  .contact-form__submit:focus-visible {
+    outline: none;
+    box-shadow:
+      0 1px 2px rgba(15, 42, 63, 0.08),
+      0 0 0 3px rgba(15, 42, 63, 0.35);
+  }
+
+  .contact-form__submit:disabled {
+    opacity: 0.65;
+    cursor: progress;
+  }
+
+  .contact-form__submit svg {
+    transition: transform 200ms ease;
+  }
+
+  .contact-form__submit:hover:not(:disabled) svg {
+    transform: translateX(2px);
+  }
+
+  .contact-form__reassurance {
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--color-driftwood);
+    line-height: 1.5;
+  }
+
+  /* Status messages (errors shown inline) */
+  .contact-form__status {
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius);
+    font-size: var(--step-0);
+    line-height: 1.5;
+    color: var(--color-harbor);
+    background-color: rgba(229, 192, 103, 0.16);
+    border: 1px solid rgba(229, 192, 103, 0.35);
+  }
+
+  .contact-form__status[data-type='error'] {
+    background-color: rgba(170, 65, 45, 0.08);
+    border-color: rgba(170, 65, 45, 0.28);
+    color: #6b2d20;
+  }
+
+  /* Success card — rendered in place of the form after submission */
+  :global(.contact-form__success) {
+    padding: var(--space-6);
+    background-color: #fdfaf3;
+    border: 1px solid rgba(229, 192, 103, 0.4);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  :global(.contact-form__success h3) {
+    font-family: var(--font-heading);
+    font-size: var(--step-2);
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-harbor);
+  }
+
+  :global(.contact-form__success p) {
+    margin: 0;
+    color: var(--color-slate);
+    line-height: 1.6;
+  }
+
+  :global(.contact-form__success a) {
+    color: var(--color-harbor);
+    text-decoration-color: rgba(184, 134, 75, 0.6);
+    text-underline-offset: 3px;
+  }
+</style>

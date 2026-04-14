@@ -1,0 +1,123 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'ghost';
+  /** Render an arrow after the label (defaults to true for primary, false for ghost) */
+  arrow?: boolean;
+  class?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  arrow,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const showArrow = arrow ?? variant === 'primary';
+const isExternal = /^https?:\/\//.test(href) || href.startsWith('mailto:') || href.startsWith('tel:');
+---
+
+<a
+  href={href}
+  class:list={['button', `button--${variant}`, className]}
+  {...(isExternal ? { rel: 'noopener noreferrer' } : {})}
+  {...rest}
+>
+  <span class="button__label"><slot /></span>
+  {showArrow && <span class="button__arrow" aria-hidden="true">→</span>}
+</a>
+
+<style>
+  .button {
+    --btn-bg: var(--color-gold);
+    --btn-bg-hover: var(--color-gold-soft);
+    --btn-fg: var(--color-harbor);
+    --btn-border: var(--color-gold);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55em;
+    padding: 0.85rem 1.6rem;
+    background-color: var(--btn-bg);
+    color: var(--btn-fg);
+    border: 1.5px solid var(--btn-border);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: var(--step-0);
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    letter-spacing: 0.005em;
+    cursor: pointer;
+    transition:
+      background-color var(--transition),
+      border-color var(--transition),
+      color var(--transition),
+      transform var(--transition),
+      box-shadow var(--transition);
+    box-shadow: 0 1px 0 rgba(15, 42, 63, 0.04);
+  }
+
+  .button:hover,
+  .button:focus-visible {
+    background-color: var(--btn-bg-hover);
+    border-color: var(--btn-bg-hover);
+    color: var(--btn-fg);
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-gold-glow);
+  }
+
+  .button:active {
+    transform: translateY(0);
+  }
+
+  .button__arrow {
+    display: inline-block;
+    transition: transform var(--transition);
+  }
+
+  .button:hover .button__arrow,
+  .button:focus-visible .button__arrow {
+    transform: translateX(3px);
+  }
+
+  /* Ghost: outlined, transparent. Adapts via currentColor to parent context. */
+  .button--ghost {
+    --btn-bg: transparent;
+    --btn-bg-hover: rgba(15, 42, 63, 0.06);
+    --btn-fg: var(--color-harbor);
+    --btn-border: rgba(15, 42, 63, 0.25);
+  }
+
+  .button--ghost:hover,
+  .button--ghost:focus-visible {
+    --btn-bg: var(--btn-bg-hover);
+    --btn-border: var(--color-harbor);
+    transform: translateY(-1px);
+    box-shadow: none;
+  }
+
+  /* On a dark surface: ghost uses cream text + cream-muted border */
+  :global(.on-dark) .button--ghost {
+    --btn-bg: transparent;
+    --btn-bg-hover: rgba(245, 239, 228, 0.08);
+    --btn-fg: var(--color-lantern);
+    --btn-border: rgba(245, 239, 228, 0.35);
+  }
+
+  :global(.on-dark) .button--ghost:hover,
+  :global(.on-dark) .button--ghost:focus-visible {
+    --btn-border: var(--color-lantern);
+  }
+
+  /* Primary CTA on dark surfaces: slightly stronger glow on hover */
+  :global(.on-dark) .button--primary:hover,
+  :global(.on-dark) .button--primary:focus-visible {
+    box-shadow:
+      0 0 0 6px rgba(229, 192, 103, 0.15),
+      0 12px 32px -8px rgba(229, 192, 103, 0.4);
+  }
+</style>

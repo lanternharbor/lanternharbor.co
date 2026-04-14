@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1600" height="1600" viewBox="0 0 1600 1600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .cream { fill: #F3E8C9; }
+      .gold { fill: #E5C067; }
+      .slate { fill: #8E9AA8; opacity: 0.55; }
+      .navyline { stroke: #50627A; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+      .goldline { stroke: #E5C067; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+      .thin-gold { stroke: #E5C067; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+      .word1 { font-size: 190px; font-family: "Baskerville", "Times New Roman", Georgia, serif; letter-spacing: 4px; }
+      .word2 { font-size: 120px; font-family: "Baskerville", "Times New Roman", Georgia, serif; letter-spacing: 3px; }
+    </style>
+    <linearGradient id="flameGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F8EED7"/>
+      <stop offset="100%" stop-color="#F0D89A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- clouds -->
+  <path class="slate" d="M472 572c18-17 38-22 66-18 20-24 60-36 96-20 14-10 35-12 53-4 14 6 26 17 35 34H472c24-2 36-5 44-12Z"/>
+  <path class="slate" d="M890 570c22-22 53-29 86-16 17-22 57-31 88-14 18 10 29 26 36 42H890c8-7 14-9 20-12Z"/>
+
+  <!-- stars -->
+  <path class="gold" d="M980 432c9 22 14 27 36 36-22 9-27 14-36 36-9-22-14-27-36-36 22-9 27-14 36-36Z"/>
+  <path class="gold" d="M1024 474c6 16 10 20 26 26-16 6-20 10-26 26-6-16-10-20-26-26 16-6 20-10 26-26Z"/>
+
+  <!-- lantern roof -->
+  <circle cx="800" cy="382" r="7.5" class="gold"/>
+  <path class="gold" d="M800 392 770 418h60L800 392Z"/>
+  <path class="gold" d="M686 470 800 418l114 52H686Z"/>
+  <path class="navyline" d="M702 470 800 425l98 45"/>
+  <path class="navyline" d="M744 451 800 425l56 26"/>
+
+  <!-- lantern body -->
+  <path class="gold" d="M712 470h176l-20 130H732l-20-130Z"/>
+  <path class="navyline" d="M712 470h176"/>
+  <path class="navyline" d="M726 470 736 600"/>
+  <path class="navyline" d="M874 470 864 600"/>
+  <path class="navyline" d="M748 485 748 587"/>
+  <path class="navyline" d="M852 485 852 587"/>
+  <path class="navyline" d="M748 485 782 540"/>
+  <path class="navyline" d="M852 485 818 540"/>
+
+  <!-- center frame -->
+  <rect x="770" y="495" width="60" height="92" rx="4" class="cream" opacity="0.35"/>
+  <path d="M800 494c18 23 30 42 30 62 0 21-14 36-30 36s-30-15-30-36c0-20 12-39 30-62Z" fill="url(#flameGrad)"/>
+
+  <!-- lantern base -->
+  <path class="gold" d="M736 600h128l20 18H716l20-18Z"/>
+  <path class="navyline" d="M724 603h152"/>
+  <path class="gold" d="M754 618h92v20h-92Z"/>
+
+  <!-- reflections -->
+  <ellipse cx="710" cy="624" rx="88" ry="6" class="gold" opacity="0.55"/>
+  <ellipse cx="890" cy="624" rx="88" ry="6" class="gold" opacity="0.55"/>
+  <ellipse cx="800" cy="648" rx="108" ry="7" class="gold" opacity="0.9"/>
+  <path class="gold" d="M800 642c18 8 34 16 49 25-18 2-31 4-44 6 18 8 33 15 49 24-27 2-42 3-54 5 15 8 28 14 41 21-24 3-54 5-81 0 12-7 24-14 38-20-15-3-32-6-56-8 18-9 35-17 52-23-18-4-31-8-45-12 16-7 32-13 51-18Z"/>
+
+  <!-- divider lines -->
+  <rect x="392" y="986" width="92" height="8" rx="4" class="gold"/>
+  <rect x="1116" y="986" width="92" height="8" rx="4" class="gold"/>
+
+  <!-- wordmark -->
+  <text x="800" y="910" text-anchor="middle" class="cream word1">LANTERN</text>
+  <text x="800" y="1032" text-anchor="middle" class="cream word2">HARBOR</text>
+</svg>

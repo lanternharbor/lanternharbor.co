@@ -1,0 +1,73 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p class="site-footer__copy">
+      &copy; {year} Lantern Harbor LLC · Hingham, Massachusetts
+    </p>
+    <nav class="site-footer__links" aria-label="Footer">
+      <a href="/privacy">Privacy</a>
+      <span class="site-footer__dot" aria-hidden="true">·</span>
+      <a href="/terms">Terms</a>
+    </nav>
+    <p class="site-footer__credit">Built by hand with AI.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: var(--space-10);
+    padding-block: var(--space-7);
+    border-top: var(--border-subtle);
+    color: var(--color-driftwood);
+    font-size: var(--step--1);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4) var(--space-6);
+  }
+
+  .site-footer__copy { margin: 0; }
+
+  .site-footer__links {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-3);
+  }
+
+  .site-footer__links a {
+    color: var(--color-driftwood);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .site-footer__links a:hover,
+  .site-footer__links a:focus-visible {
+    color: var(--color-harbor);
+  }
+
+  .site-footer__dot {
+    color: var(--color-fog);
+  }
+
+  .site-footer__credit {
+    margin: 0;
+    color: var(--color-driftwood);
+    font-style: italic;
+    opacity: 0.72;
+  }
+
+  @media (max-width: 39.99rem) {
+    .site-footer__inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
+    }
+  }
+</style>

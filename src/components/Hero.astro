@@ -1,0 +1,159 @@
+---
+import Button from './Button.astro';
+
+interface CTA {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  headline: string;
+  tagline: string;
+  ctaPrimary: CTA;
+  ctaSecondary?: CTA;
+}
+
+const { eyebrow, headline, tagline, ctaPrimary, ctaSecondary } = Astro.props;
+---
+
+<section class="hero surface-dark on-dark">
+  <div class="hero__bg" aria-hidden="true">
+    <img src="/hero.png" alt="" width="1536" height="1024" fetchpriority="high" />
+  </div>
+  <div class="container hero__inner">
+    <div class="hero__text">
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h1 class="hero__headline">{headline}</h1>
+      <p class="hero__tagline">{tagline}</p>
+      <div class="hero__ctas">
+        <Button href={ctaPrimary.href} variant="primary">{ctaPrimary.label}</Button>
+        {ctaSecondary && (
+          <Button href={ctaSecondary.href} variant="ghost" arrow={false}>
+            {ctaSecondary.label}
+          </Button>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    /* Fit comfortably in one viewport; cap so it doesn't dwarf tall screens */
+    min-height: min(82vh, 44rem);
+    display: grid;
+    align-items: center;
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+    background: var(--color-harbor);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    /* Flip horizontally so the lantern's warm glow sits on the right,
+       giving the left a calm dark area for the headline to sit in. */
+    transform: scaleX(-1);
+  }
+
+  /* Darkening overlay — heavier on the left where text lives,
+     tapering to let the lantern glow breathe on the right. */
+  .hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(10, 27, 43, 0.82) 0%,
+      rgba(10, 27, 43, 0.68) 35%,
+      rgba(10, 27, 43, 0.38) 62%,
+      rgba(10, 27, 43, 0.18) 100%
+    );
+  }
+
+  .hero__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    align-items: center;
+  }
+
+  @media (min-width: 56rem) {
+    .hero__inner {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: var(--space-7);
+    }
+  }
+
+  .hero__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    max-width: 42ch;
+  }
+
+  .hero__headline {
+    font-size: clamp(2rem, 1.6rem + 1.75vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    color: var(--color-lantern);
+    margin: 0;
+    max-width: 17ch;
+    /* Subtle legibility shadow — just enough to earn contrast over the photo */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero__tagline {
+    font-size: var(--step-1);
+    line-height: 1.55;
+    color: rgba(245, 239, 228, 0.86);
+    max-width: 44ch;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-4);
+    margin-top: var(--space-3);
+  }
+
+  /* Mobile — darken the overlay more uniformly so text reads cleanly over
+     the entire photo, and let the photo's natural atmosphere come through. */
+  @media (max-width: 55.99rem) {
+    .hero {
+      min-height: auto;
+      padding-top: var(--space-7);
+      padding-bottom: var(--space-8);
+    }
+    .hero__bg::after {
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 27, 43, 0.82) 0%,
+        rgba(10, 27, 43, 0.70) 60%,
+        rgba(10, 27, 43, 0.78) 100%
+      );
+    }
+    .hero__text {
+      max-width: none;
+    }
+    .hero__headline {
+      max-width: 20ch;
+    }
+  }
+</style>

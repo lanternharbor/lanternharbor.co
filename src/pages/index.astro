@@ -1,0 +1,39 @@
+---
+import { getEntry, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+
+const entry = await getEntry('pages', 'home');
+if (!entry) throw new Error('Missing content/pages/home.md');
+if (!entry.data.hero) throw new Error('home.md is missing a `hero` frontmatter block');
+
+const { Content } = await render(entry);
+const { title, description, hero } = entry.data;
+---
+
+<Layout title={title} description={description} pageKey="home">
+  <Hero
+    eyebrow={hero.eyebrow}
+    headline={hero.headline}
+    tagline={hero.tagline}
+    ctaPrimary={hero.ctaPrimary}
+    ctaSecondary={hero.ctaSecondary}
+  />
+
+  <section class="home-sections section">
+    <div class="container container--reading prose">
+      <Content />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .home-sections {
+    background-color: var(--color-lantern);
+  }
+
+  /* Tighten the first "##" heading's top margin since it follows the hero */
+  .home-sections :global(.prose > h2:first-child) {
+    margin-top: 0;
+  }
+</style>

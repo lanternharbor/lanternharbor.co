@@ -1,0 +1,293 @@
+---
+interface Props {
+  pageKey?: string;
+}
+
+const { pageKey } = Astro.props;
+
+const links = [
+  { href: '/', label: 'Home', key: 'home' },
+  { href: '/services', label: 'What I help with', key: 'services' },
+  { href: '/about', label: 'About', key: 'about' },
+  { href: '/contact', label: "Let's talk", key: 'contact' },
+];
+---
+
+<header class="site-header" data-state="default">
+  <div class="container site-header__inner">
+    <a href="/" class="brand" aria-label="Lantern Harbor — home">
+      <img
+        src="/logo-horizontal.png"
+        alt="Lantern Harbor"
+        class="brand__logo"
+        width="600"
+        height="182"
+      />
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      <span class="menu-toggle__bar"></span>
+      <span class="menu-toggle__bar"></span>
+      <span class="menu-toggle__bar"></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <ul class="site-nav__list">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class:list={[
+                  'site-nav__link',
+                  { 'is-active': link.key === pageKey },
+                ]}
+                aria-current={link.key === pageKey ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = document.getElementById('site-nav');
+  const body = document.body;
+
+  // Menu toggle
+  if (toggle && nav) {
+    const closeNav = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('is-open');
+      body.classList.remove('nav-open');
+    };
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('is-open');
+      body.classList.toggle('nav-open');
+    });
+
+    nav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeNav);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+        closeNav();
+        toggle.focus();
+      }
+    });
+  }
+
+  // Subtle scrolled treatment once the page has moved past the top.
+  if (header) {
+    const onScroll = () => {
+      header.dataset.state = window.scrollY > 8 ? 'scrolled' : 'default';
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-block: var(--space-3);
+    background-color: var(--color-lantern);
+    border-bottom: 1px solid transparent;
+    transition:
+      background-color var(--transition),
+      border-color var(--transition),
+      box-shadow var(--transition);
+  }
+
+  /* Default: solid cream, no border */
+  .site-header[data-state='default'] {
+    background-color: var(--color-lantern);
+    border-bottom-color: transparent;
+  }
+
+  /* Scrolled: same cream, faint border + soft shadow */
+  .site-header[data-state='scrolled'] {
+    background-color: rgba(245, 239, 228, 0.96);
+    border-bottom-color: rgba(15, 42, 63, 0.08);
+    box-shadow: 0 1px 2px rgba(15, 42, 63, 0.04);
+    backdrop-filter: saturate(180%) blur(10px);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    min-height: 60px;
+  }
+
+  /* Brand — horizontal lockup image (lantern + typeset wordmark).
+     Source PNG is pre-trimmed (600×182) so the content fills the entire
+     file — no crop / overflow hacks needed. */
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-harbor);
+  }
+  .brand:hover, .brand:focus-visible {
+    text-decoration: none;
+  }
+
+  .brand__logo {
+    display: block;
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+  }
+
+
+  /* Hamburger — hidden on desktop */
+  .menu-toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: var(--color-harbor);
+    position: relative;
+  }
+
+  .menu-toggle__bar {
+    display: block;
+    width: 22px;
+    height: 1.75px;
+    background-color: currentColor;
+    transition: transform var(--transition), opacity var(--transition);
+    transform-origin: center;
+    border-radius: 2px;
+  }
+
+  .menu-toggle[aria-expanded='true'] .menu-toggle__bar:nth-child(1) {
+    transform: translateY(6.75px) rotate(45deg);
+  }
+  .menu-toggle[aria-expanded='true'] .menu-toggle__bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle[aria-expanded='true'] .menu-toggle__bar:nth-child(3) {
+    transform: translateY(-6.75px) rotate(-45deg);
+  }
+
+
+  /* Nav (desktop) */
+  .site-nav__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: var(--space-6);
+  }
+
+  .site-nav__link {
+    color: var(--color-driftwood);
+    text-decoration: none;
+    font-size: var(--step-0);
+    font-weight: 500;
+    padding-block: var(--space-2);
+    border-bottom: 1.5px solid transparent;
+    transition: color var(--transition), border-color var(--transition);
+  }
+
+  .site-nav__link:hover,
+  .site-nav__link:focus-visible {
+    color: var(--color-harbor);
+  }
+
+  .site-nav__link.is-active {
+    color: var(--color-harbor);
+    border-bottom-color: var(--color-gold);
+  }
+
+  /* Mobile nav overlay */
+  @media (max-width: 47.99rem) {
+    .menu-toggle {
+      display: flex;
+      z-index: 70;
+    }
+
+    .brand__logo {
+      height: 48px;
+    }
+
+    .site-nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      background-color: var(--color-lantern);
+      padding: 5.5rem var(--space-6) var(--space-7);
+      transform: translateX(100%);
+      transition: transform 240ms cubic-bezier(0.4, 0, 0.2, 1);
+      visibility: hidden;
+      z-index: 60;
+      overflow-y: auto;
+    }
+
+    .site-nav.is-open {
+      transform: translateX(0);
+      visibility: visible;
+    }
+
+    .site-nav__list {
+      flex-direction: column;
+      gap: var(--space-5);
+      align-items: flex-start;
+    }
+
+    .site-nav__link {
+      font-family: var(--font-heading);
+      font-size: var(--step-3);
+      font-weight: 700;
+      color: var(--color-harbor);
+      padding-block: var(--space-1);
+    }
+
+    .site-nav__link:hover,
+    .site-nav__link:focus-visible {
+      color: var(--color-brass);
+    }
+
+    .site-nav__link.is-active {
+      color: var(--color-harbor);
+      border-bottom-color: var(--color-gold);
+    }
+
+    :global(body.nav-open) {
+      overflow: hidden;
+    }
+  }
+</style>
