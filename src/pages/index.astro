@@ -4,14 +4,14 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 // NOTE: TestimonialRotator is intentionally not imported until there are real
 // testimonials to show. Re-add the import + <TestimonialRotator /> block below
-// the <section> once `src/content/testimonials/` has at least one entry.
+// the card grid once `src/content/testimonials/` has at least one entry.
 
 const entry = await getEntry('pages', 'home');
 if (!entry) throw new Error('Missing content/pages/home.md');
 if (!entry.data.hero) throw new Error('home.md is missing a `hero` frontmatter block');
 
 const { Content } = await render(entry);
-const { title, description, hero } = entry.data;
+const { title, description, hero, practicalPoints } = entry.data;
 ---
 
 <Layout title={title} description={description} pageKey="home">
@@ -28,6 +28,51 @@ const { title, description, hero } = entry.data;
       <Content />
     </div>
   </section>
+
+  {practicalPoints && (
+    <section class="home-cards section section--tight">
+      <div class="container container--content">
+        {(practicalPoints.heading || practicalPoints.lede) && (
+          <header class="card-section__header">
+            {practicalPoints.heading && (
+              <h2 class="card-section__heading">{practicalPoints.heading}</h2>
+            )}
+            {practicalPoints.lede && (
+              <p class="card-section__lede">{practicalPoints.lede}</p>
+            )}
+          </header>
+        )}
+
+        <div class="card-grid card-grid--3">
+          {practicalPoints.items.map((point) => (
+            <article class={`card${point.ctaLabel ? ' card--cta' : ''}`}>
+              <h3 class="card__title">{point.title}</h3>
+              <p class="card__body">{point.body}</p>
+              {point.ctaLabel && point.ctaHref && (
+                <a href={point.ctaHref} class="card__link">
+                  {point.ctaLabel}
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.25"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              )}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 </Layout>
 
 <style>
@@ -38,5 +83,12 @@ const { title, description, hero } = entry.data;
   /* Tighten the first "##" heading's top margin since it follows the hero */
   .home-sections :global(.prose > h2:first-child) {
     margin-top: 0;
+  }
+
+  /* The card section sits below the narrow prose intro on the same cream
+     surface. No extra background — the cards carry their own fill. */
+  .home-cards {
+    background-color: var(--color-lantern);
+    padding-top: 0;
   }
 </style>

@@ -1,0 +1,88 @@
+---
+import { getEntry, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+/**
+ * Dedicated about page — narrative prose (intro, "Where the name comes
+ * from", "How I got here") in a reading column, then a card grid of
+ * workingPrinciples wider below. The previous body-bullet "How I work"
+ * section and "Say hello" closer both moved into frontmatter + cards.
+ */
+const entry = await getEntry('pages', 'about');
+if (!entry) throw new Error('Missing content/pages/about.md');
+
+const { Content } = await render(entry);
+const { title, description, workingPrinciples } = entry.data;
+---
+
+<Layout title={title} description={description} pageKey="about">
+  <article class="about-page">
+    <section class="about-page__narrative section">
+      <div class="container container--reading prose">
+        <Content />
+      </div>
+    </section>
+
+    {workingPrinciples && (
+      <section class="about-page__principles section section--tight">
+        <div class="container container--content">
+          {(workingPrinciples.heading || workingPrinciples.lede) && (
+            <header class="card-section__header">
+              {workingPrinciples.heading && (
+                <h2 class="card-section__heading">{workingPrinciples.heading}</h2>
+              )}
+              {workingPrinciples.lede && (
+                <p class="card-section__lede">{workingPrinciples.lede}</p>
+              )}
+            </header>
+          )}
+
+          <div class="card-grid card-grid--3">
+            {workingPrinciples.items.map((point) => (
+              <article class={`card${point.ctaLabel ? ' card--cta' : ''}`}>
+                <h3 class="card__title">{point.title}</h3>
+                <p class="card__body">{point.body}</p>
+                {point.ctaLabel && point.ctaHref && (
+                  <a href={point.ctaHref} class="card__link">
+                    {point.ctaLabel}
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.25"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </a>
+                )}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </article>
+</Layout>
+
+<style>
+  .about-page__narrative {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-7);
+  }
+  @media (min-width: 48rem) {
+    .about-page__narrative {
+      padding-top: var(--space-9);
+    }
+  }
+
+  .about-page__principles {
+    padding-top: 0;
+    padding-bottom: var(--space-10);
+  }
+</style>

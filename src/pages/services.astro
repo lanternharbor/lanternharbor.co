@@ -1,0 +1,91 @@
+---
+import { getEntry } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+/**
+ * Dedicated services page — a lightweight in-page header (H1 + lede)
+ * followed by a 2×2 grid of service cards. Fully frontmatter-driven;
+ * services.md body is intentionally empty. If a service grows into a
+ * long-form case study later, make a separate route under /services/.
+ */
+const entry = await getEntry('pages', 'services');
+if (!entry) throw new Error('Missing content/pages/services.md');
+
+const { title, description, services } = entry.data;
+if (!services) throw new Error('services.md is missing a `services` frontmatter block');
+---
+
+<Layout title={title} description={description} pageKey="services">
+  <article class="services-page section">
+    <div class="container container--content">
+      <header class="services-page__intro">
+        <h1 class="services-page__title">{title}</h1>
+        {services.lede && (
+          <p class="services-page__lede">{services.lede}</p>
+        )}
+      </header>
+
+      <div class="card-grid card-grid--2">
+        {services.items.map((svc) => (
+          <article class={`card${svc.ctaLabel ? ' card--cta' : ''}`}>
+            <h2 class="card__title">{svc.title}</h2>
+            <p class="card__body">{svc.body}</p>
+            {svc.ctaLabel && svc.ctaHref && (
+              <a href={svc.ctaHref} class="card__link">
+                {svc.ctaLabel}
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.25"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .services-page {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-10);
+  }
+  @media (min-width: 48rem) {
+    .services-page {
+      padding-top: var(--space-9);
+    }
+  }
+
+  .services-page__intro {
+    max-width: 44rem;
+    margin-bottom: var(--space-8);
+  }
+
+  .services-page__title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-5);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--color-harbor);
+    margin: 0 0 var(--space-4);
+  }
+
+  .services-page__lede {
+    margin: 0;
+    font-size: var(--step-1);
+    line-height: 1.6;
+    color: var(--color-slate);
+  }
+</style>

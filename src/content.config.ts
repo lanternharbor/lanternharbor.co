@@ -6,6 +6,25 @@ const cta = z.object({
   href: z.string(),
 });
 
+/**
+ * Reusable card + card-section primitives for frontmatter-driven block
+ * layouts (home's practicalPoints, about's workingPrinciples, services).
+ * Each cardItem renders as a <.card>; the 5th/last card can opt into a
+ * gold CTA variant by supplying ctaLabel + ctaHref.
+ */
+const cardItem = z.object({
+  title: z.string(),
+  body: z.string(),
+  ctaLabel: z.string().optional(),
+  ctaHref: z.string().optional(),
+});
+
+const cardSection = z.object({
+  heading: z.string().optional(),
+  lede: z.string().optional(),
+  items: z.array(cardItem),
+});
+
 const pages = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
   schema: z.object({
@@ -25,6 +44,12 @@ const pages = defineCollection({
         ctaSecondary: cta.optional(),
       })
       .optional(),
+    /** Home — renders as a 3+2 card grid below "Who this is for". */
+    practicalPoints: cardSection.optional(),
+    /** About — renders as a 3+2 card grid below the narrative. */
+    workingPrinciples: cardSection.optional(),
+    /** Services — renders as a 2×2 card grid as the page's main content. */
+    services: cardSection.optional(),
   }),
 });
 

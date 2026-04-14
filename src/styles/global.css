@@ -364,6 +364,95 @@ hr {
 }
 .skip-link:focus { top: var(--space-4); color: var(--color-lantern); }
 
+/* ---- Card grid — used on home, services, about to break long-form copy
+   into scannable blocks that use the full desktop width instead of the
+   narrow 45rem .prose column. Visual language reuses the gold-tinted
+   surface already present on .contact-page__direct and .work__cta. ---- */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+@media (min-width: 44rem) {
+  .card-grid--2 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 56rem) {
+  .card-grid--3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+.card {
+  padding: var(--space-6);
+  background-color: rgba(229, 192, 103, 0.08);
+  border: 1px solid rgba(229, 192, 103, 0.25);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+}
+
+.card__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--step-2);
+  line-height: 1.2;
+  color: var(--color-harbor);
+  margin: 0 0 var(--space-3);
+}
+
+.card__body {
+  margin: 0;
+  font-size: var(--step-0);
+  line-height: 1.6;
+  color: var(--color-slate);
+}
+
+/* CTA variant — denser gold, used as the 5th card to punctuate a 3+2
+   grid with a clear next step instead of ending on two lonely cards. */
+.card--cta {
+  background-color: rgba(229, 192, 103, 0.22);
+  border-color: rgba(184, 134, 75, 0.45);
+}
+.card--cta .card__body { color: var(--color-harbor); }
+
+.card__link {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--step-0);
+  color: var(--color-harbor);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color var(--transition), gap var(--transition);
+}
+.card__link:hover,
+.card__link:focus-visible {
+  color: var(--color-brass);
+  gap: 0.6rem;
+}
+
+/* Section header used above a card grid — wider than .prose so it sits
+   flush with the grid below. */
+.card-section__header {
+  max-width: 44rem;
+  margin-bottom: var(--space-7);
+}
+.card-section__heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--step-3);
+  line-height: 1.2;
+  color: var(--color-harbor);
+  margin: 0 0 var(--space-3);
+}
+.card-section__lede {
+  margin: 0;
+  font-size: var(--step-1);
+  line-height: 1.6;
+  color: var(--color-slate);
+}
+
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

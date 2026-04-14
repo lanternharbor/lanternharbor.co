@@ -4,9 +4,10 @@ import Layout from '../layouts/Layout.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('pages');
-  // 'home' has its own index.astro route, 'contact' has its own contact.astro
-  // route (with a form + direct-contact card instead of prose).
-  const excluded = new Set(['home', 'contact']);
+  // home / contact / about / services each have their own explicit .astro
+  // route with custom layout (hero, card grids, forms). This dynamic route
+  // still handles privacy, terms, and any future prose-only pages.
+  const excluded = new Set(['home', 'contact', 'about', 'services']);
   return entries
     .filter((entry) => !excluded.has(entry.id))
     .map((entry) => ({
