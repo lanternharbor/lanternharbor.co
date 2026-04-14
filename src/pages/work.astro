@@ -1,0 +1,343 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const projects = await getCollection('projects');
+
+// Sort: featured first, then most recent year, then manual `order` as tiebreaker.
+const sorted = projects.sort((a, b) => {
+  if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
+  if (a.data.year !== b.data.year) return b.data.year - a.data.year;
+  return a.data.order - b.data.order;
+});
+
+const pageTitle = 'Work';
+const pageDescription =
+  "Websites and small software projects from Lantern Harbor — selected client engagements and builds.";
+---
+
+<Layout title={pageTitle} description={pageDescription} pageKey="work">
+  <article class="work section">
+    <div class="container container--content">
+      <header class="work__intro">
+        <h1 class="work__title">Work</h1>
+        <p class="work__lede">
+          A small but growing list of websites and tools I've built. Each
+          engagement is different — most start with a conversation about
+          what's actually worth doing, then move to a short plan, then to
+          shipping the thing.
+        </p>
+      </header>
+
+      {
+        sorted.length === 0 ? (
+          <div class="work__empty">
+            <p class="work__empty-heading">Work in progress.</p>
+            <p class="work__empty-body">
+              Project write-ups are on the way. In the meantime, if you'd
+              like to see examples of what I've built or talk about a
+              specific project, please{' '}
+              <a href="/contact">get in touch</a>.
+            </p>
+          </div>
+        ) : (
+          <ul class="work__list" role="list">
+            {sorted.map((project) => {
+              const { title, client, year, summary, url, role, tech, highlights } =
+                project.data;
+              return (
+                <li class="project">
+                  <div class="project__meta">
+                    <span class="project__year">{year}</span>
+                    {role && <span class="project__role">{role}</span>}
+                  </div>
+
+                  <div class="project__body">
+                    <h2 class="project__title">
+                      {url ? (
+                        <a
+                          href={url}
+                          class="project__link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {title}
+                          <svg
+                            class="project__external"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.25"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                          </svg>
+                        </a>
+                      ) : (
+                        title
+                      )}
+                    </h2>
+                    <p class="project__client">{client}</p>
+                    <p class="project__summary">{summary}</p>
+
+                    {tech && tech.length > 0 && (
+                      <ul class="project__tech" role="list">
+                        {tech.map((t) => (
+                          <li class="project__tech-item">{t}</li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {highlights && highlights.length > 0 && (
+                      <ul class="project__highlights">
+                        {highlights.map((h) => (
+                          <li>{h}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        )
+      }
+
+      <aside class="work__cta">
+        <p>
+          Have something you'd like built, or a site that isn't working as
+          hard as it could? <a href="/contact">Let's talk</a>.
+        </p>
+      </aside>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .work {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-10);
+  }
+  @media (min-width: 48rem) {
+    .work { padding-top: var(--space-9); }
+  }
+
+  .work__intro {
+    max-width: 44rem;
+    margin-bottom: var(--space-8);
+  }
+
+  .work__title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-5);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--color-harbor);
+    margin: 0 0 var(--space-4);
+  }
+
+  .work__lede {
+    margin: 0;
+    font-size: var(--step-1);
+    line-height: 1.6;
+    color: var(--color-slate);
+  }
+
+  /* Empty state */
+  .work__empty {
+    padding: var(--space-7) var(--space-6);
+    background-color: rgba(229, 192, 103, 0.08);
+    border: 1px solid rgba(229, 192, 103, 0.25);
+    border-radius: var(--radius);
+    text-align: center;
+  }
+  .work__empty-heading {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-3);
+    color: var(--color-harbor);
+    margin: 0 0 var(--space-3);
+  }
+  .work__empty-body {
+    font-size: var(--step-0);
+    color: var(--color-slate);
+    margin: 0;
+    line-height: 1.6;
+  }
+  .work__empty-body a {
+    color: var(--color-harbor);
+    text-decoration-color: rgba(184, 134, 75, 0.6);
+    text-underline-offset: 3px;
+  }
+
+  /* Project list */
+  .work__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding: var(--space-6) 0;
+    border-top: 1px solid rgba(15, 42, 63, 0.1);
+  }
+  .project:last-child {
+    border-bottom: 1px solid rgba(15, 42, 63, 0.1);
+  }
+
+  @media (min-width: 44rem) {
+    .project {
+      grid-template-columns: 10rem minmax(0, 1fr);
+      gap: var(--space-6);
+      padding: var(--space-7) 0;
+    }
+  }
+
+  .project__meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+  }
+
+  .project__year {
+    font-weight: 700;
+    font-family: var(--font-heading);
+    font-size: var(--step-0);
+    color: var(--color-brass);
+    letter-spacing: 0.02em;
+  }
+
+  .project__role {
+    color: var(--color-driftwood);
+    font-style: italic;
+  }
+
+  .project__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .project__title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-3);
+    line-height: 1.2;
+    color: var(--color-harbor);
+    margin: 0;
+  }
+
+  .project__link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color var(--transition);
+  }
+  .project__link:hover,
+  .project__link:focus-visible {
+    color: var(--color-brass);
+  }
+
+  .project__external {
+    opacity: 0.55;
+    transition:
+      opacity var(--transition),
+      transform var(--transition);
+    margin-top: 2px;
+  }
+  .project__link:hover .project__external,
+  .project__link:focus-visible .project__external {
+    opacity: 1;
+    transform: translate(2px, -2px);
+  }
+
+  .project__client {
+    margin: 0;
+    font-size: var(--step-0);
+    font-weight: 500;
+    color: var(--color-driftwood);
+  }
+
+  .project__summary {
+    margin: 0;
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--color-slate);
+    max-width: 44em;
+  }
+
+  .project__tech {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-1) 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .project__tech-item {
+    font-size: var(--step--2);
+    font-family: var(--font-body);
+    color: var(--color-harbor);
+    background-color: rgba(229, 192, 103, 0.16);
+    border: 1px solid rgba(229, 192, 103, 0.3);
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    letter-spacing: 0.01em;
+  }
+
+  .project__highlights {
+    margin: var(--space-2) 0 0;
+    padding-left: var(--space-5);
+    color: var(--color-slate);
+    font-size: var(--step-0);
+    line-height: 1.55;
+  }
+  .project__highlights li {
+    margin-bottom: var(--space-1);
+  }
+  .project__highlights li::marker {
+    color: var(--color-brass);
+  }
+
+  /* Closing CTA */
+  .work__cta {
+    margin-top: var(--space-8);
+    padding: var(--space-6);
+    background-color: rgba(229, 192, 103, 0.08);
+    border-left: 3px solid var(--color-gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .work__cta p {
+    margin: 0;
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--color-slate);
+  }
+  .work__cta a {
+    color: var(--color-harbor);
+    font-weight: 600;
+    text-decoration-color: rgba(184, 134, 75, 0.6);
+    text-underline-offset: 3px;
+  }
+  .work__cta a:hover,
+  .work__cta a:focus-visible {
+    color: var(--color-brass);
+  }
+</style>
