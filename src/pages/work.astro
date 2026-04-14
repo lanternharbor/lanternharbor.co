@@ -19,7 +19,7 @@ const pageDescription =
   "Websites and small software projects from Lantern Harbor — selected client engagements and builds.";
 ---
 
-<Layout title={pageTitle} description={pageDescription} pageKey="work" noindex>
+<Layout title={pageTitle} description={pageDescription} pageKey="work">
   <article class="work section">
     <div class="container container--content">
       <header class="work__intro">
@@ -46,7 +46,7 @@ const pageDescription =
         ) : (
           <ul class="work__list" role="list">
             {sorted.map((project) => {
-              const { title, client, year, summary, url, role, tech, highlights } =
+              const { title, client, year, summary, url, role, tech, highlights, thumbnail } =
                 project.data;
               return (
                 <li class="project">
@@ -56,6 +56,19 @@ const pageDescription =
                   </div>
 
                   <div class="project__body">
+                    {thumbnail && (
+                      <figure class="project__thumb">
+                        <img
+                          src={thumbnail}
+                          alt=""
+                          width="1200"
+                          height="675"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </figure>
+                    )}
+
                     <h2 class="project__title">
                       {url ? (
                         <a
@@ -234,6 +247,21 @@ const pageDescription =
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
+  }
+
+  /* Thumbnail — optional. Sits above the title as a visual lead-in to
+     the project, fills the body column's full width, 16:9 aspect. */
+  .project__thumb {
+    margin: 0 0 var(--space-2);
+  }
+  .project__thumb img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid rgba(15, 42, 63, 0.08);
+    display: block;
   }
 
   .project__title {
