@@ -4,7 +4,7 @@ description: Practical IT, AI, and automation help for small and mid-sized busin
 hero:
   eyebrow: South Shore, Massachusetts
   headline: Practical IT, AI, and automation help — close to home.
-  tagline: Twelve years inside enterprise healthcare IT taught me how to make technology actually land with the people who have to use it. Now I bring that perspective to small and mid-sized businesses on the South Shore — in person, in plain language, for work that ships.
+  tagline: A one-person practice helping small and mid-sized businesses on the South Shore make good, practical decisions about technology — in person, in plain language, for work that ships.
   ctaPrimary:
     label: Let's talk
     href: /contact

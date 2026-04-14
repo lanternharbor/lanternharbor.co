@@ -22,7 +22,7 @@ When I decided to start this practice, that was the name that stuck. Lantern Har
 ---
 
 ## How I got here
-Lantern Harbor grew out of a season of real reflection. My son was born ten weeks early — seventy-three days in the NICU — and alongside that came a larger question about what I wanted my work to look like in the next chapter.
+Lantern Harbor grew out of a season of real reflection — and a larger question about what I wanted my work to look like in the next chapter.
 
 I've spent twelve-plus years in enterprise healthcare IT, and I love what that work has taught me: how to get technology to actually land with the people who have to use it. What I wanted to add was a practice of my own — smaller, closer to home, for the business owners on the South Shore who don't have someone in-house to help them think clearly about technology.
 
