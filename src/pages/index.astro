@@ -2,6 +2,7 @@
 import { getEntry, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import TestimonialRotator from '../components/TestimonialRotator.astro';
 
 const entry = await getEntry('pages', 'home');
 if (!entry) throw new Error('Missing content/pages/home.md');
@@ -25,6 +26,11 @@ const { title, description, hero } = entry.data;
       <Content />
     </div>
   </section>
+
+  <TestimonialRotator
+    heading="What clients have said"
+    intro="A small but growing list. Each person below worked with me on a real project and is quoted with permission."
+  />
 </Layout>
 
 <style>

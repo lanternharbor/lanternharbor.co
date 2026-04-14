@@ -69,6 +69,19 @@ public/
 
 Page copy lives in `src/content/pages/*.md`. Edit and save; the dev server hot-reloads.
 
+Two more content collections pick up any markdown you drop into them:
+
+- `src/content/projects/*.md` — one file per project. Displays on `/work`
+  and (when `featured: true`) in the `/work` list header. See that folder's
+  README for the schema.
+- `src/content/testimonials/*.md` — one file per testimonial. Displays in
+  the rotating `<TestimonialRotator>` on the home page and `/work`. See
+  that folder's README, which also documents **how to make testimonials
+  feel real, not fabricated** — the full set of trust-signal principles.
+
+Neither section renders if empty; as soon as you add one entry, it
+appears everywhere it belongs.
+
 Frontmatter fields:
 
 - `title` — used as `<title>` + `og:title`
