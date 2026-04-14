@@ -208,6 +208,83 @@ function logs.
 - [ ] Submit `sitemap-index.xml` to Google Search Console
 - [x] ~~Compress `hero.png`~~ — done (2.1MB PNG → 142KB JPEG); favicon.png 1.4MB → 14KB; social-card.png 2.0MB → 36KB
 
+## Changing domains (e.g. `.co` → `.com`)
+
+The site is architected so a domain swap is a focused one-evening job. Not a
+migration project. This runbook exists so future-you (or anyone helping you
+later) has a zero-thought path.
+
+### Code (~15–30 minutes)
+
+Single source of truth for the URL is `astro.config.mjs` → `site:`. Change
+that one line and canonical URLs, OG/Twitter tags, sitemap, and Schema.org
+URLs all update automatically across every page.
+
+Two find/replace passes clean up the remaining hardcoded references:
+
+```bash
+# Email address (replace william@lanternharbor.co → william@NEWDOMAIN)
+grep -rln "william@lanternharbor.co" src/ functions/ public/ README.md \
+  | xargs sed -i '' 's/william@lanternharbor\.co/william@NEWDOMAIN/g'
+
+# Bare domain in prose, comments, meta (replace lanternharbor.co → NEWDOMAIN)
+grep -rln "lanternharbor.co" src/ functions/ public/ README.md \
+  | xargs sed -i '' 's/lanternharbor\.co/NEWDOMAIN/g'
+```
+
+Then:
+
+```bash
+npm run build            # confirm build succeeds
+git diff                 # review everything before committing
+# spot-check dist/index.html and dist/sitemap-*.xml for the new URL
+git commit -am "Migrate lanternharbor.co → NEWDOMAIN"
+```
+
+Files touched (inventoried via `grep -rn 'lanternharbor\.co' . --include='*.{astro,ts,mjs,md,txt}'`):
+`astro.config.mjs`, `README.md`, `public/robots.txt`, several files under
+`src/content/pages/`, `src/pages/contact.astro`, `src/components/ContactForm.astro`,
+`src/layouts/Layout.astro`, `functions/api/contact.ts`.
+
+### Infrastructure (~90 minutes, one focused session)
+
+1. **Register** the new domain (Cloudflare Registrar is cleanest — same
+   account as DNS and Pages). Point its nameservers at Cloudflare.
+2. **Cloudflare Pages → Custom domains** — add the new domain. Keep the old
+   one active during transition so nothing breaks.
+3. **Resend → Domains** — add the new domain, paste in the DNS records Resend
+   generates (SPF, DKIM, MX), click Verify. Once green, update the
+   `CONTACT_FROM_EMAIL` env var in CF Pages to use the new domain.
+4. **Google Workspace → Admin → Domains** — *Add a domain*, verify it, then
+   add `william@NEWDOMAIN` as an alias. When you're ready, promote the new
+   domain to primary and demote the old.
+5. **Add redirects** — create `public/_redirects` (new file) with:
+   ```
+   https://OLD_DOMAIN/*  https://NEW_DOMAIN/:splat  301
+   ```
+   This preserves SEO by telling Google the old URLs have permanently moved,
+   and means anyone who bookmarked the old site still lands on the new one.
+6. **Google Search Console** — add the new domain as a property, verify it,
+   then under the OLD property use *Settings → Change of address* to point
+   Google at the new home.
+
+### What can't be automated
+
+- Notifying existing clients/contacts of the email change
+- Updating LinkedIn, Indeed, and any public profiles
+- Replacing printed materials (business cards, signage)
+- Waiting for search engines to re-index (2–4 weeks of passive lag)
+
+None of this is scary — it's operations, not code. If you do the swap within
+a few months of launch, you haven't built up much SEO equity to migrate, and
+the external work is small. The later you wait, the more of it there is.
+
+### Easier alternative
+
+If the `.com` is available at registration price **right now**, grab it before
+launch and point both domains at the same Cloudflare Pages site. Zero future
+migration. Just own both.
+
 ---
 
 Built by hand with AI.
