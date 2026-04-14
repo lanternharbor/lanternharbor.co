@@ -14,6 +14,48 @@ const { title, description, pageKey } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const siteName = 'Lantern Harbor';
 const fullTitle = pageKey === 'home' ? title : `${title} — ${siteName}`;
+
+// Schema.org structured data — tells Google/etc. this is a local professional
+// service run by William Keough, based in Hingham MA, serving the South Shore.
+const siteURL = Astro.site?.toString() ?? 'https://lanternharbor.co/';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${siteURL}#business`,
+  name: 'Lantern Harbor',
+  legalName: 'Lantern Harbor LLC',
+  description:
+    'Practical IT, AI, and automation help for small and mid-sized businesses on the South Shore of Massachusetts.',
+  url: siteURL,
+  image: new URL('/social-card.jpg', siteURL).toString(),
+  logo: new URL('/logo-horizontal.png', siteURL).toString(),
+  telephone: '+1-781-724-2543',
+  email: 'william@lanternharbor.co',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Hingham',
+    addressRegion: 'MA',
+    addressCountry: 'US',
+  },
+  areaServed: {
+    '@type': 'Place',
+    name: 'South Shore of Massachusetts',
+  },
+  founder: {
+    '@type': 'Person',
+    name: 'William Keough',
+    jobTitle: 'Founder & Principal',
+    worksFor: { '@id': `${siteURL}#business` },
+  },
+  knowsAbout: [
+    'Healthcare IT',
+    'AI integration',
+    'Workflow automation',
+    'Vendor selection',
+    'Small-business technology advisory',
+  ],
+  priceRange: '$$',
+};
 ---
 
 <!doctype html>
@@ -59,6 +101,19 @@ const fullTitle = pageKey === 'home' ? title : `${title} — ${siteName}`;
 
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- LCP win: preload the hero photograph on the home page. -->
+    {
+      pageKey === 'home' && (
+        <link rel="preload" as="image" href="/hero.jpg" fetchpriority="high" />
+      )
+    }
+
+    <!-- Structured data (Schema.org) -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
 
     <meta name="generator" content={Astro.generator} />
   </head>

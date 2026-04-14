@@ -1,0 +1,36 @@
+# Cloudflare Pages headers
+# https://developers.cloudflare.com/pages/platform/headers/
+#
+# Rules are matched in order, longest path first. Later rules can override
+# earlier ones. Anything not matched falls back to Cloudflare defaults.
+
+# Long-term cache for fingerprinted Astro assets (JS/CSS have content hashes
+# in their filenames so they can be cached effectively forever).
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Medium cache for images. They change rarely; cache for a month.
+/*.jpg
+  Cache-Control: public, max-age=2592000
+/*.png
+  Cache-Control: public, max-age=2592000
+/*.svg
+  Cache-Control: public, max-age=2592000
+/*.webp
+  Cache-Control: public, max-age=2592000
+
+# Short cache for HTML so content edits propagate within minutes.
+# must-revalidate makes browsers check with the origin when stale.
+/*.html
+  Cache-Control: public, max-age=300, must-revalidate
+/
+  Cache-Control: public, max-age=300, must-revalidate
+
+# Security headers for every response. These are defensive defaults and
+# don't block any current site functionality.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=()
+  Strict-Transport-Security: max-age=15552000; includeSubDomains
