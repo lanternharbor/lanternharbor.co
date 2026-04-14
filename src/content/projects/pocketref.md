@@ -14,5 +14,5 @@ highlights:
   - Photograph a table mid-game and get AI-powered analysis — the likely game state, detected ball positions, and an honest list of what a photo alone can't tell you
 thumbnail: /projects/pocketref.jpg
 featured: true
-order: 2
+order: 1
 ---

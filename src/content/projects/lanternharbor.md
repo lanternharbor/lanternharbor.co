@@ -14,5 +14,5 @@ highlights:
   - Fast, accessible, and responsive by default — fluid type and spacing scales, hand-tuned card-grid layouts
 thumbnail: /projects/lanternharbor.jpg
 featured: true
-order: 1
+order: 2
 ---
