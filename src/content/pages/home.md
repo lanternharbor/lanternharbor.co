@@ -23,6 +23,8 @@ If you run a healthcare practice or service business, I bring extra depth — tw
 
 ## What "practical" looks like
 
+Twelve-plus years inside enterprise healthcare IT means I've seen how technology fails real people — and how to make it land instead.
+
 I'll tell you when a tool will actually save you hours, and when it won't.
 
 I'll sit with your team for a morning and watch how the work actually happens before I recommend anything.

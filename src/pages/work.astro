@@ -1,7 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import TestimonialRotator from '../components/TestimonialRotator.astro';
+// NOTE: TestimonialRotator is intentionally not imported until there are real
+// testimonials to show. Re-add the import + <TestimonialRotator /> below
+// once `src/content/testimonials/` has at least one entry.
 
 const projects = await getCollection('projects');
 
@@ -17,7 +19,7 @@ const pageDescription =
   "Websites and small software projects from Lantern Harbor — selected client engagements and builds.";
 ---
 
-<Layout title={pageTitle} description={pageDescription} pageKey="work">
+<Layout title={pageTitle} description={pageDescription} pageKey="work" noindex>
   <article class="work section">
     <div class="container container--content">
       <header class="work__intro">
@@ -118,8 +120,6 @@ const pageDescription =
       </aside>
     </div>
   </article>
-
-  <TestimonialRotator heading="What they said about the work" />
 </Layout>
 
 <style>

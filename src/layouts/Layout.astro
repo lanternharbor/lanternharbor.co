@@ -7,9 +7,15 @@ interface Props {
   title: string;
   description: string;
   pageKey?: string;
+  /**
+   * Emit a `<meta name="robots" content="noindex,nofollow">` tag. Used by
+   * pages that exist as routes but aren't ready for search engines (e.g.
+   * /work while project write-ups are still being assembled).
+   */
+  noindex?: boolean;
 }
 
-const { title, description, pageKey } = Astro.props;
+const { title, description, pageKey, noindex = false } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const siteName = 'Lantern Harbor';
@@ -67,6 +73,7 @@ const structuredData = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     <meta name="theme-color" content="#0F2A3F" />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
 
     <!-- Open Graph -->
     <meta property="og:site_name" content={siteName} />
@@ -86,10 +93,13 @@ const structuredData = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL('/social-card.jpg', Astro.site).toString()} />
 
-    <!-- Favicon — PNG first (new illustrated lantern), SVG as fallback -->
-    <link rel="icon" type="image/png" sizes="1024x1024" href="/favicon.png" />
+    <!-- Favicon — generated from brand-source/favicon-source-1024.png. -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Fonts: Lora (headings) + Inter (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

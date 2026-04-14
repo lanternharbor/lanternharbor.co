@@ -5,10 +5,12 @@ interface Props {
 
 const { pageKey } = Astro.props;
 
+// NOTE: /work is intentionally unlinked until there's a first case study
+// to show. The route still exists (and carries a noindex meta tag) — add
+// 'Work' back here when `src/content/projects/` gets its first real entry.
 const links = [
   { href: '/', label: 'Home', key: 'home' },
   { href: '/services', label: 'What I help with', key: 'services' },
-  { href: '/work', label: 'Work', key: 'work' },
   { href: '/about', label: 'About', key: 'about' },
   { href: '/contact', label: "Let's talk", key: 'contact' },
 ];

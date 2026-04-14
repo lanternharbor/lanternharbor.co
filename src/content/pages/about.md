@@ -22,12 +22,11 @@ When I decided to start this practice, that was the name that stuck. Lantern Har
 ---
 
 ## How I got here
+Lantern Harbor grew out of a season of real reflection. My son was born ten weeks early — seventy-three days in the NICU — and alongside that came a larger question about what I wanted my work to look like in the next chapter.
 
-The last company I worked for was acquired by a much larger organization. Around the same time, I was on paternity leave, spending my days next to an incubator and thinking hard about what the next stretch of my career should look like. What became clear was this: the work I liked best — close to the people actually doing the job, small enough to see the whole picture, hands-on enough to see the outcome — wasn't where a mega-corporation was going to take me.
+I've spent twelve-plus years in enterprise healthcare IT, and I love what that work has taught me: how to get technology to actually land with the people who have to use it. What I wanted to add was a practice of my own — smaller, closer to home, for the business owners on the South Shore who don't have someone in-house to help them think clearly about technology.
 
-What I wanted instead was to be useful to the people closest to home. Small-business owners on the South Shore, with specific problems and real deadlines, who mostly don't have anyone in-house to help them think clearly about technology.
-
-That's what Lantern Harbor is for.
+I take on a few engagements at a time, carefully, so when you're in the schedule you're getting the attention you'd expect from someone who does fewer things well.
 
 ---
 
