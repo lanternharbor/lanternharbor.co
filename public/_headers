@@ -28,9 +28,18 @@
 
 # Security headers for every response. These are defensive defaults and
 # don't block any current site functionality.
+#
+# CSP notes:
+#   - 'unsafe-inline' on script-src covers Astro's inline <script type="module"> hydration
+#     and the JSON-LD structured-data block. If we later adopt CSP nonces/hashes, this can
+#     be tightened.
+#   - 'unsafe-inline' on style-src covers Astro's component-scoped <style> blocks.
+#   - All fonts, scripts, styles, images, and form targets are same-origin since we
+#     self-host fonts (see src/layouts/Layout.astro).
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=()
   Strict-Transport-Security: max-age=15552000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests
