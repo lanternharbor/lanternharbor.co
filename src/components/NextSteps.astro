@@ -1,0 +1,81 @@
+---
+interface Step {
+  title: string;
+  body: string;
+}
+
+interface Props {
+  heading: string;
+  lede?: string;
+  items: Step[];
+}
+
+const { heading, lede, items } = Astro.props;
+---
+
+<section class="next-steps" aria-labelledby="next-steps-heading">
+  <h2 id="next-steps-heading" class="next-steps__heading">{heading}</h2>
+  {lede && <p class="next-steps__lede">{lede}</p>}
+
+  <ol class="next-steps__list">
+    {items.map((item) => (
+      <li class="next-steps__item">
+        <h3 class="next-steps__title">{item.title}</h3>
+        <p class="next-steps__body">{item.body}</p>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  .next-steps {
+    padding: var(--space-6);
+    background-color: rgba(229, 192, 103, 0.08);
+    border: 1px solid rgba(229, 192, 103, 0.25);
+    border-radius: var(--radius);
+  }
+
+  .next-steps__heading {
+    margin: 0 0 var(--space-3);
+    font-size: var(--step-2);
+  }
+
+  .next-steps__lede {
+    margin: 0 0 var(--space-5);
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--color-slate);
+  }
+
+  .next-steps__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .next-steps__item {
+    padding-top: var(--space-4);
+    border-top: 1px solid rgba(15, 42, 63, 0.08);
+  }
+
+  .next-steps__item:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .next-steps__title {
+    margin: 0 0 var(--space-2);
+    font-size: var(--step-0);
+    color: var(--color-harbor);
+  }
+
+  .next-steps__body {
+    margin: 0;
+    font-size: var(--step--1);
+    line-height: 1.6;
+    color: var(--color-slate);
+  }
+</style>

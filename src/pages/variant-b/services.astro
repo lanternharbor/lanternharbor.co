@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import OfferGrid from '../../components/OfferGrid.astro';
+import CalloutPanel from '../../components/CalloutPanel.astro';
+import PreviewNotice from '../../components/PreviewNotice.astro';
+import { variantBSections } from '../../data/siteVariants';
+
+const page = variantBSections.services;
+---
+
+<Layout
+  title={page.title}
+  description={page.description}
+  pageKey="services"
+  navBasePath="/variant-b"
+  noindex={true}
+>
+  <PreviewNotice
+    title="Variant B Services"
+    body="Sharper offer packaging with clearer names and deliverables, while keeping Lantern Harbor calm and plainspoken."
+    primaryHref="/services"
+    primaryLabel="See Variant A services"
+  />
+
+  <OfferGrid
+    heading={page.title}
+    lede={page.lede}
+    note={page.note}
+    offers={page.offers}
+  />
+
+  <CalloutPanel
+    heading={page.closing.heading}
+    body={page.closing.body}
+    primaryLabel={page.closing.primaryLabel}
+    primaryHref={page.closing.primaryHref}
+  />
+</Layout>

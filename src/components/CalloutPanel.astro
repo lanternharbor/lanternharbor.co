@@ -1,0 +1,84 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  heading: string;
+  body: string;
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+const {
+  heading,
+  body,
+  primaryLabel,
+  primaryHref,
+  secondaryLabel,
+  secondaryHref,
+} = Astro.props;
+---
+
+<section class="callout section section--tight">
+  <div class="container container--content">
+    <div class="callout__panel">
+      <div class="callout__copy">
+        <h2 class="callout__heading">{heading}</h2>
+        <p class="callout__body">{body}</p>
+      </div>
+      <div class="callout__actions">
+        <Button href={primaryHref}>{primaryLabel}</Button>
+        {secondaryLabel && secondaryHref && (
+          <Button href={secondaryHref} variant="ghost" arrow={false}>
+            {secondaryLabel}
+          </Button>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .callout__panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: var(--space-6);
+    background-color: rgba(229, 192, 103, 0.12);
+    border: 1px solid rgba(184, 134, 75, 0.28);
+    border-radius: var(--radius);
+  }
+
+  @media (min-width: 52rem) {
+    .callout__panel {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-7);
+    }
+  }
+
+  .callout__copy {
+    max-width: 42rem;
+  }
+
+  .callout__heading {
+    margin: 0 0 var(--space-3);
+    font-size: var(--step-3);
+  }
+
+  .callout__body {
+    margin: 0;
+    font-size: var(--step-0);
+    line-height: 1.65;
+    color: var(--color-slate);
+  }
+
+  .callout__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+  }
+</style>

@@ -1,0 +1,132 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  heading: string;
+  lede?: string;
+  note?: string;
+  viewAllLabel: string;
+  viewAllHref: string;
+  limit?: number;
+}
+
+const { heading, lede, note, viewAllLabel, viewAllHref, limit = 3 } = Astro.props;
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => {
+    if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
+    if (a.data.year !== b.data.year) return b.data.year - a.data.year;
+    return a.data.order - b.data.order;
+  })
+  .slice(0, limit);
+---
+
+<section class="recent-work section section--tight">
+  <div class="container container--content">
+    <header class="recent-work__intro">
+      <h2 class="recent-work__heading">{heading}</h2>
+      {lede && <p class="recent-work__lede">{lede}</p>}
+      {note && <p class="recent-work__note">{note}</p>}
+    </header>
+
+    <div class="card-grid card-grid--3">
+      {projects.map((project, index) => (
+        <article class={`card${index === projects.length - 1 ? ' card--cta' : ''}`}>
+          <p class="recent-work__meta">
+            <span>{project.data.year}</span>
+            <span aria-hidden="true">·</span>
+            <span>{project.data.role ?? 'Design and build'}</span>
+          </p>
+          <h3 class="card__title">{project.data.title}</h3>
+          <p class="recent-work__client">{project.data.client}</p>
+          <p class="card__body">{project.data.summary}</p>
+          {project.data.url ? (
+            <a
+              href={project.data.url}
+              class="card__link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit project
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          ) : index === projects.length - 1 ? (
+            <a href={viewAllHref} class="card__link">
+              {viewAllLabel}
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          ) : null}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .recent-work__intro {
+    max-width: 44rem;
+    margin-bottom: var(--space-7);
+  }
+
+  .recent-work__heading {
+    margin: 0 0 var(--space-3);
+  }
+
+  .recent-work__lede,
+  .recent-work__note {
+    margin: 0;
+    font-size: var(--step-1);
+    line-height: 1.6;
+    color: var(--color-slate);
+  }
+
+  .recent-work__note {
+    margin-top: var(--space-3);
+    font-size: var(--step--1);
+    color: var(--color-driftwood);
+  }
+
+  .recent-work__meta {
+    margin: 0 0 var(--space-3);
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    font-size: var(--step--1);
+    color: var(--color-brass);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .recent-work__client {
+    margin: 0 0 var(--space-3);
+    font-size: var(--step--1);
+    line-height: 1.5;
+    color: var(--color-driftwood);
+  }
+</style>

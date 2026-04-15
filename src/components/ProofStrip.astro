@@ -1,0 +1,78 @@
+---
+interface Item {
+  label: string;
+  detail: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="proof-strip section section--tight">
+  <div class="container container--content">
+    <ul class="proof-strip__grid" role="list">
+      {items.map((item) => (
+        <li class="proof-strip__item">
+          <p class="proof-strip__label">{item.label}</p>
+          <p class="proof-strip__detail">{item.detail}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .proof-strip {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+    background-color: rgba(229, 192, 103, 0.06);
+    border-bottom: 1px solid rgba(15, 42, 63, 0.08);
+  }
+
+  .proof-strip__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 40rem) {
+    .proof-strip__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .proof-strip__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .proof-strip__item {
+    padding: var(--space-4) var(--space-5);
+    background-color: rgba(245, 239, 228, 0.78);
+    border: 1px solid rgba(229, 192, 103, 0.2);
+    border-radius: var(--radius);
+  }
+
+  .proof-strip__label {
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-heading);
+    font-size: var(--step-1);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-harbor);
+  }
+
+  .proof-strip__detail {
+    margin: 0;
+    font-size: var(--step--1);
+    line-height: 1.6;
+    color: var(--color-slate);
+  }
+</style>

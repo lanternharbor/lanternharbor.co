@@ -1,9 +1,18 @@
 ---
 interface Props {
   pageKey?: string;
+  basePath?: string;
 }
 
-const { pageKey } = Astro.props;
+const { pageKey, basePath = '' } = Astro.props;
+
+const normalizedBasePath =
+  basePath && basePath !== '/' ? basePath.replace(/\/$/, '') : '';
+
+const withBase = (href: string) => {
+  if (!normalizedBasePath) return href;
+  return href === '/' ? normalizedBasePath : `${normalizedBasePath}${href}`;
+};
 
 // Nav order mirrors the narrative: home → what I help with → what I've
 // built → who I am → get in touch.
@@ -18,7 +27,7 @@ const links = [
 
 <header class="site-header" data-state="default">
   <div class="container site-header__inner">
-    <a href="/" class="brand" aria-label="Lantern Harbor — home">
+    <a href={withBase('/')} class="brand" aria-label="Lantern Harbor — home">
       <img
         src="/logo-horizontal.png"
         alt="Lantern Harbor"
@@ -46,7 +55,7 @@ const links = [
           links.map((link) => (
             <li>
               <a
-                href={link.href}
+                href={withBase(link.href)}
                 class:list={[
                   'site-nav__link',
                   { 'is-active': link.key === pageKey },

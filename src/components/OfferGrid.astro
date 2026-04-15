@@ -1,0 +1,191 @@
+---
+interface Offer {
+  name: string;
+  summary: string;
+  fit: string;
+  deliverables: string[];
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+interface Props {
+  heading: string;
+  lede?: string;
+  note?: string;
+  offers: Offer[];
+}
+
+const { heading, lede, note, offers } = Astro.props;
+---
+
+<section class="offers section">
+  <div class="container container--content">
+    <header class="offers__intro">
+      <h1 class="offers__heading">{heading}</h1>
+      {lede && <p class="offers__lede">{lede}</p>}
+      {note && <p class="offers__note">{note}</p>}
+    </header>
+
+    <div class="offers__grid">
+      {offers.map((offer) => (
+        <article class="offer-card">
+          <h2 class="offer-card__title">{offer.name}</h2>
+          <p class="offer-card__summary">{offer.summary}</p>
+          <p class="offer-card__fit">
+            <strong>Best for:</strong> {offer.fit}
+          </p>
+          <div class="offer-card__deliverables">
+            <h3 class="offer-card__list-heading">What you get</h3>
+            <ul>
+              {offer.deliverables.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <a href={offer.ctaHref} class="offer-card__link">
+            {offer.ctaLabel}
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.25"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .offers {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-10);
+  }
+
+  @media (min-width: 48rem) {
+    .offers {
+      padding-top: var(--space-9);
+    }
+  }
+
+  .offers__intro {
+    max-width: 46rem;
+    margin-bottom: var(--space-8);
+  }
+
+  .offers__heading {
+    margin: 0 0 var(--space-4);
+    font-size: var(--step-5);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+
+  .offers__lede,
+  .offers__note {
+    margin: 0;
+    font-size: var(--step-1);
+    line-height: 1.6;
+    color: var(--color-slate);
+  }
+
+  .offers__note {
+    margin-top: var(--space-3);
+    font-size: var(--step-0);
+    color: var(--color-driftwood);
+  }
+
+  .offers__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 52rem) {
+    .offers__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .offer-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-6);
+    background-color: rgba(229, 192, 103, 0.08);
+    border: 1px solid rgba(229, 192, 103, 0.25);
+    border-radius: var(--radius);
+  }
+
+  .offer-card__title {
+    margin: 0 0 var(--space-3);
+    font-size: var(--step-2);
+    line-height: 1.2;
+  }
+
+  .offer-card__summary,
+  .offer-card__fit {
+    margin: 0;
+    font-size: var(--step-0);
+    line-height: 1.65;
+    color: var(--color-slate);
+  }
+
+  .offer-card__fit {
+    margin-top: var(--space-4);
+  }
+
+  .offer-card__fit strong {
+    color: var(--color-harbor);
+  }
+
+  .offer-card__deliverables {
+    margin-top: var(--space-5);
+  }
+
+  .offer-card__list-heading {
+    margin: 0 0 var(--space-3);
+    font-size: var(--step-0);
+    color: var(--color-harbor);
+  }
+
+  .offer-card__deliverables ul {
+    margin: 0;
+    padding-left: var(--space-5);
+    color: var(--color-slate);
+  }
+
+  .offer-card__deliverables li {
+    margin-bottom: var(--space-2);
+    line-height: 1.55;
+  }
+
+  .offer-card__deliverables li::marker {
+    color: var(--color-brass);
+  }
+
+  .offer-card__link {
+    margin-top: auto;
+    padding-top: var(--space-5);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--step-0);
+    color: var(--color-harbor);
+    text-decoration: none;
+    transition: color var(--transition), gap var(--transition);
+  }
+
+  .offer-card__link:hover,
+  .offer-card__link:focus-visible {
+    color: var(--color-brass);
+    gap: 0.65rem;
+  }
+</style>

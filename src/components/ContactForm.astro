@@ -5,6 +5,16 @@
  *   - With JS, submits via fetch() and shows inline success/error
  *   - Includes a honeypot field to deflect basic bot submissions
  */
+
+interface Props {
+  submitLabel?: string;
+  reassurance?: string;
+}
+
+const {
+  submitLabel: submitButtonLabel = 'Send note',
+  reassurance = 'I read and reply to every message personally. Usually within a business day.',
+} = Astro.props;
 ---
 
 <form
@@ -73,7 +83,7 @@
 
   <div class="contact-form__footer">
     <button type="submit" class="contact-form__submit">
-      <span data-submit-label>Send note</span>
+      <span data-submit-label>{submitButtonLabel}</span>
       <svg
         width="16"
         height="16"
@@ -90,7 +100,7 @@
       </svg>
     </button>
     <p class="contact-form__reassurance">
-      I read and reply to every message personally. Usually within a business day.
+      {reassurance}
     </p>
   </div>
 

@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PreviewNotice from '../../components/PreviewNotice.astro';
+import WorkShowcase from '../../components/WorkShowcase.astro';
+
+const pageTitle = 'Work';
+const pageDescription =
+  'Variant B preview of the Lantern Harbor work page, with a slightly sharper proof-oriented introduction.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  pageKey="work"
+  navBasePath="/variant-b"
+  noindex={true}
+>
+  <PreviewNotice
+    title="Variant B Work"
+    body="The work itself stays the same here. The change is a slightly more proof-oriented framing around the portfolio."
+    primaryHref="/work"
+    primaryLabel="See Variant A work"
+  />
+
+  <WorkShowcase
+    title={pageTitle}
+    lede="Selected websites, tools, and product builds that show how Lantern Harbor tends to work: thoughtful framing, plain language, and careful execution."
+    note="These are representative examples. Many advisory engagements and internal systems stay private."
+    ctaHref="/variant-b/contact"
+    ctaText="Start the conversation"
+  />
+</Layout>
