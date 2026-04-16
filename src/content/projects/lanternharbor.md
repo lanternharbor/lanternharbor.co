@@ -2,7 +2,7 @@
 title: Lantern Harbor
 client: Lantern Harbor LLC (this site)
 year: 2026
-summary: The site you're reading. Built solo with Astro, hand-written CSS (no framework), and modern AI-assisted methods — a small but deliberate example of the craft I bring to small-business work.
+summary: The site you're reading. Built solo with Astro and hand-written CSS (no framework) — a small but deliberate example of the craft I bring to small-business work.
 role: Design, build, and content
 tech:
   - Astro

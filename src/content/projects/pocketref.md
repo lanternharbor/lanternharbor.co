@@ -1,6 +1,6 @@
 ---
 title: PocketRef
-client: Personal build for Baystate APA
+client: Personal build, Baystate APA league
 year: 2026
 summary: A native iOS app for league players and captains mid-match — answers Baystate APA pool rules questions in plain English, with structured rulings grounded in both the national APA manual and Baystate's local bylaws.
 role: Design and build
