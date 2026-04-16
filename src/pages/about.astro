@@ -14,7 +14,7 @@ const { title, description, workingPrinciples } = entry.data;
 <Layout title={title} description={description} pageKey="about">
   <article class="about-page">
     <section class="about-page__intro section">
-      <div class="container container--reading">
+      <div class="container container--content">
         <header class="about-page__header">
           <h1 class="about-page__title">{title}</h1>
           <div class="about-page__lede">
@@ -35,7 +35,7 @@ const { title, description, workingPrinciples } = entry.data;
     />
 
     <section class="about-page__narrative section section--tight">
-      <div class="container container--reading prose">
+      <div class="container container--content prose">
         <Content />
       </div>
     </section>
@@ -65,7 +65,7 @@ const { title, description, workingPrinciples } = entry.data;
   }
 
   .about-page__header {
-    max-width: 44rem;
+    max-width: var(--measure-reading);
   }
 
   .about-page__title {
@@ -91,6 +91,10 @@ const { title, description, workingPrinciples } = entry.data;
   .about-page__narrative {
     padding-top: 0;
     padding-bottom: var(--space-6);
+  }
+
+  .about-page__narrative :global(.prose) {
+    margin-inline: 0;
   }
 
   .about-page__narrative :global(.prose > h2:first-child) {
