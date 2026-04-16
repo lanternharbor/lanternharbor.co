@@ -15,6 +15,11 @@ const {
   submitLabel: submitButtonLabel = 'Send note',
   reassurance = 'I read and reply to every message personally. Usually within a business day.',
 } = Astro.props;
+
+// Public Turnstile site key — when set, the widget renders and the server
+// verifies the resulting token. When unset (e.g. local dev before setup),
+// the form still works via the honeypot alone.
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 ---
 
 <form
@@ -81,6 +86,12 @@ const {
     </label>
   </div>
 
+  {turnstileSiteKey && (
+    <div class="contact-form__turnstile">
+      <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="light"></div>
+    </div>
+  )}
+
   <div class="contact-form__footer">
     <button type="submit" class="contact-form__submit">
       <span data-submit-label>{submitButtonLabel}</span>
@@ -113,6 +124,10 @@ const {
   >
   </div>
 </form>
+
+{turnstileSiteKey && (
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+)}
 
 <template data-success-template>
   <div class="contact-form__success">
@@ -291,6 +306,11 @@ const {
     width: 1px;
     height: 1px;
     overflow: hidden;
+  }
+
+  /* Cloudflare Turnstile widget — sits above the submit row */
+  .contact-form__turnstile {
+    min-height: 65px; /* reserves space so layout doesn't jump when the widget mounts */
   }
 
   /* Footer row with submit + reassurance */

@@ -7,11 +7,14 @@
  *
  * Required env vars (set in Cloudflare Pages → Settings → Environment variables):
  *
- *   RESEND_API_KEY      — API key from https://resend.com (Secret)
- *   CONTACT_TO_EMAIL    — where contact-form submissions are delivered
- *                         (e.g. william@lanternharbor.co)
- *   CONTACT_FROM_EMAIL  — verified sender on lanternharbor.co
- *                         (e.g. "Lantern Harbor <hello@lanternharbor.co>")
+ *   RESEND_API_KEY        — API key from https://resend.com (Secret)
+ *   CONTACT_TO_EMAIL      — where contact-form submissions are delivered
+ *                           (e.g. william@lanternharbor.co)
+ *   CONTACT_FROM_EMAIL    — verified sender on lanternharbor.co
+ *                           (e.g. "Lantern Harbor <hello@lanternharbor.co>")
+ *   TURNSTILE_SECRET_KEY  — (optional) Cloudflare Turnstile secret. When set,
+ *                           submissions must include a valid cf-turnstile-response
+ *                           token. When unset, the honeypot is the sole defense.
  *
  * Until DNS/DKIM is configured for lanternharbor.co in Resend, you can set
  * CONTACT_FROM_EMAIL to "onboarding@resend.dev" to test end-to-end.
@@ -21,6 +24,7 @@ type Env = {
   RESEND_API_KEY?: string;
   CONTACT_TO_EMAIL?: string;
   CONTACT_FROM_EMAIL?: string;
+  TURNSTILE_SECRET_KEY?: string;
 };
 
 type Context = {
@@ -61,10 +65,13 @@ export async function onRequestPost(context: Context): Promise<Response> {
 
   // Parse JSON (client-enhanced fetch) or form-encoded (no-JS fallback).
   let data: Payload = {};
+  let turnstileToken = '';
   const contentType = request.headers.get('content-type') || '';
   try {
     if (contentType.includes('application/json')) {
-      data = (await request.json()) as Payload;
+      const raw = (await request.json()) as Record<string, unknown>;
+      data = raw as Payload;
+      turnstileToken = str(raw['cf-turnstile-response'], 2048);
     } else {
       const form = await request.formData();
       data = {
@@ -74,6 +81,7 @@ export async function onRequestPost(context: Context): Promise<Response> {
         message: form.get('message'),
         company_website: form.get('company_website'),
       };
+      turnstileToken = str(form.get('cf-turnstile-response'), 2048);
     }
   } catch {
     return json({ ok: false, error: 'Could not parse request' }, 400);
@@ -83,6 +91,50 @@ export async function onRequestPost(context: Context): Promise<Response> {
   if (honeypot) {
     // Likely a bot — respond success without sending so they don't retry.
     return json({ ok: true });
+  }
+
+  // Verify Cloudflare Turnstile token if the secret is configured. Gating on
+  // presence lets us ship the code change before the env var is set without
+  // breaking the form.
+  const turnstileSecret = env.TURNSTILE_SECRET_KEY;
+  if (turnstileSecret) {
+    if (!turnstileToken) {
+      return json(
+        { ok: false, error: 'Please complete the verification step and try again.' },
+        400,
+      );
+    }
+
+    let verified = false;
+    try {
+      const verifyRes = await fetch(
+        'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            secret: turnstileSecret,
+            response: turnstileToken,
+            remoteip: request.headers.get('CF-Connecting-IP') ?? '',
+          }),
+        },
+      );
+      const verify = (await verifyRes.json()) as { success?: boolean };
+      verified = verify.success === true;
+    } catch (err) {
+      console.error('Turnstile verify failed', err);
+    }
+
+    if (!verified) {
+      return json(
+        {
+          ok: false,
+          error:
+            "Verification didn't succeed. Please try again, or email william@lanternharbor.co directly.",
+        },
+        403,
+      );
+    }
   }
 
   const name = str(data.name, 120);
