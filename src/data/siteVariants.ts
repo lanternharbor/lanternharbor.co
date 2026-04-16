@@ -317,7 +317,7 @@ export const variantASections = {
     sublede:
       'Reach out and we will have a conversation. No pitch deck. No intake maze.',
     fitStatement:
-      'Best suited for South Shore small and mid-sized business owners sorting out a specific technology decision, an AI question, workflow friction, or a website or small system that no longer fits. Not the right fit for enterprise RFPs, ongoing break-fix support, or clinical-software customization inside an EHR.',
+      'I work with small and mid-sized businesses on the South Shore. If you need help with enterprise RFPs, ongoing IT support, or clinical software inside an EHR, I can point you to someone who does that well.',
     nextSteps: {
       heading: 'What happens next',
       lede: 'Simple and human on purpose.',

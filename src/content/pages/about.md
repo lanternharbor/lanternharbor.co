@@ -23,7 +23,7 @@ Lantern Harbor grew out of a season of real reflection, and a larger question ab
 
 I've spent twelve-plus years in enterprise healthcare IT, and I love what that work has taught me: how to get technology to actually land with the people who have to use it. What I wanted to add was a practice of my own. Smaller, closer to home, for the business owners on the South Shore who don't have someone in-house to help them think clearly about technology.
 
-I take on a few engagements at a time, carefully, so when you're in the schedule you're getting the attention you'd expect from someone who does fewer things well.
+I take on a few engagements at a time so I can actually be present for each one.
 
 ---
 
