@@ -119,7 +119,7 @@ export const variantASections = {
         'The common thread is usually the same: a technology problem that nobody has translated into a sensible next move yet.',
       items: [
         {
-          title: 'You are about to spend money and want an adult in the room.',
+          title: 'You are about to spend money and want an outside read.',
           body: 'A software proposal, a new website, an AI tool, a consultant, a migration. Before you commit, you want someone who is not trying to sell you the thing.',
         },
         {
