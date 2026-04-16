@@ -12,7 +12,7 @@ const { items } = Astro.props;
 ---
 
 <section class="faq section">
-  <div class="container container--reading">
+  <div class="container container--content">
     <header class="faq__intro">
       <h1 class="faq__title">Common questions</h1>
       <p class="faq__lede">
@@ -84,6 +84,7 @@ const { items } = Astro.props;
 
   .faq__intro {
     margin-bottom: var(--space-8);
+    max-width: var(--measure-reading);
   }
 
   .faq__title {
@@ -114,6 +115,7 @@ const { items } = Astro.props;
 
   .faq__list {
     margin: 0;
+    max-width: var(--measure-reading);
     display: flex;
     flex-direction: column;
     gap: 0;
