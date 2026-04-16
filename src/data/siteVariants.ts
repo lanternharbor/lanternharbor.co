@@ -128,7 +128,7 @@ export const variantASections = {
         },
         {
           title: 'Your website is underselling the business.',
-          body: 'The service is solid, but the homepage does not say so clearly — and the person landing on it does not know what to do next.',
+          body: 'The service is solid, but the homepage does not say so clearly, and the person landing on it does not know what to do next.',
         },
         {
           title: 'AI keeps coming up, but the real question is where it is worth using.',
@@ -172,7 +172,7 @@ export const variantASections = {
       items: [
         {
           title: 'We name the actual problem.',
-          body: 'Not the vague version — the specific decision, bottleneck, or question that is costing you time or confidence.',
+          body: 'Not the vague version. The specific decision, bottleneck, or question that is costing you time or confidence.',
         },
         {
           title: 'I look at the real work.',
@@ -223,7 +223,7 @@ export const variantASections = {
       {
         name: 'Is AI worth it?',
         summary:
-          'A grounded read on where AI can actually save time in your business today — and where it is not ready yet.',
+          'A grounded read on where AI can actually save time in your business today, and where it is not ready yet.',
         fit: 'When you keep hearing AI will change everything and want a plainspoken answer about what is worth trying now.',
         deliverables: [
           'A short working session to understand how your team actually spends its week',
@@ -252,7 +252,7 @@ export const variantASections = {
           'A plain-language and structure pass for businesses whose site no longer explains the offer well.',
         fit: 'When the business sounds stronger in person than it does on the homepage.',
         deliverables: [
-          'A pass on the homepage — what it says, and what it asks the reader to do next',
+          'A pass on the homepage: what it says, and what it asks the reader to do next',
           'Tighter service descriptions and page structure, so someone can understand the offer in ninety seconds',
           'A punch list of small changes I can implement, or a clear brief for a rebuild',
         ],
@@ -298,7 +298,7 @@ export const variantASections = {
         },
         {
           title: 'Plain language without agency theater',
-          body: 'I care about clearer decisions, tighter offers, and work that lands — but without layered process, long decks, or inflated language.',
+          body: 'I care about clearer decisions, tighter offers, and work that lands, but without layered process, long decks, or inflated language.',
         },
         {
           title: 'Local and in person',
@@ -393,7 +393,7 @@ export const variantBSections = {
         },
         {
           title: 'Your website is underselling the business.',
-          body: 'The service is solid, but the homepage does not say so clearly — and the person landing on it does not know what to do next.',
+          body: 'The service is solid, but the homepage does not say so clearly, and the person landing on it does not know what to do next.',
         },
         {
           title: 'AI keeps coming up, but the real question is where it is worth using.',
