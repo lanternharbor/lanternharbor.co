@@ -6,9 +6,9 @@ hero:
   headline: A steady light for practical technology decisions.
   tagline: Lantern Harbor helps South Shore businesses navigate IT, AI, and automation with clear advice, plain language, and practical support close to home.
   ctaPrimary:
-    label: Let's talk
+    label: Get in touch
     href: /contact
   ctaSecondary:
-    label: What I help with
+    label: How I help
     href: /services
 ---
