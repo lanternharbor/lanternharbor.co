@@ -57,9 +57,9 @@ export const faqItems: FaqItem[] = [
       'It happens. Some conversations end with "do not do the project" or "this is a fifteen-minute fix, here is how." No charge for the conversation. The first call is free specifically so neither of us has sunk-cost pressure to force a fit.',
   },
   {
-    question: 'Do you work with clients outside the South Shore?',
+    question: 'Do you only work with South Shore businesses?',
     answer:
-      'Yes. Remote works fine — most of the work happens over calls, email, and shared documents. In-person is a genuine advantage when it is possible, because sitting with the actual work beats guessing from a distance. Geography affects the cadence, not the quality.',
+      'The practice is built around the South Shore. The first conversation, the working sessions, and the relationship itself are in person whenever possible — I drive to you, sit in your office, and see how things actually run. Follow-up and ongoing work happens by phone and email like anything else, but the reason to hire me over someone generic and remote is that I will actually show up. I occasionally take on work outside the area through a referral, but I am not actively seeking it.',
   },
   {
     question: 'What industries do you work with?',
@@ -102,7 +102,7 @@ export const variantASections = {
       },
       {
         label: 'Hingham based',
-        detail: 'Serving South Shore businesses with in-person conversations when the work benefits from it.',
+        detail: 'An in-person practice for South Shore businesses. I drive to you, sit in your office, and see the real work.',
       },
       {
         label: 'A few clients at a time',
@@ -302,8 +302,8 @@ export const variantASections = {
           body: 'I care about clearer decisions, tighter offers, and work that lands — but without layered process, long decks, or inflated language.',
         },
         {
-          title: 'Local enough to be useful',
-          body: 'For South Shore businesses, I can sit with the work directly instead of guessing from a distance.',
+          title: 'Local and in person',
+          body: 'I drive to you. The relationship starts in your office, not on a video call from somewhere far away.',
         },
         {
           title: 'No handoffs',
