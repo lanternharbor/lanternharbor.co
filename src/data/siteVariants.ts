@@ -317,7 +317,7 @@ export const variantASections = {
     sublede:
       'Reach out and we will have a conversation. No pitch deck. No intake maze.',
     fitStatement:
-      'I work with small and mid-sized businesses on the South Shore. If you need help with enterprise RFPs, ongoing IT support, or clinical software inside an EHR, I can point you to someone who does that well.',
+      'I work with small and mid-sized businesses on the South Shore. If you need help with enterprise RFPs, a help desk, or clinical software inside an EHR, I can point you to someone who does that well.',
     nextSteps: {
       heading: 'What happens next',
       lede: 'Simple and human on purpose.',
