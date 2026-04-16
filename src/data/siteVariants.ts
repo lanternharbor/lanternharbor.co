@@ -34,7 +34,7 @@ export const faqItems: FaqItem[] = [
   {
     question: 'What happens on the first call?',
     answer:
-      'The first call is free, usually about thirty minutes, and there is no pitch. You describe what you are sorting out, I ask a few questions, and by the end we either agree on a next step or I tell you honestly that it is not a fit. Either outcome is useful.',
+      'The first conversation is free and casual — you describe what you are sorting out, I ask a few questions, and by the end we either agree on a next step or I tell you honestly that it is not a fit. Either outcome is useful.',
   },
   {
     question: 'How long does a typical engagement take?',
@@ -196,7 +196,7 @@ export const variantASections = {
       heading: 'If something feels murky, that is usually the right time to talk.',
       body:
         'A calm first conversation is often enough to tell whether the next step is a small fix, a clearer plan, or nothing at all.',
-      primaryLabel: 'Book a 30-minute call',
+      primaryLabel: 'Start a conversation',
       primaryHref: '/contact',
       secondaryLabel: 'See starting offers',
       secondaryHref: '/services',
@@ -316,7 +316,7 @@ export const variantASections = {
     lede:
       "Drop a note below, or call or text if you'd rather skip the typing. I read every message personally and reply within one business day.",
     sublede:
-      'The first conversation is free and usually takes about thirty minutes. No pitch deck. No intake maze.',
+      'The first conversation is free and casual — just to see if I can help. No pitch deck. No intake maze.',
     fitStatement:
       'Best suited for South Shore small and mid-sized business owners sorting out a specific technology decision, an AI question, workflow friction, or a website or small system that no longer fits. Not the right fit for enterprise RFPs, ongoing break-fix support, or clinical-software customization inside an EHR.',
     nextSteps: {
@@ -596,7 +596,7 @@ export const variantBSections = {
     lede:
       'If there is a technology decision, workflow problem, website issue, or vendor question in front of you, send a note. I will read it myself.',
     sublede:
-      'The first conversation is free, usually about thirty minutes, and meant to clarify the next move. No pitch deck. No intake maze.',
+      'The first conversation is free and casual — just to clarify the next move. No pitch deck. No intake maze.',
     nextSteps: {
       heading: 'What happens next',
       lede: 'A clearer commercial framing of the same process.',
