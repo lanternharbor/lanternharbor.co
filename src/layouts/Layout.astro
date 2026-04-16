@@ -41,9 +41,10 @@ const fullTitle = pageKey === 'home' ? title : `${title} — ${siteName}`;
 // Schema.org structured data — tells Google/etc. this is a local professional
 // service run by William Keough, based in Hingham MA, serving the South Shore.
 const siteURL = Astro.site?.toString() ?? 'https://lanternharbor.co/';
+const ma = { '@type': 'State' as const, name: 'Massachusetts' };
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  '@type': ['ProfessionalService', 'ConsultingService'],
   '@id': `${siteURL}#business`,
   name: 'Lantern Harbor',
   legalName: 'Lantern Harbor LLC',
@@ -60,15 +61,30 @@ const structuredData = {
     addressRegion: 'MA',
     addressCountry: 'US',
   },
-  areaServed: {
-    '@type': 'Place',
-    name: 'South Shore of Massachusetts',
-  },
+  areaServed: [
+    { '@type': 'City', name: 'Hingham', containedInPlace: ma },
+    { '@type': 'City', name: 'Cohasset', containedInPlace: ma },
+    { '@type': 'City', name: 'Scituate', containedInPlace: ma },
+    { '@type': 'City', name: 'Duxbury', containedInPlace: ma },
+    { '@type': 'City', name: 'Hull', containedInPlace: ma },
+    { '@type': 'City', name: 'Marshfield', containedInPlace: ma },
+    { '@type': 'City', name: 'Norwell', containedInPlace: ma },
+    { '@type': 'City', name: 'Weymouth', containedInPlace: ma },
+    { '@type': 'Place', name: 'South Shore of Massachusetts' },
+  ],
   founder: {
     '@type': 'Person',
+    '@id': `${siteURL}#william-keough`,
     name: 'William Keough',
     jobTitle: 'Founder & Principal',
     worksFor: { '@id': `${siteURL}#business` },
+    knowsAbout: [
+      'Healthcare IT',
+      'AI integration',
+      'Workflow automation',
+      'Vendor selection',
+      'Website strategy',
+    ],
   },
   knowsAbout: [
     'Healthcare IT',
@@ -79,6 +95,78 @@ const structuredData = {
     'Small-business technology advisory',
   ],
   priceRange: '$$',
+  openingHoursSpecification: [{
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '17:00',
+  }],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Starting offers',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Decision Review',
+          description: 'A short, senior read on the tool, proposal, or technology question in front of you. Includes a working session and a plainspoken written recommendation.',
+          serviceType: 'Technology advisory',
+          provider: { '@id': `${siteURL}#business` },
+          areaServed: { '@type': 'Place', name: 'South Shore of Massachusetts' },
+          url: `${siteURL}services/`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'AI Practicality Review',
+          description: 'A grounded read on where AI can actually save time in your business today, and where it is not ready yet. Includes a working session and a 90-day experiment shortlist.',
+          serviceType: 'AI advisory',
+          provider: { '@id': `${siteURL}#business` },
+          areaServed: { '@type': 'Place', name: 'South Shore of Massachusetts' },
+          url: `${siteURL}services/`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Automation Pilot',
+          description: 'A pilot on one recurring workflow that is absorbing too much manual effort each week. Includes a process walkthrough and a working prototype.',
+          serviceType: 'Workflow automation',
+          provider: { '@id': `${siteURL}#business` },
+          areaServed: { '@type': 'Place', name: 'South Shore of Massachusetts' },
+          url: `${siteURL}services/`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Website Clarity Refresh',
+          description: 'A plain-language and structure pass for businesses whose site no longer explains the offer well. Homepage, CTA, and service descriptions rewritten or briefed for a rebuild.',
+          serviceType: 'Website strategy',
+          provider: { '@id': `${siteURL}#business` },
+          areaServed: { '@type': 'Place', name: 'South Shore of Massachusetts' },
+          url: `${siteURL}services/`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Vendor Sidecar',
+          description: 'Outside help for software comparisons, sales calls, and contract questions before a software commitment becomes your problem.',
+          serviceType: 'Vendor selection',
+          provider: { '@id': `${siteURL}#business` },
+          areaServed: { '@type': 'Place', name: 'South Shore of Massachusetts' },
+          url: `${siteURL}services/`,
+        },
+      },
+    ],
+  },
 };
 ---
 

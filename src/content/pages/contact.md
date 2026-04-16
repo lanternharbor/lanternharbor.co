@@ -1,6 +1,6 @@
 ---
-title: Let's talk
-description: Reach Lantern Harbor. Send a note, call, or text — I read every message personally and reply within one business day.
+title: "Contact \u2014 Let\u2019s Talk"
+description: "Contact Lantern Harbor: call (781) 724-2543, text, or send a note. William Keough replies personally, usually within one business day. Based in Hingham, MA."
 ---
 
 This page is rendered by `src/pages/contact.astro`, which uses the

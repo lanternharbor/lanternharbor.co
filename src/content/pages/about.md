@@ -1,6 +1,6 @@
 ---
-title: About
-description: Lantern Harbor is William Keough — twelve years in enterprise healthcare IT, now a one-person practice serving small and mid-sized businesses on the South Shore of Massachusetts.
+title: "About William Keough \u2014 Founder"
+description: "William Keough \u2014 founder of Lantern Harbor. Twelve years in enterprise healthcare IT, now a South Shore MA technology advisor for small and mid-sized businesses."
 workingPrinciples:
   heading: How I work
   lede: A few things that matter to me, and are worth saying up front.

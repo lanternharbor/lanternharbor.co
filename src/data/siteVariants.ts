@@ -25,6 +25,74 @@ export interface Offer {
   ctaHref: string;
 }
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export const faqItems: FaqItem[] = [
+  {
+    question: 'What happens on the first call?',
+    answer:
+      'The first call is free, usually about thirty minutes, and there is no pitch. You describe what you are sorting out, I ask a few questions, and by the end we either agree on a next step or I tell you honestly that it is not a fit. Either outcome is useful.',
+  },
+  {
+    question: 'How long does a typical engagement take?',
+    answer:
+      'Advisory work — a Decision Review, AI Practicality Review, or Vendor Sidecar — usually takes one to three weeks. Builds like an Automation Pilot or Website Clarity Refresh run four to eight weeks depending on scope. Some engagements are a single afternoon. We agree on a rough timeline before anything starts.',
+  },
+  {
+    question: 'What does this cost?',
+    answer:
+      'There is no published price list because the right number depends on the size of the question and what the work actually involves. I quote after the first call, once I understand the situation. The first conversation is always free.',
+  },
+  {
+    question: 'How do I know which offer fits my situation?',
+    answer:
+      'Usually the first call makes it obvious within a few minutes. If you are not sure, Decision Review is the widest door — it covers most technology questions. Vendor proposal? Vendor Sidecar. Recurring manual work? Automation Pilot. Site that undersells the business? Website Clarity Refresh. AI question? AI Practicality Review. If nothing on the list fits, say so — some engagements do not map to a named offer, and that is fine.',
+  },
+  {
+    question: 'What if you recommend I don\u2019t hire you?',
+    answer:
+      'It happens. Some conversations end with "do not do the project" or "this is a fifteen-minute fix, here is how." No charge for the conversation. The first call is free specifically so neither of us has sunk-cost pressure to force a fit.',
+  },
+  {
+    question: 'Do you work with clients outside the South Shore?',
+    answer:
+      'Yes. Remote works fine — most of the work happens over calls, email, and shared documents. In-person is a genuine advantage when it is possible, because sitting with the actual work beats guessing from a distance. Geography affects the cadence, not the quality.',
+  },
+  {
+    question: 'What industries do you work with?',
+    answer:
+      'Twelve-plus years in enterprise healthcare IT means I have the deepest experience with practices, clinics, and healthcare-adjacent service businesses. Outside of healthcare, most small and mid-sized service businesses translate cleanly — the decision-making and workflow patterns are similar. If your situation sounds too specialized, mention it on the first call and we will sort it out quickly.',
+  },
+  {
+    question: 'Can you work alongside my existing IT person or vendor?',
+    answer:
+      'Yes, and it is common. The advisory role is complementary to an operational IT provider, not competitive. Introductions go smoother when I meet the existing person early — I am not interested in undermining a working relationship.',
+  },
+  {
+    question: 'Is there a difference between advisory work and implementation?',
+    answer:
+      'Yes. Advisory is the recommendation and the written plan. Implementation is the thing actually built — an automation, a website, a small tool. Some offers are purely one or the other; some span both. Many engagements start advisory and become implementation if the work earns it. Pricing reflects the difference.',
+  },
+  {
+    question: 'What tools or technologies do you work in?',
+    answer:
+      'I am tool-agnostic by default. Recommendations start with the situation, not the toolbox. I am comfortable across common small-business stacks — Google Workspace, Microsoft 365, typical CRMs, automation platforms like Zapier and Make, and web technologies from WordPress to hand-written code. Happy to work in whatever you already have rather than push a change for change\u2019s sake.',
+  },
+  {
+    question: 'Do you take on retainer or ongoing work?',
+    answer:
+      'Most engagements are discrete pieces of work with a clear start and end. Retainers happen occasionally when the relationship warrants it and the work is steady enough to justify a recurring commitment. I am not interested in a drip-meter consulting arrangement — if there is no real work in a given month, I would rather pause than invoice.',
+  },
+  {
+    question: 'Do you sign NDAs?',
+    answer:
+      'Yes, happily. A mutual NDA is typical. Most healthcare engagements have had one. I can work from your template or provide a simple standard one. If an NDA is a precondition for the first call, mention it when you reach out and we will put it in place first.',
+  },
+];
+
 export const variantASections = {
   home: {
     proof: [

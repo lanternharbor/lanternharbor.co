@@ -1,0 +1,200 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CardSection from '../components/CardSection.astro';
+import ProcessSection from '../components/ProcessSection.astro';
+import CalloutPanel from '../components/CalloutPanel.astro';
+import Button from '../components/Button.astro';
+import { variantASections } from '../data/siteVariants';
+
+const pageTitle = 'Technology Help for South Shore Businesses';
+const pageDescription =
+  'Lantern Harbor serves small and mid-sized businesses in Hingham, Cohasset, Scituate, Duxbury, Hull, Marshfield, Norwell, Weymouth, and across the South Shore of Massachusetts.';
+
+const towns = [
+  { name: 'Hingham', note: 'Home base — where Lantern Harbor is based.' },
+  { name: 'Cohasset', note: 'A short drive down 3A.' },
+  { name: 'Scituate', note: 'Harbor to harbor.' },
+  { name: 'Duxbury', note: 'Just across the bridge.' },
+  { name: 'Hull', note: 'Nantasket and the peninsula.' },
+  { name: 'Marshfield', note: 'Down Route 3, easy reach.' },
+  { name: 'Norwell', note: 'Inland neighbor, quick trip.' },
+  { name: 'Weymouth', note: 'The north edge of the South Shore.' },
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} pageKey="south-shore">
+  <section class="landing section">
+    <div class="container container--content">
+      <header class="landing__intro">
+        <p class="eyebrow">South Shore, Massachusetts</p>
+        <h1 class="landing__title">
+          Technology help that drives to you.
+        </h1>
+        <p class="landing__lede">
+          Lantern Harbor is based in Hingham and serves small and mid-sized
+          businesses across the South Shore. If you are nearby, most of the work
+          starts with a conversation in your office — not a video call from
+          somewhere far away.
+        </p>
+        <div class="landing__ctas">
+          <Button href="/contact">Let's talk</Button>
+          <Button href="/services" variant="ghost" arrow={false}>
+            See starting offers
+          </Button>
+        </div>
+      </header>
+    </div>
+  </section>
+
+  <section class="towns section section--tight">
+    <div class="container container--content">
+      <h2 class="towns__heading">Towns I work in regularly</h2>
+      <p class="towns__lede">
+        If your business is in one of these towns, I can be at your office in
+        the morning and home by lunch. Remote works too — but in-person is the
+        default when it makes the work better.
+      </p>
+
+      <ul class="towns__grid" role="list">
+        {towns.map((town) => (
+          <li class="towns__item">
+            <span class="towns__name">{town.name}</span>
+            <span class="towns__note">{town.note}</span>
+          </li>
+        ))}
+      </ul>
+
+      <p class="towns__elsewhere">
+        Not on the list? If you are on the South Shore or within about
+        forty-five minutes of Hingham, the same in-person approach applies.
+        Farther out, we work by phone and video — same quality, different
+        cadence.
+      </p>
+    </div>
+  </section>
+
+  <CardSection
+    heading={variantASections.home.scenarios.heading}
+    lede={variantASections.home.scenarios.lede}
+    items={variantASections.home.scenarios.items}
+    columns={2}
+    sectionClass="section section--tight"
+  />
+
+  <ProcessSection
+    heading={variantASections.home.process.heading}
+    lede={variantASections.home.process.lede}
+    items={variantASections.home.process.items}
+  />
+
+  <CalloutPanel
+    heading={variantASections.home.closing.heading}
+    body={variantASections.home.closing.body}
+    primaryLabel={variantASections.home.closing.primaryLabel}
+    primaryHref={variantASections.home.closing.primaryHref}
+    secondaryLabel="See starting offers"
+    secondaryHref="/services"
+  />
+</Layout>
+
+<style>
+  .landing {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-6);
+  }
+
+  @media (min-width: 48rem) {
+    .landing {
+      padding-top: var(--space-9);
+    }
+  }
+
+  .landing__intro {
+    max-width: 42rem;
+  }
+
+  .landing__title {
+    margin: 0 0 var(--space-4);
+    font-size: var(--step-5);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+
+  .landing__lede {
+    margin: 0 0 var(--space-6);
+    font-size: var(--step-1);
+    line-height: 1.7;
+    color: var(--color-slate);
+  }
+
+  .landing__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-4);
+  }
+
+  .towns__heading {
+    margin: 0 0 var(--space-3);
+  }
+
+  .towns__lede {
+    margin: 0 0 var(--space-7);
+    font-size: var(--step-1);
+    line-height: 1.6;
+    color: var(--color-slate);
+    max-width: 42rem;
+  }
+
+  .towns__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-6);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  @media (min-width: 36rem) {
+    .towns__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 56rem) {
+    .towns__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .towns__item {
+    padding: var(--space-4) var(--space-5);
+    background-color: rgba(229, 192, 103, 0.08);
+    border: 1px solid rgba(229, 192, 103, 0.25);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .towns__name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-1);
+    color: var(--color-harbor);
+  }
+
+  .towns__note {
+    font-size: var(--step--1);
+    color: var(--color-driftwood);
+    line-height: 1.5;
+  }
+
+  .towns__elsewhere {
+    margin: 0;
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--color-driftwood);
+    font-style: italic;
+    max-width: 42rem;
+  }
+</style>

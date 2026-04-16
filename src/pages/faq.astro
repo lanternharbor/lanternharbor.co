@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FaqSection from '../components/FaqSection.astro';
+import CalloutPanel from '../components/CalloutPanel.astro';
+import { faqItems } from '../data/siteVariants';
+
+const pageTitle = 'Common Questions';
+const pageDescription =
+  'Answers to common questions about working with Lantern Harbor — timelines, cost, what the first call looks like, and how engagements work.';
+
+// FAQPage structured data for Google rich snippets.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<Layout title={pageTitle} description={pageDescription} pageKey="faq">
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <FaqSection items={faqItems} />
+
+  <CalloutPanel
+    heading="Still have a question?"
+    body="The first conversation is free and usually takes about thirty minutes. No pitch, no obligation."
+    primaryLabel="Let's talk"
+    primaryHref="/contact"
+  />
+</Layout>
