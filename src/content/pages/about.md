@@ -13,8 +13,6 @@ workingPrinciples:
       body: If you're on the South Shore, I'll drive to you. The work is better when I can sit in your office for a morning.
     - title: The honest answer
       body: If a project isn't worth doing, I'll say so. If a tool you already have is good enough, I'll say that too.
-    - title: Built by hand
-      body: Including this site — modern AI-assisted methods, shipped myself. A small example of the work.
       ctaLabel: Say hello
       ctaHref: /contact
 ---
