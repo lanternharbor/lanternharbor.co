@@ -137,7 +137,7 @@ export const variantASections = {
       ] satisfies CardItem[],
     },
     offersPreview: {
-      heading: 'Starting offers',
+      heading: 'Where I can help',
       lede:
         'Most engagements start with a small, concrete piece of work so the next step is clear before the project gets bigger.',
       items: [
@@ -145,7 +145,7 @@ export const variantASections = {
           eyebrow: 'A clear first step',
           title: 'Tech second opinion',
           body: 'A short, senior read on the tool, proposal, or technology question in front of you.',
-          ctaLabel: 'See all starting offers',
+          ctaLabel: 'See where I can help',
           ctaHref: '/services',
         },
         {
@@ -198,7 +198,7 @@ export const variantASections = {
         'A calm first conversation is often enough to tell whether the next step is a small fix, a clearer plan, or nothing at all.',
       primaryLabel: 'Start a conversation',
       primaryHref: '/contact',
-      secondaryLabel: 'See starting offers',
+      secondaryLabel: 'See where I can help',
       secondaryHref: '/services',
     },
   },
