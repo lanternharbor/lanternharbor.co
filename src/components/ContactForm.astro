@@ -16,10 +16,15 @@ const {
   reassurance = 'I read and reply to every message personally. Usually within a business day.',
 } = Astro.props;
 
-// Public Turnstile site key — when set, the widget renders and the server
-// verifies the resulting token. When unset (e.g. local dev before setup),
-// the form still works via the honeypot alone.
-const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+// Public Turnstile site key — safe to commit (it's public by design; the
+// private secret lives in TURNSTILE_SECRET_KEY on Cloudflare Pages and is
+// read by functions/api/contact.ts at request time).
+//
+// Inlined rather than read from import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
+// because Cloudflare Pages' "Variables and Secrets" only reach the Functions
+// runtime — not the Astro/Vite build — so using an env var here silently
+// strips the widget out of the static HTML.
+const turnstileSiteKey = '0x4AAAAAAC-rLAAdTMZb-7ln';
 ---
 
 <form
