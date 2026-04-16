@@ -34,62 +34,62 @@ export const faqItems: FaqItem[] = [
   {
     question: 'What happens on the first call?',
     answer:
-      'The first conversation is free and casual — you describe what you are sorting out, I ask a few questions, and by the end we either agree on a next step or I tell you honestly that it is not a fit. Either outcome is useful.',
+      'You tell me what is going on, I ask a few questions, and by the end we either agree on a next step or I tell you honestly that it is not a fit. Either outcome is useful.',
   },
   {
     question: 'How long does a typical engagement take?',
     answer:
-      'Advisory work — a tech second opinion, an AI review, or software advice — usually takes one to three weeks. Hands-on work like automating a workflow or a website tune-up runs four to eight weeks depending on scope. Some engagements are a single afternoon. We agree on a rough timeline before anything starts.',
+      'It depends on the work. Advisory projects like a tech second opinion or software advice usually take one to three weeks. Hands-on work like automating a workflow or a website tune-up runs four to eight weeks. Some things are a single afternoon. We always agree on a rough timeline before anything starts.',
   },
   {
     question: 'What does this cost?',
     answer:
-      'There is no published price list because the right number depends on the size of the question and what the work actually involves. I quote after the first call, once I understand the situation. The first conversation is always free.',
+      'It depends on the work. I quote after we talk and I understand what is actually involved.',
   },
   {
     question: 'How do I know which offer fits my situation?',
     answer:
-      'Usually the first call makes it obvious within a few minutes. If you are not sure, a tech second opinion is the widest door — it covers most technology questions. Vendor proposal or software purchase? Software advice. Recurring manual work? Automate the manual work. Site that undersells the business? Website tune-up. AI question? Is AI worth it. If nothing on the list quite fits, say so — some engagements do not map neatly, and that is fine.',
+      'Tell me what is going on and we will figure it out together. The offers on the services page are starting points, not a rigid menu.',
   },
   {
     question: 'What if you recommend I don\u2019t hire you?',
     answer:
-      'It happens. Some conversations end with "do not do the project" or "this is a fifteen-minute fix, here is how." No charge for the conversation. The first call is free specifically so neither of us has sunk-cost pressure to force a fit.',
+      'It happens. Sometimes the honest answer is "do not do this" or "here is a fifteen-minute fix, you do not need me for it." I would rather tell you that than sell you something you do not need. And the door is always open if something else comes up down the road.',
   },
   {
     question: 'Do you only work with South Shore businesses?',
     answer:
-      'The practice is built around the South Shore. The first conversation, the working sessions, and the relationship itself are in person whenever possible — I drive to you, sit in your office, and see how things actually run. Follow-up and ongoing work happens by phone and email like anything else, but the reason to hire me over someone generic and remote is that I will actually show up. I occasionally take on work outside the area through a referral, but I am not actively seeking it.',
+      'The practice is built in the South Shore. I drive to you, sit in your office, and see how things actually run. That is the whole point. Follow-up happens by phone and email like anything else, but the relationship starts in person. I occasionally take on work outside the area through a referral, but I am not actively looking for it.',
   },
   {
     question: 'What industries do you work with?',
     answer:
-      'Twelve-plus years in enterprise healthcare IT means I have the deepest experience with practices, clinics, and healthcare-adjacent service businesses. Outside of healthcare, most small and mid-sized service businesses translate cleanly — the decision-making and workflow patterns are similar. If your situation sounds too specialized, mention it on the first call and we will sort it out quickly.',
+      'Most small and mid-sized service businesses on the South Shore. The specifics vary, but the problems tend to look similar: a technology decision, a manual process that needs fixing, a website that is not pulling its weight. If your situation sounds too specialized, bring it up when we talk and we will sort it out.',
   },
   {
     question: 'Can you work alongside my existing IT person or vendor?',
     answer:
-      'Yes, and it is common. The advisory role is complementary to an operational IT provider, not competitive. Introductions go smoother when I meet the existing person early — I am not interested in undermining a working relationship.',
+      'Yes. I am not trying to replace anyone. If you already have someone handling your IT, I am happy to work alongside them. It usually goes smoother if I meet them early.',
   },
   {
     question: 'Is there a difference between advisory work and implementation?',
     answer:
-      'Yes. Advisory is the recommendation and the written plan. Implementation is the thing actually built — an automation, a website, a small tool. Some offers are purely one or the other; some span both. Many engagements start advisory and become implementation if the work earns it. Pricing reflects the difference.',
+      'Yes. Sometimes you need someone to help you figure out what to do. Sometimes you need someone to actually do it. Sometimes both. A lot of engagements start as the first and turn into the second once the path is clear.',
   },
   {
     question: 'What tools or technologies do you work in?',
     answer:
-      'I am tool-agnostic by default. Recommendations start with the situation, not the toolbox. I am comfortable across common small-business stacks — Google Workspace, Microsoft 365, typical CRMs, automation platforms like Zapier and Make, and web technologies from WordPress to hand-written code. Happy to work in whatever you already have rather than push a change for change\u2019s sake.',
+      'I am not married to any particular tool or platform. I work with whatever you already have and I will tell you honestly whether it is good enough or needs to change. If you are curious about specifics, ask when we talk.',
   },
   {
     question: 'Do you take on retainer or ongoing work?',
     answer:
-      'Most engagements are discrete pieces of work with a clear start and end. Retainers happen occasionally when the relationship warrants it and the work is steady enough to justify a recurring commitment. I am not interested in a drip-meter consulting arrangement — if there is no real work in a given month, I would rather pause than invoice.',
+      'Most of the time there is a clear start and a clear end. Ongoing work happens sometimes when the relationship is right, but I am not going to bill you for a month where nothing useful happened.',
   },
   {
     question: 'Do you sign NDAs?',
     answer:
-      'Yes, happily. A mutual NDA is typical. Most healthcare engagements have had one. I can work from your template or provide a simple standard one. If an NDA is a precondition for the first call, mention it when you reach out and we will put it in place first.',
+      'Yes. If you need one in place before we talk, mention it when you reach out and we will get it done.',
   },
 ];
 
@@ -204,9 +204,8 @@ export const variantASections = {
   },
   services: {
     lede:
-      'Most engagements start with one of these named offers. They are small enough to feel manageable, but concrete enough to produce something useful.',
-    note:
-      'Not sure which one fits? That is normal. A first conversation usually makes it obvious.',
+      'Every engagement is different, but these are the kinds of conversations I end up in most often. If your situation does not fit neatly into one of these, that is normal. Tell me what is going on and we will figure it out.',
+    note: '',
     offers: [
       {
         name: 'Tech second opinion',
@@ -316,7 +315,7 @@ export const variantASections = {
     lede:
       "Drop a note below, or call or text if you'd rather skip the typing. I read every message personally and reply within one business day.",
     sublede:
-      'The first conversation is free and casual — just to see if I can help. No pitch deck. No intake maze.',
+      'Reach out and we will have a conversation. No pitch deck. No intake maze.',
     fitStatement:
       'Best suited for South Shore small and mid-sized business owners sorting out a specific technology decision, an AI question, workflow friction, or a website or small system that no longer fits. Not the right fit for enterprise RFPs, ongoing break-fix support, or clinical-software customization inside an EHR.',
     nextSteps: {
@@ -596,7 +595,7 @@ export const variantBSections = {
     lede:
       'If there is a technology decision, workflow problem, website issue, or vendor question in front of you, send a note. I will read it myself.',
     sublede:
-      'The first conversation is free and casual — just to clarify the next move. No pitch deck. No intake maze.',
+      'Reach out and we will have a conversation. No pitch deck. No intake maze.',
     nextSteps: {
       heading: 'What happens next',
       lede: 'A clearer commercial framing of the same process.',
