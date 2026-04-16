@@ -210,12 +210,12 @@ export const variantASections = {
       {
         name: 'Tech second opinion',
         summary:
-          'A short piece of work to get clear on the tool, proposal, or technology question in front of you.',
-        fit: 'When the picture feels messy, or you want someone experienced to look at it with you before you commit money, time, or staff attention.',
+          'A clear read on the tool, proposal, or technology question in front of you.',
+        fit: 'When the picture feels messy and you want someone experienced to look at it with you before you commit money, time, or staff attention.',
         deliverables: [
-          'A short working session to hear what you are sorting out',
-          'A look at the current tools, workflow, vendor proposal, or decision in front of you',
-          'A plainspoken written recommendation with priorities, tradeoffs, and the next step',
+          'A conversation where you talk, I listen, and we get to the actual question',
+          'A close look at the current tools, the proposal, or the decision on the table',
+          'A written recommendation in plain language — priorities, tradeoffs, and what to do next',
         ],
         ctaLabel: 'Ask about a tech second opinion',
         ctaHref: '/contact',
@@ -223,12 +223,12 @@ export const variantASections = {
       {
         name: 'Is AI worth it?',
         summary:
-          'A grounded read on where AI can actually save time in your business today, and where it is not ready yet.',
+          'A grounded read on where AI can actually save time in your business, and where it is not ready yet.',
         fit: 'When you keep hearing AI will change everything and want a plainspoken answer about what is worth trying now.',
         deliverables: [
-          'A short working session to understand how your team actually spends its week',
-          'An honest map of where current AI tools can help, where they are not ready, and where they are a bad fit',
-          'A shortlist of two or three experiments worth trying in the next ninety days, with the ones to skip',
+          'A conversation about how your team actually spends its week',
+          'An honest map of where AI can help today, where it is not ready, and where it is a bad fit',
+          'A short list of two or three things worth trying, and the ones to skip',
         ],
         ctaLabel: 'Ask about AI for your business',
         ctaHref: '/contact',
@@ -236,11 +236,11 @@ export const variantASections = {
       {
         name: 'Automate the manual work',
         summary:
-          'A pilot on one recurring workflow that is absorbing too much manual effort each week.',
-        fit: 'When the same steps keep happening by hand, and you want to try fixing one before deciding whether to do more.',
+          'A focused pass on one recurring workflow that is absorbing too much manual effort each week.',
+        fit: 'When the same steps keep happening by hand and you want to fix one before deciding whether to do more.',
         deliverables: [
           'A walkthrough of the current process',
-          'One clear place to start, chosen with you',
+          'One clear place to start, chosen together',
           'A working prototype or a first piece of real automation, with notes on how to keep it running',
         ],
         ctaLabel: 'Ask about automating your workflow',
@@ -249,12 +249,12 @@ export const variantASections = {
       {
         name: 'Website tune-up',
         summary:
-          'A plain-language and structure pass for businesses whose site no longer explains the offer well.',
+          'A plain-language pass for businesses whose site no longer explains what they do well.',
         fit: 'When the business sounds stronger in person than it does on the homepage.',
         deliverables: [
           'A pass on the homepage: what it says, and what it asks the reader to do next',
-          'Tighter service descriptions and page structure, so someone can understand the offer in ninety seconds',
-          'A punch list of small changes I can implement, or a clear brief for a rebuild',
+          'Tighter service descriptions and page structure, so someone can understand the business in ninety seconds',
+          'A punch list of small changes I can make, or a clear brief for a rebuild',
         ],
         ctaLabel: 'Ask about a website tune-up',
         ctaHref: '/contact',
@@ -267,7 +267,7 @@ export const variantASections = {
         deliverables: [
           'A short list of what matters most for your business',
           'A plain-English comparison of the options',
-          'Questions to ask, risks to watch, and negotiation points before purchase',
+          'Questions to ask, risks to watch, and negotiation points before you sign',
         ],
         ctaLabel: 'Ask about software advice',
         ctaHref: '/contact',
@@ -276,8 +276,8 @@ export const variantASections = {
     closing: {
       heading: 'Start small, then decide.',
       body:
-        'These offers are meant to reduce ambiguity, not create a bigger consulting project than you need.',
-      primaryLabel: 'Talk through which offer fits',
+        'The point is to get to something useful quickly, not to build a bigger engagement than you need.',
+      primaryLabel: 'Get in touch',
       primaryHref: '/contact',
     },
   },
