@@ -39,7 +39,7 @@ export const faqItems: FaqItem[] = [
   {
     question: 'How long does a typical engagement take?',
     answer:
-      'Advisory work — a Decision Review, AI Practicality Review, or Vendor Sidecar — usually takes one to three weeks. Builds like an Automation Pilot or Website Clarity Refresh run four to eight weeks depending on scope. Some engagements are a single afternoon. We agree on a rough timeline before anything starts.',
+      'Advisory work — a tech second opinion, an AI review, or software advice — usually takes one to three weeks. Hands-on work like automating a workflow or a website tune-up runs four to eight weeks depending on scope. Some engagements are a single afternoon. We agree on a rough timeline before anything starts.',
   },
   {
     question: 'What does this cost?',
@@ -49,7 +49,7 @@ export const faqItems: FaqItem[] = [
   {
     question: 'How do I know which offer fits my situation?',
     answer:
-      'Usually the first call makes it obvious within a few minutes. If you are not sure, Decision Review is the widest door — it covers most technology questions. Vendor proposal? Vendor Sidecar. Recurring manual work? Automation Pilot. Site that undersells the business? Website Clarity Refresh. AI question? AI Practicality Review. If nothing on the list fits, say so — some engagements do not map to a named offer, and that is fine.',
+      'Usually the first call makes it obvious within a few minutes. If you are not sure, a tech second opinion is the widest door — it covers most technology questions. Vendor proposal or software purchase? Software advice. Recurring manual work? Automate the manual work. Site that undersells the business? Website tune-up. AI question? Is AI worth it. If nothing on the list quite fits, say so — some engagements do not map neatly, and that is fine.',
   },
   {
     question: 'What if you recommend I don\u2019t hire you?',
@@ -143,24 +143,24 @@ export const variantASections = {
       items: [
         {
           eyebrow: 'A clear first step',
-          title: 'Decision Review',
+          title: 'Tech second opinion',
           body: 'A short, senior read on the tool, proposal, or technology question in front of you.',
           ctaLabel: 'See all starting offers',
           ctaHref: '/services',
         },
         {
           eyebrow: 'Answer the AI question',
-          title: 'AI Practicality Review',
+          title: 'Is AI worth it?',
           body: 'A grounded read on where AI actually saves time in your business today, and where it is not ready yet.',
         },
         {
           eyebrow: 'Fix the recurring drag',
-          title: 'Automation Pilot',
+          title: 'Automate the manual work',
           body: 'A focused pilot on one recurring workflow so you can see the value before expanding anything.',
         },
         {
           eyebrow: 'Tighten the message',
-          title: 'Website Clarity Refresh',
+          title: 'Website tune-up',
           body: 'A homepage, offer, and CTA pass for businesses that sound better in person than they do online.',
         },
       ] satisfies CardItem[],
@@ -209,7 +209,7 @@ export const variantASections = {
       'Not sure which one fits? That is normal. A first conversation usually makes it obvious.',
     offers: [
       {
-        name: 'Decision Review',
+        name: 'Tech second opinion',
         summary:
           'A short piece of work to get clear on the tool, proposal, or technology question in front of you.',
         fit: 'When the picture feels messy, or you want someone experienced to look at it with you before you commit money, time, or staff attention.',
@@ -218,11 +218,11 @@ export const variantASections = {
           'A look at the current tools, workflow, vendor proposal, or decision in front of you',
           'A plainspoken written recommendation with priorities, tradeoffs, and the next step',
         ],
-        ctaLabel: 'Ask about a decision review',
+        ctaLabel: 'Ask about a tech second opinion',
         ctaHref: '/contact',
       },
       {
-        name: 'AI Practicality Review',
+        name: 'Is AI worth it?',
         summary:
           'A grounded read on where AI can actually save time in your business today — and where it is not ready yet.',
         fit: 'When you keep hearing AI will change everything and want a plainspoken answer about what is worth trying now.',
@@ -231,11 +231,11 @@ export const variantASections = {
           'An honest map of where current AI tools can help, where they are not ready, and where they are a bad fit',
           'A shortlist of two or three experiments worth trying in the next ninety days, with the ones to skip',
         ],
-        ctaLabel: 'Ask about an AI review',
+        ctaLabel: 'Ask about AI for your business',
         ctaHref: '/contact',
       },
       {
-        name: 'Automation Pilot',
+        name: 'Automate the manual work',
         summary:
           'A pilot on one recurring workflow that is absorbing too much manual effort each week.',
         fit: 'When the same steps keep happening by hand, and you want to try fixing one before deciding whether to do more.',
@@ -244,11 +244,11 @@ export const variantASections = {
           'One clear place to start, chosen with you',
           'A working prototype or a first piece of real automation, with notes on how to keep it running',
         ],
-        ctaLabel: 'Ask about an automation pilot',
+        ctaLabel: 'Ask about automating your workflow',
         ctaHref: '/contact',
       },
       {
-        name: 'Website Clarity Refresh',
+        name: 'Website tune-up',
         summary:
           'A plain-language and structure pass for businesses whose site no longer explains the offer well.',
         fit: 'When the business sounds stronger in person than it does on the homepage.',
@@ -257,11 +257,11 @@ export const variantASections = {
           'Tighter service descriptions and page structure, so someone can understand the offer in ninety seconds',
           'A punch list of small changes I can implement, or a clear brief for a rebuild',
         ],
-        ctaLabel: 'Ask about a website refresh',
+        ctaLabel: 'Ask about a website tune-up',
         ctaHref: '/contact',
       },
       {
-        name: 'Vendor Sidecar',
+        name: 'Software advice',
         summary:
           'Outside help for software comparisons, sales calls, and contract questions before you commit.',
         fit: 'When the options all sound alike and you want someone on your side before you sign.',
@@ -270,7 +270,7 @@ export const variantASections = {
           'A plain-English comparison of the options',
           'Questions to ask, risks to watch, and negotiation points before purchase',
         ],
-        ctaLabel: 'Ask about vendor support',
+        ctaLabel: 'Ask about software advice',
         ctaHref: '/contact',
       },
     ] satisfies Offer[],
@@ -414,14 +414,14 @@ export const variantBSections = {
       items: [
         {
           eyebrow: 'Clarify the decision',
-          title: 'Decision Review',
+          title: 'Tech second opinion',
           body: 'A short, senior read on the tool, proposal, or technology question in front of you.',
           ctaLabel: 'See the sharper offer set',
           ctaHref: '/variant-b/services',
         },
         {
           eyebrow: 'Reduce weekly drag',
-          title: 'Automation Pilot',
+          title: 'Automate the manual work',
           body: 'A focused pilot on one recurring workflow so you can see the value before expanding anything.',
         },
         {
@@ -483,7 +483,7 @@ export const variantBSections = {
       'Each offer is designed to stand on its own or become the first step in a larger project if the work earns it.',
     offers: [
       {
-        name: 'Decision Review',
+        name: 'Tech second opinion',
         summary:
           'A fast, senior read on the technology choice or proposal in front of you.',
         fit: 'When you want an experienced outside perspective before you commit money, time, or staff attention.',
@@ -492,11 +492,11 @@ export const variantBSections = {
           'Review of the proposal, tool, or current setup',
           'A written recommendation with tradeoffs, concerns, and a clear suggested path',
         ],
-        ctaLabel: 'Ask about a decision review',
+        ctaLabel: 'Ask about a tech second opinion',
         ctaHref: '/variant-b/contact',
       },
       {
-        name: 'Automation Pilot',
+        name: 'Automate the manual work',
         summary:
           'A scoped pilot on one recurring workflow that is taking too much manual effort.',
         fit: 'When you want proof that the automation is worth it before expanding the project.',
@@ -505,7 +505,7 @@ export const variantBSections = {
           'One prioritized automation opportunity',
           'Pilot implementation or prototype with handoff notes',
         ],
-        ctaLabel: 'Ask about an automation pilot',
+        ctaLabel: 'Ask about automating your workflow',
         ctaHref: '/variant-b/contact',
       },
       {
@@ -522,7 +522,7 @@ export const variantBSections = {
         ctaHref: '/variant-b/contact',
       },
       {
-        name: 'Vendor Sidecar',
+        name: 'Software advice',
         summary:
           'A calm counterpart on sales calls and software comparisons before a vendor becomes a long-term cost.',
         fit: 'When the options sound similar and you want the tradeoffs translated plainly.',
