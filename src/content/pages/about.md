@@ -1,16 +1,16 @@
 ---
 title: "About William Keough \u2014 Founder"
-description: "William Keough \u2014 founder of Lantern Harbor. Twelve years in enterprise healthcare IT, now a South Shore MA technology advisor for small and mid-sized businesses."
+description: "William Keough \u2014 founder of Lantern Harbor. More than twelve years of enterprise technology experience, now a South Shore MA technology advisor for small and mid-sized businesses."
 workingPrinciples:
   heading: How I work
   lede: A few things that matter to me, and are worth saying up front.
   items:
-    - title: Healthcare is in my bones
-      body: Twelve years of enterprise healthcare IT means I speak your language if you run a practice, clinic, or service business.
+    - title: Built for small-business reality
+      body: A decade-plus inside complex, high-stakes technology environments means I know how to evaluate tools, surface risk early, and keep the work tied to what actually has to happen on the ground.
     - title: A few clients at a time
       body: I take on a small number of engagements so I can actually be present for each one.
     - title: In person whenever possible
-      body: If you're on the South Shore, I'll drive to you. The work is better when I can sit in your office for a morning.
+      body: If you're on the South Shore, I'll drive to you. The work is better when I can walk your floor, talk to your staff, and see the real work.
     - title: The honest answer
       body: If a project isn't worth doing, I'll say so. If a tool you already have is good enough, I'll say that too.
       ctaLabel: Say hello
@@ -21,7 +21,7 @@ workingPrinciples:
 
 Lantern Harbor grew out of a season of real reflection, and a larger question about what I wanted my work to look like in the next chapter.
 
-I've spent twelve-plus years in enterprise healthcare IT, and I love what that work has taught me: how to get technology to actually land with the people who have to use it. What I wanted to add was a practice of my own. Smaller, closer to home, for the business owners on the South Shore who don't have someone in-house to help them think clearly about technology.
+I've spent twelve-plus years inside large-scale enterprise technology, and I love what that work has taught me: how to get technology to actually land with the people who have to use it. What I wanted to add was a practice of my own. Smaller, closer to home, for the business owners on the South Shore who don't have someone in-house to help them think clearly about technology.
 
 I take on a few engagements at a time so I can actually be present for each one.
 

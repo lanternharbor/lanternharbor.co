@@ -1,8 +1,8 @@
 ---
 title: PrayerTrain
-client: Personal build for family
+client: Non-profit
 year: 2026
-summary: A faith-centered prayer coordination platform — like meal trains, but for organized prayer support during times of need. Built to help Catholic families rally around a loved one in crisis.
+summary: Built for a family-run ministry. A faith-centered prayer coordination platform — like meal trains, but for organized prayer support during times of need, helping Catholic families rally around a loved one in crisis.
 url: https://prayertrains.com
 role: Design and build
 tech:

@@ -25,6 +25,14 @@ I maintain this site in good faith. I can't guarantee it's always accurate or av
 
 These terms are governed by the laws of the Commonwealth of Massachusetts.
 
+## Services scope
+
+Lantern Harbor LLC provides technology advisory and build services to small and mid-sized businesses. We do not provide services to healthcare providers, health insurers, pharmacies, or other HIPAA-covered entities. The specific scope, deliverables, and commercial terms of any paid engagement are covered in a separate services agreement between Lantern Harbor LLC and the client.
+
+## Work product
+
+Unless a specific engagement agreement states otherwise, deliverables produced for a client in the course of a paid engagement are the client's property as work made for hire upon full payment. Lantern Harbor LLC does not retain reusable proprietary rights in client-specific deliverables.
+
 ## Contact
 
 Questions about these terms: william@lanternharbor.co

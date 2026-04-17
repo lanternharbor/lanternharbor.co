@@ -59,7 +59,7 @@ export const faqItems: FaqItem[] = [
   {
     question: 'Do you only work with South Shore businesses?',
     answer:
-      'The practice is built in the South Shore. I drive to you, sit in your office, and see how things actually run. That is the whole point. Follow-up happens by phone and email like anything else, but the relationship starts in person. I occasionally take on work outside the area through a referral, but I am not actively looking for it.',
+      'The practice is built in the South Shore. I drive to you, walk your floor, and see how things actually run. That is the whole point. Follow-up happens by phone and email like anything else, but the relationship starts in person. I occasionally take on work outside the area through a referral, but I am not actively looking for it.',
   },
   {
     question: 'What industries do you work with?',
@@ -98,11 +98,11 @@ export const variantASections = {
     proof: [
       {
         label: '12+ years',
-        detail: 'Enterprise healthcare IT, implementation work, and change that had to land in the real world.',
+        detail: 'Enterprise technology experience, implementation work, and change that had to land in the real world.',
       },
       {
         label: 'Hingham based',
-        detail: 'An in-person practice for South Shore businesses. I drive to you, sit in your office, and see the real work.',
+        detail: 'An in-person practice for South Shore businesses. I drive to you, walk your floor, talk to your staff, and see the real work.',
       },
       {
         label: 'A few clients at a time',
@@ -161,7 +161,7 @@ export const variantASections = {
         {
           eyebrow: 'Tighten the message',
           title: 'Website tune-up',
-          body: 'A homepage, offer, and CTA pass for businesses that sound better in person than they do online.',
+          body: 'A review of your homepage, your main offer, and how visitors take action — for businesses that sound better in person than they do online.',
         },
       ] satisfies CardItem[],
     },
@@ -284,7 +284,7 @@ export const variantASections = {
   about: {
     intro: [
       'If you are hiring outside help, you should know the short version quickly.',
-      'Lantern Harbor is William Keough: a South Shore technology advisor and builder with more than twelve years in enterprise healthcare IT and a deliberately small local practice.',
+      'Lantern Harbor is William Keough: a South Shore technology advisor and builder with more than twelve years of enterprise technology experience and a deliberately small local practice.',
       'I do not traffic in hype. What I try to bring is steadier judgment, clear language, and follow-through that actually happens.',
     ],
     credibility: {
@@ -294,7 +294,7 @@ export const variantASections = {
       items: [
         {
           title: 'Complex systems, practical judgment',
-          body: 'Large healthcare environments taught me how to evaluate tools, surface risks, and keep implementation tied to real operations.',
+          body: 'Large, complex environments taught me how to evaluate tools, surface risks, and keep implementation tied to the real operations underneath.',
         },
         {
           title: 'Plain language without agency theater',
@@ -302,7 +302,7 @@ export const variantASections = {
         },
         {
           title: 'Local and in person',
-          body: 'I drive to you. The relationship starts in your office, not on a video call from somewhere far away.',
+          body: 'I drive to you. The relationship starts on your floor, not on a video call from somewhere far away.',
         },
         {
           title: 'No handoffs',
@@ -317,7 +317,7 @@ export const variantASections = {
     sublede:
       'Reach out and we will have a conversation. No pitch deck. No intake maze.',
     fitStatement:
-      'I work with small and mid-sized businesses on the South Shore. If you need help with enterprise RFPs, a help desk, or clinical software inside an EHR, I can point you to someone who does that well.',
+      'I work with small and mid-sized businesses on the South Shore. If you need help with enterprise RFPs, managed IT or help-desk service, or specialized industry software (clinical systems, legal practice management, and the like), I can point you to someone who does that well.',
     nextSteps: {
       heading: 'What happens next',
       lede: 'Simple and human on purpose.',

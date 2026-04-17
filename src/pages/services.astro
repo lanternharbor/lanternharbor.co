@@ -12,6 +12,20 @@ const { title, description } = entry.data;
 ---
 
 <Layout title={title} description={description} pageKey="services">
+  <section class="who-i-work-with section">
+    <div class="container container--content">
+      <h2 class="who-i-work-with__heading">Who I work with</h2>
+      <p class="who-i-work-with__body">
+        Small and mid-sized businesses on the South Shore — trades and
+        construction, retail, restaurants and hospitality, charter and marine
+        services, professional services (accountants, attorneys, real estate,
+        financial planners), local manufacturers, and non-healthcare
+        nonprofits. If your business doesn't quite fit that list, ask anyway —
+        I'd rather say so than guess.
+      </p>
+    </div>
+  </section>
+
   <OfferGrid
     heading="How I help"
     lede={variantASections.services.lede}
@@ -26,3 +40,32 @@ const { title, description } = entry.data;
     primaryHref={variantASections.services.closing.primaryHref}
   />
 </Layout>
+
+<style>
+  .who-i-work-with {
+    padding-top: var(--space-8);
+    padding-bottom: 0;
+  }
+
+  @media (min-width: 48rem) {
+    .who-i-work-with {
+      padding-top: var(--space-9);
+    }
+  }
+
+  .who-i-work-with__heading {
+    margin: 0 0 var(--space-3);
+    font-size: var(--step-3);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--color-harbor);
+  }
+
+  .who-i-work-with__body {
+    margin: 0;
+    font-size: var(--step-1);
+    line-height: 1.65;
+    color: var(--color-slate);
+    max-width: var(--measure-reading);
+  }
+</style>

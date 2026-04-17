@@ -22,6 +22,17 @@ const { title, description, workingPrinciples } = entry.data;
               <p>{paragraph}</p>
             ))}
           </div>
+          {/* TODO: Add portrait at /public/william.jpg (square or 4:5, ~800px) */}
+          <figure class="about-page__portrait">
+            <img
+              src="/william.jpg"
+              alt="William Keough"
+              width="480"
+              height="480"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
         </header>
       </div>
     </section>
@@ -88,6 +99,21 @@ const { title, description, workingPrinciples } = entry.data;
     font-size: var(--step-1);
     line-height: 1.7;
     color: var(--color-slate);
+  }
+
+  .about-page__portrait {
+    margin: var(--space-5) 0 0;
+    max-width: 14rem;
+  }
+
+  .about-page__portrait img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid rgba(15, 42, 63, 0.08);
+    display: block;
   }
 
   .about-page__narrative {

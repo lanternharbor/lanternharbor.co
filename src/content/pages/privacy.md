@@ -32,6 +32,10 @@ Analytics: aggregated, non-identifying data kept for up to two years.
 
 You can ask me at any time to delete any information I have about you. Email me at william@lanternharbor.co and I'll do so within a reasonable time.
 
+## Health information
+
+Lantern Harbor does not collect, process, or store protected health information (PHI) or any data subject to HIPAA. If your business handles PHI, the services offered here are not the right fit, and I'll say so up front.
+
 ## Contact
 
 **Lantern Harbor LLC**
