@@ -19,9 +19,9 @@ workingPrinciples:
 
 ## How I got here
 
-Lantern Harbor grew out of a season of real reflection, and a larger question about what I wanted my work to look like in the next chapter.
+Lantern Harbor grew out of a simple observation: small business owners on the South Shore don't have someone in their corner to help them think clearly about technology. Big firms chase big contracts. The shop on Main Street usually gets what's left.
 
-I've spent twelve-plus years inside large-scale enterprise technology, and I love what that work has taught me: how to get technology to actually land with the people who have to use it. What I wanted to add was a practice of my own. Smaller, closer to home, for the business owners on the South Shore who don't have someone in-house to help them think clearly about technology.
+Twelve-plus years inside large-scale enterprise technology taught me how to evaluate tools, surface risks, and keep the work tied to what has to happen on the ground. Lantern Harbor is a deliberately small, local practice where I bring that same judgment to the businesses in my own community.
 
 I take on a few engagements at a time so I can actually be present for each one.
 
