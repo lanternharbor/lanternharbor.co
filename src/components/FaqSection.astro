@@ -173,6 +173,8 @@ const { items } = Astro.props;
     transform: rotate(180deg);
   }
 
+  /* 40rem ceiling comfortably fits answers up to ~800 chars at narrow
+     mobile widths. If a future answer needs more, raise this. */
   .faq__answer {
     margin: 0;
     max-height: 0;
@@ -181,7 +183,7 @@ const { items } = Astro.props;
   }
 
   .is-open .faq__answer {
-    max-height: 20rem;
+    max-height: 40rem;
     padding-bottom: var(--space-5);
   }
 

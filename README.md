@@ -24,8 +24,7 @@ src/
 │   ├── ContactForm.astro      Accessible form + progressive enhancement
 │   ├── Footer.astro           Small, understated
 │   ├── Header.astro           Sticky nav; mobile overlay
-│   ├── Hero.astro             Full-viewport photographic hero (home only)
-│   └── LanternMark.astro      SVG of the lantern (legacy — not currently used)
+│   └── Hero.astro             Full-viewport photographic hero (home only)
 ├── content/
 │   └── pages/                 home, services, about, contact, privacy, terms
 ├── content.config.ts          Collection schema (incl. hero block)
@@ -50,10 +49,9 @@ public/
 ├── favicon.png                Lantern-only icon (PNG favicon + Apple touch, 14KB)
 ├── favicon.svg                SVG favicon fallback
 ├── social-card.jpg            Open Graph / Twitter card image (flattened on harbor navy, 36KB)
-├── Logo.png                   Full square lockup (raster, for reference)
-├── lantern_harbor_logo.svg    Earlier-round vector lockup (for reference)
-├── new images/                Original uncompressed brand assets (source of truth)
 └── robots.txt
+
+brand-source/                  Master brand assets (originals, not deployed)
 ```
 
 ## Commands
@@ -74,13 +72,15 @@ Two more content collections pick up any markdown you drop into them:
 - `src/content/projects/*.md` — one file per project. Displays on `/work`
   and (when `featured: true`) in the `/work` list header. See that folder's
   README for the schema.
-- `src/content/testimonials/*.md` — one file per testimonial. Displays in
-  the rotating `<TestimonialRotator>` on the home page and `/work`. See
-  that folder's README, which also documents **how to make testimonials
-  feel real, not fabricated** — the full set of trust-signal principles.
+- `src/content/testimonials/*.md` — one file per testimonial. The schema
+  is defined and validated, but no render component is wired up yet.
+  See that folder's README for **how to make testimonials feel real,
+  not fabricated** — the trust-signal principles to follow when the
+  first real quotes come in.
 
-Neither section renders if empty; as soon as you add one entry, it
-appears everywhere it belongs.
+Projects render on `/work` (via `WorkShowcase`) and on the home page
+(via `RecentWorkSection`). Both sections handle an empty collection
+gracefully.
 
 Frontmatter fields:
 
@@ -109,12 +109,7 @@ Headings: **Lora 700**. Body: **Inter 400/500/600**.
 
 ## The logo
 
-Two copies live in `public/`:
-
-- `lantern_harbor_logo.svg` — vector, clean scaling. Wordmark is **cream (`#F3E8C9`)** so it's designed for dark surfaces (navy hero, dark hero sections).
-- `Logo.png` — high-res raster. Same art.
-
-The lantern illustration (no wordmark) is also available as a component: `<LanternMark />` in `src/components/`. Colors inside the mark are driven by CSS variables so it re-themes per context.
+The horizontal brand lockup (illustrated lantern + typeset wordmark) lives at `public/logo-horizontal.png` — a pre-trimmed 600×182 PNG used in the site header. Master art and uncompressed originals sit in `brand-source/` at the repo root.
 
 ## Deploying to Cloudflare Pages
 

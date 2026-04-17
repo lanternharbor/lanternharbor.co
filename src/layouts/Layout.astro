@@ -213,6 +213,14 @@ const structuredData = {
       )
     }
 
+    <!-- Warm up the Turnstile origin on the contact page so the challenge
+         widget paints faster when the form below the fold mounts it. -->
+    {
+      pageKey === 'contact' && (
+        <link rel="preconnect" href="https://challenges.cloudflare.com" crossorigin />
+      )
+    }
+
     <!-- Structured data (Schema.org) -->
     <script
       type="application/ld+json"
