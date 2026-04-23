@@ -28,7 +28,7 @@ const { title, description, workingPrinciples } = entry.data;
               alt="William Keough"
               width="800"
               height="800"
-              loading="lazy"
+              loading="eager"
               decoding="async"
             />
           </figure>
@@ -57,7 +57,7 @@ const { title, description, workingPrinciples } = entry.data;
         heading={workingPrinciples.heading}
         lede={workingPrinciples.lede}
         items={workingPrinciples.items}
-        columns={3}
+        columns={2}
         sectionClass="section section--tight"
       />
     )}
@@ -78,6 +78,30 @@ const { title, description, workingPrinciples } = entry.data;
 
   .about-page__header {
     max-width: var(--measure-reading);
+  }
+
+  @media (min-width: 48rem) {
+    .about-page__header {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      grid-template-areas:
+        "title portrait"
+        "lede  portrait";
+      gap: var(--space-6);
+      align-items: start;
+    }
+
+    .about-page__title {
+      grid-area: title;
+    }
+
+    .about-page__lede {
+      grid-area: lede;
+    }
+
+    .about-page__portrait {
+      grid-area: portrait;
+    }
   }
 
   .about-page__title {
@@ -103,6 +127,13 @@ const { title, description, workingPrinciples } = entry.data;
   .about-page__portrait {
     margin: var(--space-5) 0 0;
     max-width: 14rem;
+  }
+
+  @media (min-width: 48rem) {
+    .about-page__portrait {
+      margin-top: 0;
+      max-width: 18rem;
+    }
   }
 
   .about-page__portrait img {
