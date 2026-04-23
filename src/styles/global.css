@@ -60,6 +60,7 @@
   --space-11: 10rem;      /* 160 */
 
   /* Layout widths */
+  --measure-intro:   44rem;    /* ~704px — section intros / headings above cards */
   --measure-reading: 45rem;    /* ~720px — comfortable reading column (~70ch) */
   --measure-content: 58rem;    /* ~928px — wider content sections */
   --measure-wide:    72rem;    /* ~1152px — landing sections */
@@ -435,7 +436,7 @@ hr {
 /* Section header used above a card grid — wider than .prose so it sits
    flush with the grid below. */
 .card-section__header {
-  max-width: 44rem;
+  max-width: var(--measure-intro);
   margin-bottom: var(--space-7);
 }
 .card-section__heading {
