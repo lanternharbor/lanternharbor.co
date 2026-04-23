@@ -12,7 +12,14 @@ const { title, description } = entry.data;
 ---
 
 <Layout title={title} description={description} pageKey="services">
-  <section class="who-i-work-with section">
+  <OfferGrid
+    heading="How I help"
+    lede={variantASections.services.lede}
+    note={variantASections.services.note}
+    offers={variantASections.services.offers}
+  />
+
+  <section class="who-i-work-with section section--tight">
     <div class="container container--content">
       <h2 class="who-i-work-with__heading">Who I work with</h2>
       <p class="who-i-work-with__body">
@@ -26,13 +33,6 @@ const { title, description } = entry.data;
     </div>
   </section>
 
-  <OfferGrid
-    heading="How I help"
-    lede={variantASections.services.lede}
-    note={variantASections.services.note}
-    offers={variantASections.services.offers}
-  />
-
   <CalloutPanel
     heading={variantASections.services.closing.heading}
     body={variantASections.services.closing.body}
@@ -43,14 +43,7 @@ const { title, description } = entry.data;
 
 <style>
   .who-i-work-with {
-    padding-top: var(--space-8);
-    padding-bottom: 0;
-  }
-
-  @media (min-width: 48rem) {
-    .who-i-work-with {
-      padding-top: var(--space-9);
-    }
+    padding-top: 0;
   }
 
   .who-i-work-with__heading {
