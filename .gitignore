@@ -22,3 +22,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Private business documents — never ship to the public site repo.
+# contracts/  : signed agreements (BAAs, MSAs, etc.) — PII + legal terms
+# private/    : working business notes (pricing, customer prep, internal drafts)
+# proposals/  : customer-facing drafts in progress
+contracts/
+private/
+proposals/
