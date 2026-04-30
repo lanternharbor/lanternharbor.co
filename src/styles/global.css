@@ -17,7 +17,8 @@
   --color-lantern:   #F5EFE4;   /* warm cream — primary light / page bg */
   --color-gold:      #E5C067;   /* luminous gold from the logo — CTAs, accents */
   --color-gold-soft: #F3E8C9;   /* cream highlight from the logo wordmark */
-  --color-brass:     #B8864B;   /* deeper muted gold — text accents, active nav */
+  --color-brass:     #B8864B;   /* deeper muted gold — decoration, hover accents */
+  --color-brass-text: #836034;  /* darkened brass for body text — ≥4.5:1 on lantern bg */
   --color-ember:     #7A3E2C;   /* deep warm — reserved for hover states */
   --color-driftwood: #6B5D4F;   /* body text on cream */
   --color-fog:       #D9D2C3;   /* dividers, subtle backgrounds */
@@ -341,7 +342,7 @@ hr {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-brass);
+  color: var(--color-brass-text);
   display: inline-block;
   margin-bottom: var(--space-3);
 }

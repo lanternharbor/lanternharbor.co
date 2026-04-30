@@ -23,13 +23,14 @@ const { items } = Astro.props;
     </header>
 
     <dl class="faq__list">
-      {items.map((item) => (
+      {items.map((item, i) => (
         <div class="faq__entry">
           <dt class="faq__question">
             <button
               type="button"
               class="faq__toggle"
               aria-expanded="false"
+              aria-controls={`faq-answer-${i}`}
             >
               <span>{item.question}</span>
               <svg
@@ -48,7 +49,7 @@ const { items } = Astro.props;
               </svg>
             </button>
           </dt>
-          <dd class="faq__answer">
+          <dd class="faq__answer" id={`faq-answer-${i}`} hidden>
             <p>{item.answer}</p>
           </dd>
         </div>
@@ -62,10 +63,27 @@ const { items } = Astro.props;
     btn.addEventListener('click', () => {
       const entry = btn.closest('.faq__entry');
       if (!entry) return;
+      const answer = entry.querySelector<HTMLElement>('.faq__answer');
 
       const expanded = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!expanded));
       entry.classList.toggle('is-open', !expanded);
+
+      if (answer) {
+        if (expanded) {
+          // Wait for the max-height collapse transition before removing from
+          // the a11y tree, so motion users still see the animation.
+          answer.addEventListener(
+            'transitionend',
+            () => {
+              if (btn.getAttribute('aria-expanded') === 'false') answer.hidden = true;
+            },
+            { once: true },
+          );
+        } else {
+          answer.hidden = false;
+        }
+      }
     });
   });
 </script>

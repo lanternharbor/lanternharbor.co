@@ -14,7 +14,7 @@ const year = new Date().getFullYear();
       <span class="site-footer__dot" aria-hidden="true">·</span>
       <a href="/terms">Terms</a>
     </nav>
-    <p class="site-footer__credit">A one-person practice in Hingham, Massachusetts — serving small businesses in trades, retail, hospitality, and professional services on the South Shore.</p>
+    <p class="site-footer__credit">A one-person practice in Hingham, Massachusetts — serving small businesses in trades, retail, hospitality, and professional services on the <a href="/south-shore/">South Shore</a>.</p>
   </div>
 </footer>
 
@@ -63,6 +63,18 @@ const year = new Date().getFullYear();
     color: var(--color-driftwood);
     font-style: italic;
     opacity: 0.72;
+  }
+
+  .site-footer__credit a {
+    color: inherit;
+    text-decoration-color: rgba(107, 93, 79, 0.45);
+    text-underline-offset: 2px;
+    transition: color var(--transition);
+  }
+
+  .site-footer__credit a:hover,
+  .site-footer__credit a:focus-visible {
+    color: var(--color-harbor);
   }
 
   @media (max-width: 39.99rem) {

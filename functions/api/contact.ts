@@ -63,6 +63,13 @@ const escapeHtml = (s: string) =>
 export async function onRequestPost(context: Context): Promise<Response> {
   const { request, env } = context;
 
+  // Refuse oversized bodies before parsing. Generous ceiling — message field
+  // alone tops out at 4000 chars, so 32KB leaves plenty of headroom.
+  const declared = Number(request.headers.get('content-length') ?? '0');
+  if (declared > 32_768) {
+    return json({ ok: false, error: 'Request too large.' }, 413);
+  }
+
   // Parse JSON (client-enhanced fetch) or form-encoded (no-JS fallback).
   let data: Payload = {};
   let turnstileToken = '';
@@ -137,9 +144,13 @@ export async function onRequestPost(context: Context): Promise<Response> {
     }
   }
 
-  const name = str(data.name, 120);
-  const email = str(data.email, 200);
-  const phone = str(data.phone, 40);
+  // Strip CR/LF from single-line fields so they can't smuggle delimiters into
+  // any future delivery transport that interprets newlines as headers.
+  // Resend takes structured JSON today, so this is defense-in-depth.
+  const stripNewlines = (s: string) => s.replace(/[\r\n]+/g, ' ');
+  const name = stripNewlines(str(data.name, 120));
+  const email = stripNewlines(str(data.email, 200));
+  const phone = stripNewlines(str(data.phone, 40));
   const message = str(data.message, 4000);
 
   if (!name || !email || !message) {
