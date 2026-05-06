@@ -24,9 +24,11 @@ pnpm-debug.log*
 .idea/
 
 # Private business documents — never ship to the public site repo.
-# contracts/  : signed agreements (BAAs, MSAs, etc.) — PII + legal terms
-# private/    : working business notes (pricing, customer prep, internal drafts)
-# proposals/  : customer-facing drafts in progress
+# contracts/      : signed agreements (BAAs, MSAs, etc.) — PII + legal terms
+# private/        : working business notes (pricing, customer prep, internal drafts)
+# proposals/      : customer-facing drafts in progress
+# agent-reports/  : agent output (drift reports, summaries) — references private outreach
 contracts/
 private/
 proposals/
+agent-reports/
