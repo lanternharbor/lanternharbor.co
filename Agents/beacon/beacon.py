@@ -17,9 +17,11 @@ Plus an infrastructure check: does the scheduled SKILL.md still seed the
 banned phrase 'caught our eye' that the feedback memory forbids?
 
 Usage:
-    python beacon.py                    # report on last 10 folders, write to today's file
+    python beacon.py                    # last 10 folders, write to today's file
     python beacon.py --last 20          # last 20 folders
-    python beacon.py --since 2026-04-21 # since a date
+    python beacon.py --since 2026-04-21 # all folders dated 2026-04-21 or later (uncapped)
+    python beacon.py --since 2026-04-21 --last 5
+                                        # last 5 folders within the date range
     python beacon.py --out /tmp/r.md    # custom output path
     python beacon.py --stdout           # print to stdout instead of file
 """
@@ -202,9 +204,23 @@ def find_email_file(folder: Path) -> Path | None:
 
 
 def find_pdf_config(slug: str, tools_dir: Path) -> Path | None:
-    """Locate _tools/build-<slug>-proposal.py."""
+    """Locate _tools/build-<slug>-proposal.py.
+
+    Folder slugs include town suffixes (e.g. 'hornstra-farms-norwell') but the
+    cfg filename sometimes omits them ('build-hornstra-farms-proposal.py'). Try
+    the exact match first, then fall back to progressively shorter slug
+    prefixes — longest match wins.
+    """
     candidate = tools_dir / f"build-{slug}-proposal.py"
-    return candidate if candidate.exists() else None
+    if candidate.exists():
+        return candidate
+    parts = slug.split("-")
+    while len(parts) > 1:
+        parts = parts[:-1]
+        fallback = tools_dir / f"build-{'-'.join(parts)}-proposal.py"
+        if fallback.exists():
+            return fallback
+    return None
 
 
 def list_outreach_folders(root: Path) -> list[Path]:
@@ -674,8 +690,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument(
         "--last",
         type=int,
-        default=10,
-        help="Number of most recent folders to include (default 10). Use 0 for all.",
+        default=None,
+        help="Number of most recent folders to include. Defaults to 10 unless --since is given (in which case the default is uncapped). Use 0 to force uncapped.",
     )
     p.add_argument(
         "--since",
@@ -709,7 +725,13 @@ def main(argv: list[str] | None = None) -> int:
         print(f"No outreach folders found under {root}")
         return 1
 
-    last = None if args.last == 0 else args.last
+    if args.last is None:
+        # No explicit --last: cap at 10 only when there's no --since to scope the run.
+        last = None if args.since else 10
+    elif args.last == 0:
+        last = None
+    else:
+        last = args.last
     selected = select_folders(folders, last=last, since=args.since)
 
     regulars_slugs = parse_regulars_slugs(root / "my-regulars.md")
