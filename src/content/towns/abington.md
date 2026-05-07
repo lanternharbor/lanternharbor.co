@@ -13,12 +13,12 @@ scenarios:
   - title: "The practice has more clients than its original setup planned for."
     body: "Files are spread across three tools that do not talk. Intake is messy. The work itself is fine. The drag is everywhere around it."
 intro: |
-  Abington is a smaller town tucked inland from the coastal South Shore,
-  with the kind of business mix that grows up around a working community.
-  Trades and contractors, the retail along Bedford and Adams streets, the
-  personal and professional services that fit a town this size, and a few
-  small manufacturers and shops that have been around for a long time.
-  Lantern Harbor's Abington work usually starts with the practical
-  decisions a small business has been deferring while focusing on the work
-  itself.
+  Abington sits inland from the coast off Route 18, with a business mix
+  that has grown up around a year-round residential community. Trades
+  and contractors, the retail along Bedford and Adams streets, the
+  personal and professional services that round out the town, and a few
+  independent manufacturers and shops that have been around for a long
+  time. Lantern Harbor's Abington work usually starts with the practical
+  decisions a business has been deferring while focused on the actual
+  work.
 ---

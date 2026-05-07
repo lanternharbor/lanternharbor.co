@@ -17,7 +17,7 @@ intro: |
   Hanover sits inland from Norwell along Route 53, with Hanover Crossing
   (the redevelopment of the old Hanover Mall) anchoring a stretch of retail
   and dining and the rest of the town spread across residential
-  neighborhoods and small business strips. There is a healthy mix of trades
+  neighborhoods and the commercial pockets along the side roads. There is a healthy mix of trades
   and contractors, the retail and restaurants tied to the Crossing and
   Route 53, and the professional services that fit a town with a strong
   year-round community. Lantern Harbor's Hanover work usually starts in the

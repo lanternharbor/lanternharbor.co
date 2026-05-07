@@ -13,11 +13,11 @@ scenarios:
   - title: "The site is doing very little of the work it could do."
     body: "People know you by name. The site does not match how the business runs in person. A small pass on the homepage and the service descriptions would close the gap."
 intro: |
-  Holbrook sits at the western edge of the South Shore, with a small
-  downtown and the kind of business mix that goes with a town its size:
-  trades and contractors, the retail and food spots along Route 139 and
-  the residential streets, and a steady set of personal and professional
-  services. Lantern Harbor's Holbrook work tends to be practical and
-  operational, the kind of work that benefits from someone driving over
-  and walking the place rather than connecting on a video call.
+  Holbrook sits at the western edge of the South Shore, with a downtown
+  along Route 139 and a business mix that runs from trades and
+  contractors to the retail and food spots along the main routes,
+  alongside a steady set of personal and professional services. Lantern
+  Harbor's Holbrook work tends to be practical and operational, the kind
+  of work that benefits from someone driving over and walking the place
+  rather than connecting on a video call.
 ---
