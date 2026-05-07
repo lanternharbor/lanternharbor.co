@@ -1,0 +1,335 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, client, year, summary, url, role, tech, highlights, thumbnail } = project.data;
+const { Content } = await render(project);
+
+// Breadcrumb schema gives Google a clean Home → Work → <Project> trail.
+// Helps with rich result eligibility on case study pages.
+const siteOrigin = Astro.site?.toString().replace(/\/$/, '') ?? 'https://lanternharbor.co';
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteOrigin}/` },
+    { '@type': 'ListItem', position: 2, name: 'Work', item: `${siteOrigin}/work/` },
+    { '@type': 'ListItem', position: 3, name: title, item: `${siteOrigin}/work/${project.id}/` },
+  ],
+};
+
+const pageTitle = `${title} — Case Study`;
+const pageDescription = summary;
+---
+
+<Layout title={pageTitle} description={pageDescription} pageKey="work">
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(breadcrumbSchema)}
+  />
+
+  <article class="case-study section">
+    <div class="container container--content">
+      <nav class="case-study__crumb" aria-label="Breadcrumb">
+        <a href="/work/">← Back to selected work</a>
+      </nav>
+
+      <header class="case-study__header">
+        <p class="eyebrow">{year}{role ? ` · ${role}` : ''}</p>
+        <h1 class="case-study__title">{title}</h1>
+        <p class="case-study__client">{client}</p>
+        <p class="case-study__summary">{summary}</p>
+        {url && (
+          <p class="case-study__visit">
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              Visit the live site
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </p>
+        )}
+      </header>
+
+      {thumbnail && (
+        <figure class="case-study__hero">
+          <img
+            src={thumbnail}
+            alt={title}
+            width="1200"
+            height="675"
+            loading="eager"
+            decoding="async"
+          />
+        </figure>
+      )}
+
+      {tech && tech.length > 0 && (
+        <section class="case-study__sub">
+          <h2 class="case-study__h2">Built with</h2>
+          <ul class="case-study__tech-list" role="list">
+            {tech.map((t) => (
+              <li class="case-study__tech-item">{t}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {highlights && highlights.length > 0 && (
+        <section class="case-study__sub">
+          <h2 class="case-study__h2">Highlights</h2>
+          <ul class="case-study__highlights">
+            {highlights.map((h) => (
+              <li>{h}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <div class="case-study__body prose">
+        <Content />
+      </div>
+
+      <aside class="case-study__cta">
+        <p>
+          Have a project in mind, or a tool you want a second read on?{' '}
+          <a href="/contact">Get in touch.</a>
+        </p>
+      </aside>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .case-study {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-10);
+  }
+
+  @media (min-width: 48rem) {
+    .case-study {
+      padding-top: var(--space-9);
+    }
+  }
+
+  .case-study__crumb {
+    margin-bottom: var(--space-6);
+    font-size: var(--step--1);
+  }
+
+  .case-study__crumb a {
+    color: var(--color-driftwood);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .case-study__crumb a:hover,
+  .case-study__crumb a:focus-visible {
+    color: var(--color-harbor);
+  }
+
+  .case-study__header {
+    margin-bottom: var(--space-7);
+    max-width: var(--measure-reading);
+  }
+
+  .case-study__title {
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-5);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--color-harbor);
+  }
+
+  .case-study__client {
+    margin: 0 0 var(--space-4);
+    font-size: var(--step-0);
+    color: var(--color-driftwood);
+    font-weight: 500;
+  }
+
+  .case-study__summary {
+    margin: 0 0 var(--space-5);
+    font-size: var(--step-1);
+    line-height: 1.65;
+    color: var(--color-slate);
+  }
+
+  .case-study__visit {
+    margin: 0;
+    font-size: var(--step-0);
+  }
+
+  .case-study__visit a {
+    color: var(--color-harbor);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration-color: rgba(184, 134, 75, 0.6);
+    text-underline-offset: 3px;
+    transition: color var(--transition);
+  }
+
+  .case-study__visit a:hover,
+  .case-study__visit a:focus-visible {
+    color: var(--color-brass);
+  }
+
+  .case-study__hero {
+    margin: 0 0 var(--space-8);
+  }
+
+  .case-study__hero img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid rgba(15, 42, 63, 0.08);
+    display: block;
+  }
+
+  .case-study__sub {
+    margin-bottom: var(--space-7);
+    max-width: var(--measure-reading);
+  }
+
+  .case-study__h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-2);
+    color: var(--color-harbor);
+    margin: 0 0 var(--space-4);
+    line-height: 1.2;
+  }
+
+  .case-study__tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .case-study__tech-item {
+    font-size: var(--step--1);
+    font-family: var(--font-body);
+    color: var(--color-harbor);
+    background-color: rgba(229, 192, 103, 0.16);
+    border: 1px solid rgba(229, 192, 103, 0.3);
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    letter-spacing: 0.01em;
+  }
+
+  .case-study__highlights {
+    margin: 0;
+    padding-left: var(--space-5);
+    color: var(--color-slate);
+    font-size: var(--step-0);
+    line-height: 1.65;
+  }
+
+  .case-study__highlights li {
+    margin-bottom: var(--space-2);
+  }
+
+  .case-study__highlights li::marker {
+    color: var(--color-brass);
+  }
+
+  .case-study__body {
+    margin-bottom: var(--space-8);
+    max-width: var(--measure-reading);
+  }
+
+  .case-study__body :global(p) {
+    margin: 0 0 var(--space-4);
+    font-size: var(--step-0);
+    line-height: 1.7;
+    color: var(--color-slate);
+  }
+
+  .case-study__body :global(h2) {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-2);
+    color: var(--color-harbor);
+    margin: var(--space-7) 0 var(--space-4);
+    line-height: 1.2;
+  }
+
+  .case-study__body :global(h3) {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-1);
+    color: var(--color-harbor);
+    margin: var(--space-5) 0 var(--space-3);
+  }
+
+  .case-study__body :global(ul),
+  .case-study__body :global(ol) {
+    margin: 0 0 var(--space-4);
+    padding-left: var(--space-5);
+    color: var(--color-slate);
+    font-size: var(--step-0);
+    line-height: 1.7;
+  }
+
+  .case-study__cta {
+    margin-top: var(--space-8);
+    padding: var(--space-6);
+    background-color: rgba(229, 192, 103, 0.08);
+    border-left: 3px solid var(--color-gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    max-width: var(--measure-reading);
+  }
+
+  .case-study__cta p {
+    margin: 0;
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--color-slate);
+  }
+
+  .case-study__cta a {
+    color: var(--color-harbor);
+    font-weight: 600;
+    text-decoration-color: rgba(184, 134, 75, 0.6);
+    text-underline-offset: 3px;
+  }
+
+  .case-study__cta a:hover,
+  .case-study__cta a:focus-visible {
+    color: var(--color-brass);
+  }
+</style>

@@ -1,0 +1,150 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import CardSection from '../components/CardSection.astro';
+import ProcessSection from '../components/ProcessSection.astro';
+import CalloutPanel from '../components/CalloutPanel.astro';
+import Button from '../components/Button.astro';
+import { variantASections } from '../data/siteVariants';
+
+export async function getStaticPaths() {
+  const towns = await getCollection('towns');
+  return towns.map((town) => ({
+    params: { town: town.id },
+    props: { town },
+  }));
+}
+
+interface Props {
+  town: CollectionEntry<'towns'>;
+}
+
+const { town } = Astro.props;
+const { name, title, description, intro, personalNote } = town.data;
+---
+
+<Layout title={title} description={description} pageKey={`town-${town.id}`}>
+  <section class="landing section">
+    <div class="container container--content">
+      <header class="landing__intro">
+        <p class="eyebrow">{name}, Massachusetts</p>
+        <h1 class="landing__title">
+          Technology help for {name} businesses.
+        </h1>
+        <p class="landing__lede">{intro}</p>
+        {personalNote && (
+          <p class="landing__personal">{personalNote}</p>
+        )}
+        <div class="landing__ctas">
+          <Button href="/contact">Let's talk</Button>
+          <Button href="/services" variant="ghost" arrow={false}>
+            See where I can help
+          </Button>
+        </div>
+      </header>
+    </div>
+  </section>
+
+  <CardSection
+    heading={variantASections.home.scenarios.heading}
+    lede={variantASections.home.scenarios.lede}
+    items={variantASections.home.scenarios.items}
+    columns={2}
+    sectionClass="section section--tight"
+  />
+
+  <ProcessSection
+    heading={variantASections.home.process.heading}
+    lede={variantASections.home.process.lede}
+    items={variantASections.home.process.items}
+  />
+
+  <section class="back-to-hub section section--tight">
+    <div class="container container--content">
+      <p class="back-to-hub__line">
+        Lantern Harbor also serves <a href="/south-shore/">other South Shore towns</a> from Hingham. The same in-person approach applies anywhere within about forty-five minutes.
+      </p>
+    </div>
+  </section>
+
+  <CalloutPanel
+    heading={variantASections.home.closing.heading}
+    body={variantASections.home.closing.body}
+    primaryLabel={variantASections.home.closing.primaryLabel}
+    primaryHref={variantASections.home.closing.primaryHref}
+    secondaryLabel="See where I can help"
+    secondaryHref="/services"
+  />
+</Layout>
+
+<style>
+  .landing {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-6);
+  }
+
+  @media (min-width: 48rem) {
+    .landing {
+      padding-top: var(--space-9);
+    }
+  }
+
+  .landing__intro {
+    max-width: var(--measure-intro);
+  }
+
+  .landing__title {
+    margin: 0 0 var(--space-4);
+    font-size: var(--step-5);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+
+  .landing__lede {
+    margin: 0 0 var(--space-4);
+    font-size: var(--step-1);
+    line-height: 1.7;
+    color: var(--color-slate);
+  }
+
+  .landing__personal {
+    margin: 0 0 var(--space-6);
+    padding-top: var(--space-3);
+    border-top: 1px solid rgba(15, 42, 63, 0.08);
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--color-driftwood);
+    font-style: italic;
+    max-width: var(--measure-intro);
+  }
+
+  .landing__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-4);
+  }
+
+  .back-to-hub {
+    padding-top: 0;
+  }
+
+  .back-to-hub__line {
+    margin: 0;
+    font-size: var(--step-0);
+    color: var(--color-driftwood);
+    font-style: italic;
+    max-width: var(--measure-intro);
+  }
+
+  .back-to-hub__line a {
+    color: var(--color-harbor);
+    font-style: normal;
+    text-decoration-color: rgba(184, 134, 75, 0.5);
+    text-underline-offset: 3px;
+  }
+
+  .back-to-hub__line a:hover,
+  .back-to-hub__line a:focus-visible {
+    color: var(--color-brass);
+  }
+</style>
