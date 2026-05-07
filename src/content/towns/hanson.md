@@ -13,11 +13,11 @@ scenarios:
   - title: "Your customer relationships are the strongest thing you have. Your records of them are not."
     body: "Customers come back. Some have been with you for a long time. The history of what they bought, when, and what they preferred lives in someone's head and a stack of paper. You want a setup that protects that without overcomplicating it."
 intro: |
-  Hanson is one of the quieter inland towns on the South Shore, with a
-  small downtown along Main Street and a business community shaped by its
-  size: trades, contractors, residential services, and the personal and
-  professional services that small communities still rely on. Lantern
-  Harbor's Hanson work tends to be straightforward and personal, the kind
-  of engagement where the relationship gets built quickly because the town
-  is small enough that everyone knows the same people.
+  Hanson sits inland off Route 27, with a downtown along Main Street and
+  a business community built around the people who live nearby. Trades,
+  contractors, residential services, and the personal and professional
+  services that round out a year-round community. Lantern Harbor's
+  Hanson work tends to be direct and hands-on, the kind of engagement
+  where relationships get built quickly because the local network is
+  tightly connected.
 ---

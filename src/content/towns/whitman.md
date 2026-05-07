@@ -13,12 +13,11 @@ scenarios:
   - title: "The website is barely doing any work right now."
     body: "Word of mouth still does most of the work. The site does not have to do everything, but right now it is doing very little. A small refresh would close the gap."
 intro: |
-  Whitman is a smaller inland town with a long history (the Toll House
-  cookie was invented here) and a business community that fits its size:
-  trades and contractors, the restaurants and small retail along South
-  Avenue, and the personal and professional services that operate quietly
-  in a town that has not lost its working character. Lantern Harbor's
-  Whitman work tends to be practical and concrete, the kind of conversation
-  where the technology question is one piece of a larger operational
-  picture.
+  Whitman sits inland on Route 14 with a real history (the Toll House
+  cookie was invented here in 1938) and a business mix that runs from
+  trades and contractors to the restaurants and retail along South
+  Avenue, alongside the personal and professional services that anchor
+  a year-round town. Lantern Harbor's Whitman work tends to be practical
+  and concrete, the kind of conversation where the technology question
+  is one piece of a larger operational picture.
 ---

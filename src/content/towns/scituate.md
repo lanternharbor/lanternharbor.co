@@ -18,7 +18,7 @@ intro: |
   fishing fleet, the lighthouse on the point, and a downtown small enough that
   everyone can see who is open and who is not. The businesses Lantern Harbor
   talks to in Scituate tend to be the kind that grew out of the harbor or grew
-  up around it: restaurants, trades, small retail, the boatyards. The
+  up around it: restaurants, trades, retail, the boatyards. The
   technology questions are less about scale and more about not letting the
   back office swallow the rest of the week.
 ---

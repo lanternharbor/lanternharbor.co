@@ -13,12 +13,12 @@ scenarios:
   - title: "The website is from a different version of the business."
     body: "The work has gotten better. The team has changed. The site has not. People who know you find you fine. Everyone else is missing what they should be seeing."
 intro: |
-  Rockland sits a bit west of the coastal towns, with a downtown that has
-  been working through its own quiet revival and a mix of businesses that
-  reflect a town with a long working-class history. Trades and contractors,
-  the retail along Route 123, professional and personal services, and a
-  healthy small-business community that the South Shore Chamber of Commerce
-  serves out of its headquarters in town. Lantern Harbor's Rockland work
-  tends to start with operations questions and the kinds of vendor
-  decisions that benefit from a second set of eyes.
+  Rockland sits west of the coastal towns, with a downtown that has been
+  steadily reinvesting in itself and a mix of businesses that reflect a
+  long industrial and commercial history. Trades and contractors, the
+  retail along Route 123, professional and personal services, and a
+  healthy small-business community that the South Shore Chamber of
+  Commerce serves out of its headquarters in town. Lantern Harbor's
+  Rockland work tends to start with operations questions and the kinds
+  of vendor decisions that benefit from a second set of eyes.
 ---

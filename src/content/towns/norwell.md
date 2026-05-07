@@ -14,11 +14,11 @@ scenarios:
     body: "Estimates, schedules, invoicing, the customer who called twice and is going to call again. The ops side has gotten heavier and you want to clean it up before you hire anyone new."
 intro: |
   Norwell sits inland from Hingham along Route 3 and the back roads that
-  connect the rest of the South Shore. It is quieter than the coastal towns
-  and the businesses there reflect that. Professional services, residential
-  service businesses like landscapers and small builders, a healthcare
-  contingent, and a few independent retail and food spots that have stayed
-  loyal customers through the years. The technology conversations tend to be
-  about cleaning up a process that has worked fine for a long time but is
-  starting to feel its age.
+  connect the rest of the South Shore, with a business community built
+  around its year-round residential character. Professional services,
+  residential service businesses like landscapers and builders, a
+  healthcare contingent, and a few independent retail and food spots that
+  have stayed loyal customers through the years. The technology
+  conversations tend to be about cleaning up a process that has worked
+  fine for a long time but is starting to feel its age.
 ---
