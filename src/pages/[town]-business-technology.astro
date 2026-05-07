@@ -20,7 +20,7 @@ interface Props {
 }
 
 const { town } = Astro.props;
-const { name, title, description, intro, personalNote } = town.data;
+const { name, title, description, intro, personalNote, scenarios } = town.data;
 ---
 
 <Layout title={title} description={description} pageKey={`town-${town.id}`}>
@@ -48,7 +48,7 @@ const { name, title, description, intro, personalNote } = town.data;
   <CardSection
     heading={variantASections.home.scenarios.heading}
     lede={variantASections.home.scenarios.lede}
-    items={variantASections.home.scenarios.items}
+    items={scenarios ?? variantASections.home.scenarios.items}
     columns={2}
     sectionClass="section section--tight"
   />

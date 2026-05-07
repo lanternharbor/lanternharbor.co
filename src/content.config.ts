@@ -149,6 +149,22 @@ const towns = defineCollection({
      * note reads worse than no note at all.
      */
     personalNote: z.string().optional(),
+    /**
+     * Optional override for the "You might call Lantern Harbor when..."
+     * scenarios block on this town's page. When present, replaces the
+     * generic four cards with town-flavored ones that reflect the actual
+     * business mix of the town. Leave undefined to fall back to the shared
+     * scenarios in variantASections.home.scenarios. Aim for four items so
+     * the 2x2 grid stays balanced, but any length renders.
+     */
+    scenarios: z
+      .array(
+        z.object({
+          title: z.string(),
+          body: z.string(),
+        }),
+      )
+      .optional(),
     /** Sort order for listings (e.g. on /south-shore). */
     order: z.number().default(0),
   }),
