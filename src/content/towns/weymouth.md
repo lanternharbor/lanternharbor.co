@@ -3,6 +3,7 @@ name: Weymouth
 title: "Small Business Technology Help in Weymouth"
 description: "Lantern Harbor helps Weymouth small businesses with technology decisions, AI, automation, vendor selection, and website strategy. Hingham-based, in person across the South Shore."
 order: 7
+personalNote: "My closest childhood friend grew up here. He is a Lantern Harbor client now."
 intro: |
   Weymouth sits on the north edge of the South Shore, big enough that the
   town has different neighborhoods with different characters. There is a long

@@ -141,6 +141,14 @@ const towns = defineCollection({
     description: z.string(),
     /** Hand-written 60-100 word intro paragraph. Town-specific by design. */
     intro: z.string(),
+    /**
+     * Optional personal connection note. Renders as a small italicized aside
+     * below the intro paragraph. Use when there is a real local thread worth
+     * naming (a favorite restaurant, a place that meant something, a friend
+     * who lives there). Skip when there isn't — an empty pretend-personal
+     * note reads worse than no note at all.
+     */
+    personalNote: z.string().optional(),
     /** Sort order for listings (e.g. on /south-shore). */
     order: z.number().default(0),
   }),

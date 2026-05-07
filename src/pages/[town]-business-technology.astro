@@ -20,7 +20,7 @@ interface Props {
 }
 
 const { town } = Astro.props;
-const { name, title, description, intro } = town.data;
+const { name, title, description, intro, personalNote } = town.data;
 ---
 
 <Layout title={title} description={description} pageKey={`town-${town.id}`}>
@@ -32,6 +32,9 @@ const { name, title, description, intro } = town.data;
           Technology help for {name} businesses.
         </h1>
         <p class="landing__lede">{intro}</p>
+        {personalNote && (
+          <p class="landing__personal">{personalNote}</p>
+        )}
         <div class="landing__ctas">
           <Button href="/contact">Let's talk</Button>
           <Button href="/services" variant="ghost" arrow={false}>
@@ -98,10 +101,21 @@ const { name, title, description, intro } = town.data;
   }
 
   .landing__lede {
-    margin: 0 0 var(--space-6);
+    margin: 0 0 var(--space-4);
     font-size: var(--step-1);
     line-height: 1.7;
     color: var(--color-slate);
+  }
+
+  .landing__personal {
+    margin: 0 0 var(--space-6);
+    padding-top: var(--space-3);
+    border-top: 1px solid rgba(15, 42, 63, 0.08);
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--color-driftwood);
+    font-style: italic;
+    max-width: var(--measure-intro);
   }
 
   .landing__ctas {

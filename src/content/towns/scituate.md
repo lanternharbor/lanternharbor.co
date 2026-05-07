@@ -3,6 +3,7 @@ name: Scituate
 title: "Small Business Technology Help in Scituate"
 description: "Lantern Harbor helps Scituate small businesses with practical technology decisions: AI, automation, vendor selection, and website work. In person from Hingham, across the South Shore."
 order: 2
+personalNote: "I volunteer weekly at the Scituate Animal Shelter, walking dogs. Going on a year now."
 intro: |
   Scituate is harbor country in the working sense. There is still a commercial
   fishing fleet, the lighthouse on the point, and a downtown small enough that
