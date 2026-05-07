@@ -25,9 +25,29 @@ order: 0                               # tiebreaker for sort; lower = earlier
 ---
 
 Optional longer-form case-study markdown body goes here. Renders on
-`/work/<slug>/` if/when that route is added. For now only the frontmatter
-is used on the `/work` list page.
+`/work/<slug>/` (the route exists — `src/pages/work/[slug].astro`). On
+the `/work` list page only the frontmatter is shown.
 ```
+
+## Writing a case study (the markdown body)
+
+The `/work/<slug>/` page renders the markdown body below the structured
+frontmatter (year, role, summary, tech, highlights). A good case study
+covers four things:
+
+1. **The situation** — what the client (or you, for self-built projects)
+   was facing before. Include real specifics: what was hard, what was
+   manual, what was unclear.
+2. **The work** — what got built or decided, in plain language. No
+   "transformative end-to-end solution" posturing.
+3. **The outcome** — concrete, no exaggeration. If the metric is
+   qualitative, say so.
+4. **The trade-offs** — what got skipped, what came later, what didn't
+   work the first time. This is the honest-answer brand at work.
+
+Use H2 (`##`) for section breaks. H3 (`###`) for sub-points. Keep
+paragraphs short. The page is styled to read narrowly so you don't need
+to overdo headers.
 
 ## Notes
 
