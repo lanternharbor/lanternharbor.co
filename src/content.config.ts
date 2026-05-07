@@ -120,4 +120,30 @@ const testimonials = defineCollection({
   }),
 });
 
-export const collections = { pages, projects, testimonials };
+/**
+ * Towns — South Shore towns Lantern Harbor explicitly serves. Each file at
+ * `src/content/towns/<slug>.md` becomes a `/<slug>-business-technology`
+ * landing page. The hand-written `intro` is the unique copy that keeps each
+ * page out of thin-content territory; the rest of the page reuses shared
+ * scenarios + process sections.
+ *
+ * Hingham is intentionally not in this collection — the home page and
+ * /south-shore already serve as the Hingham surface.
+ */
+const towns = defineCollection({
+  loader: glob({ pattern: ['*.md', '!README.md'], base: './src/content/towns' }),
+  schema: z.object({
+    /** Display name of the town. e.g. "Cohasset". */
+    name: z.string(),
+    /** Page-level <title>. Stays under 60 chars after Layout's " — Lantern Harbor" suffix. */
+    title: z.string(),
+    /** Page-level meta description. Aim for 150-160 chars. */
+    description: z.string(),
+    /** Hand-written 60-100 word intro paragraph. Town-specific by design. */
+    intro: z.string(),
+    /** Sort order for listings (e.g. on /south-shore). */
+    order: z.number().default(0),
+  }),
+});
+
+export const collections = { pages, projects, testimonials, towns };

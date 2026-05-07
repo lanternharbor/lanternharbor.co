@@ -10,15 +10,17 @@ const pageTitle = 'Technology Help for South Shore Businesses';
 const pageDescription =
   'Lantern Harbor serves small and mid-sized businesses in Hingham, Cohasset, Scituate, Duxbury, Hull, Marshfield, Norwell, Weymouth, and across the South Shore of Massachusetts.';
 
+// Hingham has no dedicated town page — the home page already serves as the
+// Hingham surface. The other seven each link to /<slug>-business-technology.
 const towns = [
   { name: 'Hingham', note: 'Home base. Where Lantern Harbor is based.' },
-  { name: 'Cohasset', note: 'A short drive down 3A.' },
-  { name: 'Scituate', note: 'Harbor to harbor.' },
-  { name: 'Duxbury', note: 'Just across the bridge.' },
-  { name: 'Hull', note: 'Nantasket and the peninsula.' },
-  { name: 'Marshfield', note: 'Down Route 3, easy reach.' },
-  { name: 'Norwell', note: 'Inland neighbor, quick trip.' },
-  { name: 'Weymouth', note: 'The north edge of the South Shore.' },
+  { name: 'Cohasset', note: 'A short drive down 3A.', href: '/cohasset-business-technology/' },
+  { name: 'Scituate', note: 'Harbor to harbor.', href: '/scituate-business-technology/' },
+  { name: 'Duxbury', note: 'Just across the bridge.', href: '/duxbury-business-technology/' },
+  { name: 'Hull', note: 'Nantasket and the peninsula.', href: '/hull-business-technology/' },
+  { name: 'Marshfield', note: 'Down Route 3, easy reach.', href: '/marshfield-business-technology/' },
+  { name: 'Norwell', note: 'Inland neighbor, quick trip.', href: '/norwell-business-technology/' },
+  { name: 'Weymouth', note: 'The north edge of the South Shore.', href: '/weymouth-business-technology/' },
 ];
 ---
 
@@ -58,7 +60,13 @@ const towns = [
       <ul class="towns__grid" role="list">
         {towns.map((town) => (
           <li class="towns__item">
-            <span class="towns__name">{town.name}</span>
+            {town.href ? (
+              <a class="towns__name towns__name--link" href={town.href}>
+                {town.name}
+              </a>
+            ) : (
+              <span class="towns__name">{town.name}</span>
+            )}
             <span class="towns__note">{town.note}</span>
           </li>
         ))}
@@ -181,6 +189,19 @@ const towns = [
     font-weight: 700;
     font-size: var(--step-1);
     color: var(--color-harbor);
+  }
+
+  .towns__name--link {
+    text-decoration: none;
+    text-decoration-color: rgba(184, 134, 75, 0.5);
+    text-underline-offset: 4px;
+    transition: color var(--transition), text-decoration var(--transition);
+  }
+
+  .towns__name--link:hover,
+  .towns__name--link:focus-visible {
+    color: var(--color-brass);
+    text-decoration: underline;
   }
 
   .towns__note {
