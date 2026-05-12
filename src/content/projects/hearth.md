@@ -12,6 +12,7 @@ highlights:
   - iPhone-first progressive web app, no app store install, deployable in a day
   - Voice and typing both first-class so the director can stay with the family during the meeting
   - "Single-tenant per funeral home: private deployment, private data, no crossover between homes"
+thumbnail: /projects/hearth.jpg
 featured: true
 order: 0
 ---
