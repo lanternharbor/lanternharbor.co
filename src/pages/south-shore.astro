@@ -90,6 +90,12 @@ const towns = [
         Follow-up and delivery happen by phone and email like anything else,
         but the relationship starts face to face.
       </p>
+
+      <p class="towns__language">
+        The South Shore has business owners from a lot of places. Whatever
+        your first language, the door is open. <a href="/welcome/">A note in
+        a few languages →</a>
+      </p>
     </div>
   </section>
 
@@ -229,5 +235,25 @@ const towns = [
     color: var(--color-driftwood);
     font-style: italic;
     max-width: var(--measure-intro);
+  }
+
+  .towns__language {
+    margin: var(--space-4) 0 0;
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--color-driftwood);
+    max-width: var(--measure-intro);
+  }
+
+  .towns__language a {
+    color: var(--color-harbor);
+    text-decoration-color: rgba(184, 134, 75, 0.5);
+    text-underline-offset: 3px;
+    transition: color var(--transition);
+  }
+
+  .towns__language a:hover,
+  .towns__language a:focus-visible {
+    color: var(--color-brass);
   }
 </style>

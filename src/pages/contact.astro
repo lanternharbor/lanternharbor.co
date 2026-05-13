@@ -22,6 +22,9 @@ const { title, description } = entry.data;
         <p class="contact-page__fit">
           {variantASections.contact.fitStatement}
         </p>
+        <p class="contact-page__welcome">
+          {variantASections.contact.welcomeNote}
+        </p>
       </header>
 
       <div class="contact-page__grid">
@@ -135,6 +138,14 @@ const { title, description } = entry.data;
     margin: var(--space-4) 0 0;
     padding-top: var(--space-4);
     border-top: 1px solid rgba(15, 42, 63, 0.08);
+    max-width: 38em;
+  }
+
+  .contact-page__welcome {
+    font-size: var(--step--1);
+    line-height: 1.6;
+    color: var(--color-driftwood);
+    margin: var(--space-3) 0 0;
     max-width: 38em;
   }
 

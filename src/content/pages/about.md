@@ -13,6 +13,8 @@ workingPrinciples:
       body: If you're on the South Shore, I'll drive to you. The work is better when I can walk your floor, talk to your staff, and see the real work.
     - title: The honest answer
       body: If a project isn't worth doing, I'll say so. If a tool you already have is good enough, I'll say that too.
+    - title: Plain English, written down
+      body: I write things down in plain language so you can re-read them or share them with a partner. If a family member or business partner wants to be on a call, that is welcome and often a good idea.
       ctaLabel: Say hello
       ctaHref: /contact
 ---

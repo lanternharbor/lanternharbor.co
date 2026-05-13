@@ -318,6 +318,8 @@ export const variantASections = {
       'Reach out and we will have a conversation. No pitch deck. No intake maze.',
     fitStatement:
       'I work with small and mid-sized businesses on the South Shore. If you need help with enterprise RFPs, managed IT or help-desk service, or specialized industry software (clinical systems, legal practice management, and the like), I can point you to someone who does that well.',
+    welcomeNote:
+      "Most of my clients work in English. If English isn't your first language, the door is still open. I will take my time, write things down, and welcome a family member or business partner on the call if that helps.",
     nextSteps: {
       heading: 'What happens next',
       lede: 'Simple and human on purpose.',
