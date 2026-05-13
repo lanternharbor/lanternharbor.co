@@ -1,0 +1,269 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = 'Welcome / Bem-vindo / Bienvenido / Chào mừng';
+const pageDescription =
+  "Lantern Harbor is a small technology practice on the South Shore of Massachusetts. The work runs in English, but the door is open whether English is your first language or not.";
+
+// Translated short-form welcome paragraphs. The English block above each
+// translation is the canonical source. If any of these need adjustment,
+// edit the corresponding language object below and the visible paragraph
+// updates accordingly. These should be reviewed by a native speaker before
+// being treated as final.
+const panels = [
+  {
+    code: 'pt-BR',
+    label: 'Português Brasileiro',
+    paragraph: [
+      'A Lantern Harbor é uma pequena consultoria de tecnologia em Hingham, na South Shore de Massachusetts. Ajudo donos de pequenos negócios a decidir o que fazer com software, IA, sites e os sistemas do dia a dia que fazem o negócio funcionar.',
+      'O trabalho em si acontece em inglês. Se você quiser conversar, pode entrar em contato por e-mail ou telefone. Vou no seu ritmo, coloco tudo por escrito, e é bem-vindo um familiar ou sócio na ligação se isso ajudar.',
+    ],
+  },
+  {
+    code: 'es',
+    label: 'Español',
+    paragraph: [
+      'Lantern Harbor es una pequeña consultoría de tecnología en Hingham, en la South Shore de Massachusetts. Ayudo a dueños de pequeños negocios a decidir qué hacer con software, IA, sitios web y los sistemas del día a día que mantienen su negocio funcionando.',
+      'El trabajo en sí se realiza en inglés. Si quiere hablar, puede contactarme por correo electrónico o teléfono. Voy a su ritmo, dejo todo por escrito, y es bienvenido un familiar o socio en la llamada si eso ayuda.',
+    ],
+  },
+  {
+    code: 'vi',
+    label: 'Tiếng Việt',
+    paragraph: [
+      'Lantern Harbor là một dịch vụ tư vấn công nghệ nhỏ tại Hingham, ở khu vực South Shore của Massachusetts. Tôi giúp các chủ doanh nghiệp nhỏ quyết định nên làm gì với phần mềm, AI, trang web, và các hệ thống hàng ngày giúp doanh nghiệp hoạt động.',
+      'Công việc được thực hiện bằng tiếng Anh. Nếu bạn muốn trao đổi, bạn có thể liên lạc với tôi qua email hoặc điện thoại. Tôi sẽ làm việc theo nhịp độ của bạn, ghi mọi thứ bằng văn bản, và hoan nghênh thành viên gia đình hoặc đối tác kinh doanh tham gia cuộc gọi nếu điều đó giúp ích.',
+    ],
+  },
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} pageKey="welcome">
+  <article class="welcome section">
+    <div class="container container--content">
+      <header class="welcome__header">
+        <p class="eyebrow">Welcome / Bem-vindo / Bienvenido / Chào mừng</p>
+        <h1 class="welcome__title">
+          However you come to the conversation.
+        </h1>
+        <p class="welcome__lede">
+          Lantern Harbor is a small technology practice in Hingham, on the
+          South Shore of Massachusetts. Most of the clients I work with run
+          their business in English. If English is not your first language,
+          the door is still open. Below is a short note in a few of the
+          languages spoken across the South Shore.
+        </p>
+      </header>
+
+      <section class="welcome__panels" aria-label="Welcome in other languages">
+        {panels.map((panel) => (
+          <article class="welcome-panel" lang={panel.code}>
+            <p class="welcome-panel__label">{panel.label}</p>
+            {panel.paragraph.map((p) => (
+              <p class="welcome-panel__body">{p}</p>
+            ))}
+          </article>
+        ))}
+      </section>
+
+      <aside class="welcome__contact" aria-labelledby="welcome-contact-heading">
+        <h2 id="welcome-contact-heading" class="welcome__contact-heading">
+          How to reach me
+        </h2>
+        <dl class="welcome-contact-list">
+          <div class="welcome-contact-list__row">
+            <dt>Email</dt>
+            <dd>
+              <a href="mailto:william@lanternharbor.co">
+                william<wbr />@lanternharbor.co
+              </a>
+            </dd>
+          </div>
+          <div class="welcome-contact-list__row">
+            <dt>Phone</dt>
+            <dd>
+              <a href="tel:+17817242543">(781) 724-2543</a>
+            </dd>
+          </div>
+          <div class="welcome-contact-list__row">
+            <dt>Based in</dt>
+            <dd>Hingham, Massachusetts</dd>
+          </div>
+        </dl>
+      </aside>
+
+      <p class="welcome__note">
+        The work itself runs in English. I will take my time, write things
+        down so you can re-read them or share them, and welcome a family
+        member or business partner on the call if that helps. Whatever your
+        first language, please reach out the way that feels easiest.
+      </p>
+
+      <p class="welcome__back">
+        <a href="/">← Back to the home page</a>
+      </p>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .welcome {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-10);
+  }
+
+  @media (min-width: 48rem) {
+    .welcome {
+      padding-top: var(--space-9);
+    }
+  }
+
+  .welcome__header {
+    max-width: var(--measure-reading);
+    margin-bottom: var(--space-8);
+  }
+
+  .welcome__title {
+    margin: 0 0 var(--space-4);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-5);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--color-harbor);
+  }
+
+  .welcome__lede {
+    margin: 0;
+    font-size: var(--step-1);
+    line-height: 1.65;
+    color: var(--color-slate);
+  }
+
+  .welcome__panels {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+    max-width: var(--measure-reading);
+  }
+
+  .welcome-panel {
+    padding: var(--space-6);
+    background-color: rgba(229, 192, 103, 0.08);
+    border-left: 3px solid var(--color-gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .welcome-panel__label {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-0);
+    color: var(--color-harbor);
+    letter-spacing: 0.01em;
+  }
+
+  .welcome-panel__body {
+    margin: 0 0 var(--space-3);
+    font-size: var(--step-0);
+    line-height: 1.7;
+    color: var(--color-slate);
+  }
+
+  .welcome-panel__body:last-child {
+    margin-bottom: 0;
+  }
+
+  .welcome__contact {
+    padding: var(--space-6);
+    background-color: rgba(229, 192, 103, 0.04);
+    border: 1px solid rgba(229, 192, 103, 0.2);
+    border-radius: var(--radius);
+    max-width: var(--measure-reading);
+    margin-bottom: var(--space-6);
+  }
+
+  .welcome__contact-heading {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-2);
+    color: var(--color-harbor);
+    margin: 0 0 var(--space-5);
+    line-height: 1.2;
+  }
+
+  .welcome-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin: 0;
+  }
+
+  .welcome-contact-list__row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .welcome-contact-list dt {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--step--1);
+    color: var(--color-harbor);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .welcome-contact-list dd {
+    margin: 0;
+    font-size: var(--step-0);
+    line-height: 1.5;
+    color: var(--color-slate);
+  }
+
+  .welcome-contact-list a {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-1);
+    color: var(--color-harbor);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .welcome-contact-list a:hover,
+  .welcome-contact-list a:focus-visible {
+    color: var(--color-brass);
+  }
+
+  .welcome-contact-list a[href^='mailto:'] {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--step-0);
+    overflow-wrap: break-word;
+  }
+
+  .welcome__note {
+    margin: 0 0 var(--space-6);
+    font-size: var(--step-0);
+    line-height: 1.65;
+    color: var(--color-slate);
+    max-width: var(--measure-reading);
+  }
+
+  .welcome__back {
+    margin: 0;
+    font-size: var(--step-0);
+  }
+
+  .welcome__back a {
+    color: var(--color-driftwood);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .welcome__back a:hover,
+  .welcome__back a:focus-visible {
+    color: var(--color-harbor);
+  }
+</style>
