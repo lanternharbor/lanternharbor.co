@@ -33,9 +33,25 @@ const breadcrumbSchema = {
 
 const pageTitle = `${title} — Case Study`;
 const pageDescription = summary;
+
+// Use the project thumbnail as the per-page social card so iMessage / FB /
+// LinkedIn previews show the project image rather than the generic
+// Lantern Harbor card. Thumbnails follow the 1200×675 convention enforced
+// in the figure block below; when a project has no thumbnail, Layout falls
+// back to /social-card.jpg.
+const socialCard = thumbnail;
+const socialCardAlt = thumbnail ? `${title} — Lantern Harbor case study` : undefined;
 ---
 
-<Layout title={pageTitle} description={pageDescription} pageKey="work">
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  pageKey="work"
+  socialCard={socialCard}
+  socialCardWidth={socialCard ? 1200 : undefined}
+  socialCardHeight={socialCard ? 675 : undefined}
+  socialCardAlt={socialCardAlt}
+>
   <script
     type="application/ld+json"
     set:html={JSON.stringify(breadcrumbSchema)}

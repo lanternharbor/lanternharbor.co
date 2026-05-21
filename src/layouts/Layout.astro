@@ -24,6 +24,18 @@ interface Props {
    * /work while project write-ups are still being assembled).
    */
   noindex?: boolean;
+  /**
+   * Per-page social card image, used for og:image and twitter:image. Pass
+   * a path relative to the site root (e.g. "/projects/hearth.jpg"). When
+   * omitted, falls back to the site-wide /social-card.jpg. Supply matching
+   * `socialCardWidth` / `socialCardHeight` so iMessage and Facebook get the
+   * right aspect ratio for the preview crop. The case study pages use this
+   * to give each project its own preview when the URL is shared.
+   */
+  socialCard?: string;
+  socialCardWidth?: number;
+  socialCardHeight?: number;
+  socialCardAlt?: string;
 }
 
 const {
@@ -32,6 +44,10 @@ const {
   pageKey,
   navBasePath = '',
   noindex = false,
+  socialCard = '/social-card.jpg',
+  socialCardWidth = 1536,
+  socialCardHeight = 1024,
+  socialCardAlt = 'Lantern Harbor — lantern lit against a dark harbor',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
@@ -180,16 +196,16 @@ const structuredData = {
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content={new URL('/social-card.jpg', Astro.site).toString()} />
-    <meta property="og:image:width" content="1536" />
-    <meta property="og:image:height" content="1024" />
-    <meta property="og:image:alt" content="Lantern Harbor — lantern lit against a dark harbor" />
+    <meta property="og:image" content={new URL(socialCard, Astro.site).toString()} />
+    <meta property="og:image:width" content={String(socialCardWidth)} />
+    <meta property="og:image:height" content={String(socialCardHeight)} />
+    <meta property="og:image:alt" content={socialCardAlt} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL('/social-card.jpg', Astro.site).toString()} />
+    <meta name="twitter:image" content={new URL(socialCard, Astro.site).toString()} />
 
     <!-- Favicon — generated from brand-source/favicon-source-1024.png. -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
