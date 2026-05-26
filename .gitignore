@@ -28,7 +28,13 @@ pnpm-debug.log*
 # private/        : working business notes (pricing, customer prep, internal drafts)
 # proposals/      : customer-facing drafts in progress
 # agent-reports/  : agent output (drift reports, summaries) — references private outreach
+# corpus/         : Lantern Harbor prospect corpus (~5,113 business records,
+#                   outreach drafts, fingerprint data). Names, addresses,
+#                   principal contacts, in-progress outreach for South Shore
+#                   businesses. Lives on disk; may move to a separate private
+#                   repo later.
 contracts/
 private/
 proposals/
 agent-reports/
+corpus/
