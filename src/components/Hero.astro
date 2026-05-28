@@ -62,10 +62,7 @@ const { eyebrow, headline, tagline, ctaPrimary, ctaSecondary } = Astro.props;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
-    /* Flip horizontally so the lantern's warm glow sits on the right,
-       giving the left a calm dark area for the headline to sit in. */
-    transform: scaleX(-1);
+    object-position: center bottom;
   }
 
   /* Darkening overlay — heavier on the left where text lives,
@@ -141,22 +138,20 @@ const { eyebrow, headline, tagline, ctaPrimary, ctaSecondary } = Astro.props;
       padding-top: var(--space-7);
       padding-bottom: var(--space-8);
     }
-    /* The photo's 3:2 aspect gets aggressively cropped sideways inside a
-       narrow portrait viewport. Default `object-position: center` slices
-       out the lantern entirely. The image is scaleX(-1) flipped, so the
-       lantern-source (originally on the LEFT of the photo) renders on the
-       RIGHT of the frame. Pinning the pre-flip object-position to "left
-       center" keeps that portion of the source in view, surfacing the
-       lantern glow on the right side of the mobile hero. */
+    /* The photo's wide aspect gets aggressively cropped sideways inside a
+       narrow portrait viewport. The lantern lives on the right side of the
+       source frame, so pin object-position to "right center" to keep it
+       in view on mobile. */
     .hero__bg img {
-      object-position: left center;
+      object-position: right center;
     }
     .hero__bg::after {
       background: linear-gradient(
         to bottom,
         rgba(10, 27, 43, 0.82) 0%,
-        rgba(10, 27, 43, 0.70) 60%,
-        rgba(10, 27, 43, 0.78) 100%
+        rgba(10, 27, 43, 0.78) 70%,
+        rgba(10, 27, 43, 0.50) 85%,
+        rgba(10, 27, 43, 0.30) 100%
       );
     }
     .hero__text {
