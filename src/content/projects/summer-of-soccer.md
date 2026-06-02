@@ -13,6 +13,7 @@ highlights:
   - Multi-tenant by design — every venue gets its own themed leaderboard, prize, and customer list from one codebase and a one-line config
   - A physical-presence check-in, opt-in capture with timestamped consent, and a sweepstakes-compliant prize wrapper, so the fun stays on the right side of the rules
   - The same venue config drives both the live game and the printed pitch mockup, so onboarding a new bar is mostly already done
+  - A public South Shore leaderboard ties every participating bar together, turning one venue's game into a regional rivalry that runs across town lines
 thumbnail: /projects/summer-of-soccer.jpg
 featured: true
 order: 1
@@ -29,6 +30,8 @@ The consumer apps for predictions and brackets are crowded and national. None of
 Summer of Soccer is a score-prediction game built for one bar at a time. A patron scans a QR code, enters a short rotating code shown on the bar's screens to prove they are actually in the room, and predicts the scores of upcoming matches. An exact score is worth three points, the right result one. Each bar has its own leaderboard on the TV, its own prize, and its own Cup.
 
 It is multi-tenant from the ground up. One codebase and a one-line venue config run every bar, and the same config that powers the live game also generates the printed table tents and the mockup I walk in with. The board on the TV is the brand surface; the opt-in list, captured with logged consent, is the asset the owner keeps.
+
+Every bar that runs it also feeds a public South Shore leaderboard, so a regular at one pub can see how they stack up against the sharpest predictors across the region. Any South Shore bar is one step from its own live game, with the full World Cup group stage ready to predict.
 
 The product ships with the unglamorous parts handled: a physical-presence check, a sweepstakes structure with a no-purchase alternate entry and official rules, age gating, and consent capture built to respect how text-message marketing is supposed to work.
 
