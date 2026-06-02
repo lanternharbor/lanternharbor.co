@@ -15,5 +15,5 @@ highlights:
   - Email reminders and a community guestbook to keep the train together
 thumbnail: /projects/prayertrains.jpg
 featured: true
-order: 1
+order: 2
 ---
