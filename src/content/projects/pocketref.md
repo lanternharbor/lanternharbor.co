@@ -13,6 +13,7 @@ highlights:
   - 17 browsable rule categories, with Baystate APA Local Bylaws called out separately from the national rulebook
   - Photograph a table mid-game and get AI-powered analysis — the likely game state, detected ball positions, and an honest list of what a photo alone can't tell you
 thumbnail: /projects/pocketref.jpg
+logo: /projects/logos/pocketref.png
 featured: true
 order: 3
 ---

@@ -13,6 +13,7 @@ highlights:
   - Voice and typing both first-class so the director can stay with the family during the meeting
   - "Single-tenant per funeral home: private deployment, private data, no crossover between homes"
 thumbnail: /projects/hearth.jpg
+logo: /projects/logos/hearth.png
 featured: true
 order: 0
 ---

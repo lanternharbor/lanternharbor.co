@@ -15,6 +15,7 @@ highlights:
   - The same venue config drives both the live game and the printed pitch mockup, so onboarding a new bar is mostly already done
   - A public South Shore leaderboard ties every participating bar together, turning one venue's game into a regional rivalry that runs across town lines
 thumbnail: /projects/summer-of-soccer.jpg
+logo: /projects/logos/summer-of-soccer.png
 featured: true
 order: 1
 ---
