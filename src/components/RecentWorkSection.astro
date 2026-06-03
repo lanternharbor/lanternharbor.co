@@ -37,8 +37,24 @@ const projects = (await getCollection('projects'))
             <span aria-hidden="true">·</span>
             <span>{project.data.role ?? 'Design and build'}</span>
           </p>
-          <h3 class="card__title">{project.data.title}</h3>
-          <p class="recent-work__client">{project.data.client}</p>
+          <div class="recent-work__head">
+            {project.data.logo && (
+              <span class="recent-work__logo">
+                <img
+                  src={project.data.logo}
+                  alt=""
+                  width="96"
+                  height="96"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+            )}
+            <div class="recent-work__headings">
+              <h3 class="card__title">{project.data.title}</h3>
+              <p class="recent-work__client">{project.data.client}</p>
+            </div>
+          </div>
           <p class="card__body">{project.data.summary}</p>
           {project.data.url ? (
             <a
@@ -128,5 +144,41 @@ const projects = (await getCollection('projects'))
     font-size: var(--step--1);
     line-height: 1.5;
     color: var(--color-driftwood);
+  }
+
+  .recent-work__head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .recent-work__logo {
+    flex: none;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.3rem;
+    border: 1px solid var(--color-fog);
+    border-radius: 0.6rem;
+    background-color: var(--color-lantern);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .recent-work__logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .recent-work__headings {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+  .recent-work__headings .card__title,
+  .recent-work__headings .recent-work__client {
+    margin: 0;
   }
 </style>

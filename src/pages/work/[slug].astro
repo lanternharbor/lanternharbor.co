@@ -15,7 +15,7 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const { title, client, year, summary, url, role, tech, highlights, thumbnail } = project.data;
+const { title, client, year, summary, url, role, tech, highlights, thumbnail, logo } = project.data;
 const { Content } = await render(project);
 
 // Breadcrumb schema gives Google a clean Home → Work → <Project> trail.
@@ -64,6 +64,11 @@ const socialCardAlt = thumbnail ? `${title} — Lantern Harbor case study` : und
       </nav>
 
       <header class="case-study__header">
+        {logo && (
+          <span class="case-study__logo">
+            <img src={logo} alt="" width="144" height="144" decoding="async" />
+          </span>
+        )}
         <p class="eyebrow">{year}{role ? ` · ${role}` : ''}</p>
         <h1 class="case-study__title">{title}</h1>
         <p class="case-study__client">{client}</p>
@@ -172,6 +177,24 @@ const socialCardAlt = thumbnail ? `${title} — Lantern Harbor case study` : und
   .case-study__header {
     margin-bottom: var(--space-7);
     max-width: var(--measure-reading);
+  }
+
+  .case-study__logo {
+    display: grid;
+    place-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    padding: 0.4rem;
+    margin-bottom: var(--space-4);
+    border: 1px solid var(--color-fog);
+    border-radius: 0.8rem;
+    background-color: var(--color-lantern);
+    overflow: hidden;
+  }
+  .case-study__logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   .case-study__title {

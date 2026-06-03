@@ -13,6 +13,7 @@ highlights:
   - Content-collection driven — every page is editable in plain markdown with zod-validated frontmatter
   - Fast, accessible, and responsive by default — fluid type and spacing scales, hand-tuned card-grid layouts
 thumbnail: /projects/lanternharbor.jpg
+logo: /projects/logos/lanternharbor.png
 featured: true
 order: 4
 ---

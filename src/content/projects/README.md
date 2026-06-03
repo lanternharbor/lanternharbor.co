@@ -20,6 +20,7 @@ highlights:                            # optional bullet outcomes
   - "Cut page load from 4.2s to 0.6s"
   - "Doubled contact-form completions in first month"
 thumbnail: "/projects/exampleco.jpg"  # optional — goes in public/projects/
+logo: "/projects/logos/exampleco.png" # optional — square mark, shown as a tile beside the name
 featured: true                         # show on home page "Recent work"
 order: 0                               # tiebreaker for sort; lower = earlier
 ---

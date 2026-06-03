@@ -14,6 +14,7 @@ highlights:
   - Three-step prayer train creation with a visual calendar of committed slots
   - Email reminders and a community guestbook to keep the train together
 thumbnail: /projects/prayertrains.jpg
+logo: /projects/logos/prayertrains.png
 featured: true
 order: 2
 ---

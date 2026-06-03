@@ -72,6 +72,13 @@ const projects = defineCollection({
     tech: z.array(z.string()).optional(),
     highlights: z.array(z.string()).optional(),
     thumbnail: z.string().optional(),
+    /**
+     * Square-ish product logo/mark, shown as a small tile beside the name on
+     * `/work`, the home work cards, and the case-study hero. Path under
+     * `/public` (e.g. `/projects/logos/hearth.png`). Optional — projects
+     * without a logo render without the tile.
+     */
+    logo: z.string().optional(),
     featured: z.boolean().default(false),
     order: z.number().default(0),
   }),
