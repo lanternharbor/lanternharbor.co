@@ -1,0 +1,44 @@
+/* ------------------------------------------------------------------
+   Lantern Harbor — brand tokens (CSS custom properties)
+   Mirrors the canonical source of truth: src/styles/global.css
+   Keep these in sync. New here: --color-lantern-glow (illustration only).
+------------------------------------------------------------------ */
+:root {
+  /* Colors — sampled from the logo so site, logo, and illustration harmonize */
+  --color-harbor:     #0F2A3F;  /* deep navy — primary dark surfaces */
+  --color-lantern:    #F5EFE4;  /* warm cream — primary light / page bg */
+  --color-gold:       #E5C067;  /* luminous gold — CTAs, accents */
+  --color-gold-soft:  #F3E8C9;  /* cream highlight from the wordmark */
+  --color-brass:      #B8864B;  /* deeper muted gold — decoration, hover */
+  --color-brass-text: #836034;  /* darkened brass — body text, >=4.5:1 on cream */
+  --color-ember:      #7A3E2C;  /* deep warm — hover states */
+  --color-driftwood:  #6B5D4F;  /* body text on cream */
+  --color-fog:        #D9D2C3;  /* dividers, subtle backgrounds */
+  --color-slate:      #2A3842;  /* secondary dark */
+  --color-mist:       #8E9AA8;  /* cool gray-blue — cloud tones */
+  --color-navyline:   #50627A;  /* lantern frame lines in the logo */
+
+  /* Illustration-only — the warm flame/glow in artwork. NOT for UI text/fills. */
+  --color-lantern-glow: #E9A23C; /* warm amber — lantern light in illustrations */
+
+  /* Text colors tuned for the two main surfaces */
+  --text-on-light:    var(--color-driftwood);
+  --heading-on-light: var(--color-harbor);
+  --text-on-dark:     rgba(245, 239, 228, 0.88);
+  --heading-on-dark:  var(--color-lantern);
+
+  /* Type families */
+  --font-heading: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+               'Helvetica Neue', Arial, sans-serif;
+
+  /* Fluid type scale — generous on desktop, tight on mobile */
+  --step--1: clamp(0.875rem, 0.83rem + 0.22vw, 1rem);    /* small */
+  --step-0:  clamp(1rem, 0.95rem + 0.25vw, 1.125rem);    /* body */
+  --step-1:  clamp(1.125rem, 1.05rem + 0.4vw, 1.313rem); /* large body / tagline */
+  --step-2:  clamp(1.375rem, 1.25rem + 0.6vw, 1.625rem); /* h3 */
+  --step-3:  clamp(1.625rem, 1.45rem + 0.9vw, 2rem);     /* h2 */
+  --step-4:  clamp(2rem, 1.7rem + 1.5vw, 2.75rem);       /* h1 */
+  --step-5:  clamp(2.5rem, 2rem + 2.75vw, 4rem);         /* hero h1 */
+  --step-6:  clamp(3rem, 2.2rem + 4vw, 4.75rem);         /* oversized hero */
+}

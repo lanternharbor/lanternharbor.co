@@ -4,7 +4,7 @@ description: "Practical small-business technology help on the South Shore of Mas
 hero:
   eyebrow: South Shore, Massachusetts
   headline: A steady light for practical technology decisions.
-  tagline: Lantern Harbor helps South Shore businesses navigate IT, AI, and automation with clear advice, plain language, and practical support close to home.
+  tagline: Lantern Harbor helps South Shore businesses find a clear path through technology decisions, from IT and AI to the everyday tools you run on, with plain advice and help close to home.
   ctaPrimary:
     label: Get in touch
     href: /contact
