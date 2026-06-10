@@ -113,10 +113,14 @@ export const variantASections = {
         detail: 'Some projects are a recommendation. Some are the thing actually built. Some are both.',
       },
     ] satisfies ProofItem[],
+    stance: {
+      heading: 'No hype. Just a straight answer.',
+      body: "Plenty of people will sell you AI you don't need. I'll tell you what's actually worth doing, and what isn't.",
+    },
     scenarios: {
       heading: 'You might call Lantern Harbor when...',
       lede:
-        'The common thread is usually the same: a technology problem that nobody has translated into a sensible next move yet.',
+        'The common thread is fog: a technology decision nobody has turned into a clear next move yet.',
       items: [
         {
           title: 'You are about to spend money and want an outside read.',
@@ -137,7 +141,7 @@ export const variantASections = {
       ] satisfies CardItem[],
     },
     offersPreview: {
-      heading: 'Where I can help',
+      heading: 'Get your bearings',
       lede:
         'Most engagements start with a small, concrete piece of work so the next step is clear before the project gets bigger.',
       items: [
@@ -166,7 +170,7 @@ export const variantASections = {
       ] satisfies CardItem[],
     },
     process: {
-      heading: 'How the work usually goes',
+      heading: 'How we clear the fog',
       lede:
         'Simple on purpose. No sprawling discovery project unless the problem truly needs one.',
       items: [
@@ -286,6 +290,7 @@ export const variantASections = {
       'If you are hiring outside help, you should know the short version quickly.',
       'Lantern Harbor is William Keough: a South Shore technology advisor and builder with more than twelve years of enterprise technology experience and a deliberately small local practice.',
       'I do not traffic in hype. What I try to bring is steadier judgment, clear language, and follow-through that actually happens.',
+      'The name is not decoration. There is a real harbor behind it, and the story is further down this page.',
     ],
     credibility: {
       heading: 'Why clients trust this work',
