@@ -29,11 +29,11 @@ const links = [
   <div class="container site-header__inner">
     <a href={withBase('/')} class="brand" aria-label="Lantern Harbor — home">
       <img
-        src="/logo-horizontal.png"
+        src="/logo-header.png"
         alt="Lantern Harbor"
         class="brand__logo"
         width="600"
-        height="182"
+        height="209"
       />
     </a>
 
@@ -152,9 +152,10 @@ const links = [
     min-height: 60px;
   }
 
-  /* Brand — horizontal lockup image (lantern + typeset wordmark).
-     Source PNG is pre-trimmed (600×182) so the content fills the entire
-     file — no crop / overflow hacks needed. */
+  /* Brand — header-tuned horizontal lockup (brass lantern + Lora wordmark).
+     /logo-header.png is a small-size cut (600×209, trimmed): lantern slightly
+     smaller, wordmark forward, tighter tracking + crisp rules so it holds at
+     60px. The fuller display lockup lives at /logo-horizontal.png. */
   .brand {
     display: inline-flex;
     align-items: center;

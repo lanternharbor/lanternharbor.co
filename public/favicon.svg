@@ -1,19 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#0F2A3F"/>
-  <!-- Lantern roof -->
-  <path d="M10 12 L16 7 L22 12 Z" fill="#E5C067"/>
-  <!-- Roof underside -->
-  <rect x="9.5" y="12" width="13" height="1.5" fill="#E5C067"/>
-  <!-- Lantern body -->
-  <rect x="10.5" y="13.5" width="11" height="11" fill="#E5C067"/>
-  <!-- Window struts -->
-  <line x1="13" y1="13.5" x2="13" y2="24.5" stroke="#0F2A3F" stroke-width="0.7"/>
-  <line x1="19" y1="13.5" x2="19" y2="24.5" stroke="#0F2A3F" stroke-width="0.7"/>
-  <line x1="10.5" y1="19" x2="21.5" y2="19" stroke="#0F2A3F" stroke-width="0.5"/>
-  <!-- Flame -->
-  <ellipse cx="16" cy="19" rx="1.8" ry="3.4" fill="#F3E8C9"/>
-  <!-- Base plate -->
-  <rect x="9.5" y="24.5" width="13" height="1.5" fill="#E5C067"/>
-  <!-- Finial -->
-  <circle cx="16" cy="6" r="0.8" fill="#E5C067"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Lantern Harbor">
+  <rect width="64" height="64" rx="11" fill="#0F2A3F"/>
+  <!-- simplified hurricane lantern: flat gold silhouette, dark glass, glowing flame -->
+  <g fill="#E5C067">
+    <path d="M29.5 10.5h5l-.6 3.2h-3.8z"/>             <!-- top knob -->
+    <path d="M25 14.2h14l-2.7 6H27.7z"/>               <!-- vented cap -->
+    <rect x="27.4" y="20.2" width="9.2" height="3.6"/> <!-- collar -->
+    <path d="M27 24C18.8 28.6 18.8 43 27 47.4h10C45.2 43 45.2 28.6 37 24z"/> <!-- body -->
+    <path d="M25.8 47.2h12.4l3 5H22.8z"/>              <!-- base flare -->
+    <rect x="24.2" y="51.8" width="15.6" height="3.7" rx="1"/> <!-- foot -->
+  </g>
+  <path d="M29 27.4C23.4 30.8 23.4 40.8 29 44.2h6C40.6 40.8 40.6 30.8 35 27.4z" fill="#0F2A3F"/> <!-- glass -->
+  <path d="M32 30.6c3 3.6 2.6 7.2 0 10.4-2.6-3.2-3-6.8 0-10.4z" fill="#F3E8C9"/> <!-- flame -->
+  <path d="M32 33.6c1.7 2.3 1.5 4.6 0 6.8-1.5-2.2-1.7-4.5 0-6.8z" fill="#E9A23C"/> <!-- flame core -->
 </svg>
