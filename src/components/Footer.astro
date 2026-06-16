@@ -4,6 +4,9 @@ const year = new Date().getFullYear();
 
 <footer class="site-footer">
   <div class="container site-footer__inner">
+    <a href="/" class="site-footer__brand" aria-label="Lantern Harbor — home">
+      <img src="/logo-emblem.png" alt="" width="72" height="72" class="site-footer__mark" />
+    </a>
     <p class="site-footer__copy">
       &copy; {year} Lantern Harbor LLC · Hingham, Massachusetts
     </p>
@@ -33,6 +36,27 @@ const year = new Date().getFullYear();
     align-items: baseline;
     justify-content: space-between;
     gap: var(--space-4) var(--space-6);
+  }
+
+  /* Emblem sign-off — full-width centered above the footer text */
+  .site-footer__brand {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-3);
+  }
+
+  .site-footer__mark {
+    width: 72px;
+    height: 72px;
+    display: block;
+    opacity: 0.92;
+    transition: opacity var(--transition);
+  }
+
+  .site-footer__brand:hover .site-footer__mark,
+  .site-footer__brand:focus-visible .site-footer__mark {
+    opacity: 1;
   }
 
   .site-footer__copy { margin: 0; }
