@@ -7,6 +7,30 @@ const year = new Date().getFullYear();
     <a href="/" class="site-footer__brand" aria-label="Lantern Harbor — home">
       <img src="/logo-emblem.png" alt="" width="72" height="72" class="site-footer__mark" />
     </a>
+    <nav class="site-footer__socials" aria-label="Lantern Harbor on social media">
+      <a
+        href="https://www.instagram.com/lantern.harbor/"
+        target="_blank"
+        rel="me noopener noreferrer"
+        aria-label="Lantern Harbor on Instagram"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+        </svg>
+      </a>
+      <a
+        href="https://www.facebook.com/profile.php?id=61590825955759"
+        target="_blank"
+        rel="me noopener noreferrer"
+        aria-label="Lantern Harbor on Facebook"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+        </svg>
+      </a>
+    </nav>
     <p class="site-footer__copy">
       &copy; {year} Lantern Harbor LLC · Hingham, Massachusetts
     </p>
@@ -57,6 +81,32 @@ const year = new Date().getFullYear();
   .site-footer__brand:hover .site-footer__mark,
   .site-footer__brand:focus-visible .site-footer__mark {
     opacity: 1;
+  }
+
+  /* Social profiles — centered under the emblem, same icon language as the site */
+  .site-footer__socials {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-2);
+  }
+
+  .site-footer__socials a {
+    color: var(--color-driftwood);
+    display: inline-flex;
+    transition: color var(--transition);
+  }
+
+  .site-footer__socials a:hover,
+  .site-footer__socials a:focus-visible {
+    color: var(--color-harbor);
+  }
+
+  .site-footer__socials svg {
+    width: 20px;
+    height: 20px;
+    display: block;
   }
 
   .site-footer__copy { margin: 0; }
