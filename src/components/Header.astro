@@ -1,4 +1,6 @@
 ---
+import { versioned } from '../lib/asset';
+
 interface Props {
   pageKey?: string;
   basePath?: string;
@@ -29,7 +31,7 @@ const links = [
   <div class="container site-header__inner">
     <a href={withBase('/')} class="brand" aria-label="Lantern Harbor — home">
       <img
-        src="/logo-header.png"
+        src={versioned('/logo-header.png')}
         alt="Lantern Harbor"
         class="brand__logo"
         width="600"
