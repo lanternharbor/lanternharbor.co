@@ -1,0 +1,141 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import PathwayCards from '../components/PathwayCards.astro';
+import CalloutPanel from '../components/CalloutPanel.astro';
+import { site } from '../data/site';
+
+const pathways = [
+  {
+    icon: 'book-open',
+    title: 'The evidence',
+    body: 'What medical organizations around the world actually say, what the foreskin does, and how the health claims hold up when you look at the absolute numbers.',
+    href: '/evidence',
+    linkLabel: 'Read the evidence',
+  },
+  {
+    icon: 'help-circle',
+    title: 'Common claims',
+    body: 'Unsanitary. Should match dad. Prevents disease. He will not remember. Each claim answered calmly, with sources.',
+    href: '/faq',
+    linkLabel: 'See the answers',
+  },
+  {
+    icon: 'shield',
+    title: 'Take action',
+    body: 'How to talk with expecting parents, what to ask a pediatrician, and the exact language to put in a birth plan.',
+    href: '/take-action',
+    linkLabel: 'Protect a child',
+  },
+] as const;
+---
+
+<Layout
+  title={site.name}
+  description={site.description}
+  pageKey="home"
+>
+  <Hero
+    heading="Healthy children are born whole."
+    lede="Routine infant circumcision is surgery on a healthy child who cannot consent to it. No national medical association in the world recommends it. This site collects what the medical organizations and the research actually say, so parents can decide with facts instead of habit."
+    primaryLabel="Read the evidence"
+    primaryHref="/evidence"
+    secondaryLabel="Common claims, answered"
+    secondaryHref="/faq"
+  />
+
+  <section class="section facts">
+    <div class="container">
+      <div class="card-grid card-grid--3">
+        <div class="card card--mist">
+          <p class="facts__stat">Zero</p>
+          <p class="card__body">
+            National medical associations, anywhere in the world, that
+            recommend routine infant circumcision. The strongest statement in
+            its favor, from the AAP in 2012, stopped short of a
+            recommendation — and expired in 2017.
+          </p>
+        </div>
+        <div class="card card--mist">
+          <p class="facts__stat">About 2 in 3</p>
+          <p class="card__body">
+            Men worldwide are intact. Globally, not circumcising is the norm,
+            and US newborn circumcision rates have been declining for decades.
+          </p>
+        </div>
+        <div class="card card--mist">
+          <p class="facts__stat">Wipe, don't retract</p>
+          <p class="card__body">
+            The whole of intact infant care, per the AAP's own guidance. No
+            special cleaning, no retraction — simpler than caring for a
+            surgical wound in a diaper.
+          </p>
+        </div>
+      </div>
+      <p class="facts__note">
+        Each of these is sourced on the <a href="/evidence">evidence page</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <header class="card-section__header">
+        <h2 class="card-section__heading">Start where you need to</h2>
+      </header>
+      <PathwayCards items={[...pathways]} />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading about-note">
+      <h2>About this site</h2>
+      <p>
+        This site was put together by a parent who went looking for the actual
+        evidence before his own son was born, and found that it did not
+        support what everyone around him was insisting. It is educational, not
+        medical advice. Every claim links to its source. There is no graphic
+        content anywhere on the site.
+      </p>
+    </div>
+  </section>
+
+  <CalloutPanel
+    heading="Expecting, or know someone who is?"
+    body="A few minutes of reading before the birth is all it takes. The decision is permanent; the research is worth an evening."
+    primaryLabel="What you can do"
+    primaryHref="/take-action"
+    secondaryLabel="Browse resources"
+    secondaryHref="/resources"
+  />
+</Layout>
+
+<style>
+  .facts {
+    padding-block: var(--space-8);
+  }
+
+  .facts__stat {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-3);
+    color: var(--color-teal-deep);
+    line-height: 1.1;
+  }
+
+  .facts__note {
+    margin: var(--space-5) 0 0;
+    font-size: var(--step--1);
+    color: var(--color-body);
+  }
+
+  .about-note h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .about-note p {
+    font-size: var(--step-1);
+    line-height: 1.75;
+  }
+</style>

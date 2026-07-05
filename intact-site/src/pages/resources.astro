@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import OrgCard from '../components/OrgCard.astro';
+import SourceList from '../components/SourceList.astro';
+import CalloutPanel from '../components/CalloutPanel.astro';
+import { organizations } from '../data/organizations';
+import { sources } from '../data/sources';
+
+const pageTitle = 'Resources';
+const pageDescription =
+  'Organizations, primary-source medical statements, care guides, and research entry points on routine infant circumcision — collected in one place.';
+---
+
+<Layout title={pageTitle} description={pageDescription} pageKey="resources">
+  <section class="section section--tight resources-head">
+    <div class="container container--reading">
+      <h1>Resources</h1>
+      <p class="resources-head__lede">
+        Everything cited on this site, plus the organizations doing the
+        ongoing work — one place to send someone who wants to check the
+        sources themselves.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <SectionIntro
+        heading="Organizations"
+        lede="Different styles for different people — from printable parent guides to physician-led advocacy."
+      />
+      <div class="card-grid card-grid--2">
+        {organizations.map((org) => (
+          <OrgCard org={org} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading">
+      <SectionIntro
+        heading="Primary sources: medical-organization statements"
+        lede="The statements themselves, hosted by the organizations (or the most stable available copy). Discussed in context on the evidence page."
+      />
+      <SourceList
+        heading="Position statements"
+        sources={[
+          sources.aapPolicy,
+          sources.aapTechReport,
+          sources.cps2015,
+          sources.racpStatement,
+          sources.bmaToolkit,
+          sources.knmg2010,
+          sources.danishMa2016,
+          sources.nordicOmbudsmen2013,
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading">
+      <SectionIntro
+        heading="Care guides"
+        lede="How to care for an intact child — the short version is 'leave it alone,' and these spell out the details."
+      />
+      <SourceList
+        heading="Guides"
+        sources={[
+          sources.healthyChildrenCare,
+          sources.ywbCare,
+          sources.docCare,
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading">
+      <SectionIntro
+        heading="Research entry points"
+        lede="Key papers for anyone who wants to go straight to the literature."
+      />
+      <SourceList
+        heading="Papers"
+        sources={[
+          sources.singhGrewal2005,
+          sources.taddio1997,
+          sources.taylor1996,
+          sources.sorrells2007,
+          sources.bossio2016,
+          sources.weiss2010,
+          sources.frisch2013,
+          sources.cochraneHiv,
+          sources.cdcRates,
+          sources.whoPrevalence,
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading">
+      <p class="disclaimer">
+        This site is educational and is not medical advice. It describes
+        routine, non-therapeutic infant circumcision; genuine medical
+        indications are decisions for a family and their own clinicians.
+        Links to external organizations do not imply endorsement of
+        everything they publish.
+      </p>
+    </div>
+  </section>
+
+  <CalloutPanel
+    heading="New here?"
+    body="The evidence page is the guided version of everything above — the positions, the anatomy, the health claims, and the risks, in order."
+    primaryLabel="Read the evidence"
+    primaryHref="/evidence"
+  />
+</Layout>
+
+<style>
+  .resources-head {
+    padding-bottom: var(--space-5);
+  }
+
+  .resources-head h1 {
+    margin-bottom: var(--space-4);
+  }
+
+  .resources-head__lede {
+    font-size: var(--step-1);
+    line-height: 1.7;
+    color: var(--color-body);
+  }
+
+  .disclaimer {
+    margin: 0;
+    padding: var(--space-4) var(--space-5);
+    border: var(--border-subtle);
+    border-radius: var(--radius);
+    font-size: var(--step--1);
+    line-height: 1.6;
+    color: var(--color-body);
+  }
+</style>

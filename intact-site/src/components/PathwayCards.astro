@@ -1,0 +1,47 @@
+---
+import Icon from './Icon.astro';
+
+interface Pathway {
+  icon: 'book-open' | 'help-circle' | 'shield';
+  title: string;
+  body: string;
+  href: string;
+  linkLabel: string;
+}
+
+interface Props {
+  items: Pathway[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="card-grid card-grid--3">
+  {items.map((item) => (
+    <article class="card">
+      <span class="pathway__icon">
+        <Icon name={item.icon} size={22} />
+      </span>
+      <h3 class="card__title">{item.title}</h3>
+      <p class="card__body">{item.body}</p>
+      <a href={item.href} class="card__link">
+        {item.linkLabel}
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </article>
+  ))}
+</div>
+
+<style>
+  .pathway__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--color-mist);
+    color: var(--color-teal-deep);
+    margin-bottom: var(--space-4);
+  }
+</style>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: update host once the real domain is registered (see astro.config.mjs).
+Sitemap: https://wholefromthestart.example/sitemap-index.xml

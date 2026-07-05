@@ -1,0 +1,73 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  heading: string;
+  lede: string;
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+const {
+  heading,
+  lede,
+  primaryLabel,
+  primaryHref,
+  secondaryLabel,
+  secondaryHref,
+} = Astro.props;
+---
+
+<section class="hero surface-dark on-dark">
+  <div class="container hero__inner">
+    <h1 class="hero__heading">{heading}</h1>
+    <p class="hero__lede">{lede}</p>
+    <div class="hero__actions">
+      <Button href={primaryHref}>{primaryLabel}</Button>
+      {secondaryLabel && secondaryHref && (
+        <Button href={secondaryHref} variant="ghost">{secondaryLabel}</Button>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: var(--space-9);
+  }
+
+  @media (min-width: 48rem) {
+    .hero {
+      padding-block: var(--space-10);
+    }
+  }
+
+  .hero__inner {
+    max-width: var(--measure-content);
+  }
+
+  .hero__heading {
+    font-size: var(--step-5);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    max-width: 22ch;
+    margin: 0 0 var(--space-5);
+  }
+
+  .hero__lede {
+    font-size: var(--step-1);
+    line-height: 1.7;
+    max-width: var(--measure-reading);
+    margin: 0 0 var(--space-6);
+    color: var(--text-on-dark);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+  }
+</style>

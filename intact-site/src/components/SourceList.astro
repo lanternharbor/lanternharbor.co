@@ -1,0 +1,80 @@
+---
+import Icon from './Icon.astro';
+
+export interface Source {
+  label: string;
+  url: string;
+}
+
+interface Props {
+  sources: Source[];
+  heading?: string;
+}
+
+const { sources, heading = 'Sources' } = Astro.props;
+---
+
+<aside class="source-list">
+  <h4 class="source-list__heading">{heading}</h4>
+  <ul class="source-list__items">
+    {sources.map((s) => (
+      <li>
+        <a href={s.url} rel="noopener noreferrer">
+          {s.label}
+          <Icon name="external-link" size={13} class="source-list__ext" />
+        </a>
+      </li>
+    ))}
+  </ul>
+</aside>
+
+<style>
+  .source-list {
+    margin-top: var(--space-5);
+    padding: var(--space-4) var(--space-5);
+    background-color: rgba(232, 239, 235, 0.55);
+    border-left: 3px solid var(--color-teal);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: var(--step--1);
+  }
+
+  .source-list__heading {
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-teal-deep);
+  }
+
+  .source-list__items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .source-list__items li + li {
+    margin-top: var(--space-1);
+  }
+
+  .source-list__items a {
+    color: var(--color-body);
+    text-decoration-color: rgba(70, 84, 95, 0.35);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.3rem;
+  }
+
+  .source-list__items a:hover,
+  .source-list__items a:focus-visible {
+    color: var(--color-teal-deep);
+  }
+
+  .source-list__items :global(.source-list__ext) {
+    display: inline-block;
+    align-self: center;
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+</style>

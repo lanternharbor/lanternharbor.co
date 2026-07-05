@@ -1,0 +1,85 @@
+---
+import type { Position } from '../data/positions';
+import Icon from './Icon.astro';
+
+interface Props {
+  items: Position[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="positions">
+  {items.map((p) => (
+    <li class="positions__item">
+      <div class="positions__head">
+        <h3 class="positions__org">{p.organization}</h3>
+        <span class="positions__meta">{p.country} &middot; {p.year}</span>
+      </div>
+      <p class="positions__summary">{p.summary}</p>
+      <a class="positions__source" href={p.sourceUrl} rel="noopener noreferrer">
+        {p.sourceLabel}
+        <Icon name="external-link" size={13} class="positions__ext" />
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .positions {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .positions__item {
+    padding-block: var(--space-5);
+    border-top: 1px solid rgba(34, 48, 58, 0.12);
+  }
+
+  .positions__item:last-child {
+    border-bottom: 1px solid rgba(34, 48, 58, 0.12);
+  }
+
+  .positions__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-4);
+    margin-bottom: var(--space-2);
+  }
+
+  .positions__org {
+    margin: 0;
+    font-size: var(--step-1);
+  }
+
+  .positions__meta {
+    font-size: var(--step--1);
+    color: var(--color-body);
+    opacity: 0.85;
+  }
+
+  .positions__summary {
+    margin: 0 0 var(--space-2);
+    font-size: var(--step-0);
+    line-height: 1.65;
+    color: var(--color-body);
+  }
+
+  .positions__source {
+    font-size: var(--step--1);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.3rem;
+  }
+
+  .positions__source :global(.positions__ext) {
+    display: inline-block;
+    align-self: center;
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+</style>

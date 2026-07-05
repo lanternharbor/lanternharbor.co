@@ -1,0 +1,254 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import PositionList from '../components/PositionList.astro';
+import SourceList from '../components/SourceList.astro';
+import CalloutPanel from '../components/CalloutPanel.astro';
+import { positions } from '../data/positions';
+import { sources } from '../data/sources';
+
+const pageTitle = 'The evidence';
+const pageDescription =
+  'Medical-organization positions on routine infant circumcision, what the foreskin does, the health claims in proportion, the risks of the procedure, and how simple intact care actually is.';
+---
+
+<Layout title={pageTitle} description={pageDescription} pageKey="evidence">
+  <section class="section section--tight evidence-head">
+    <div class="container container--reading">
+      <h1>The evidence</h1>
+      <p class="evidence-head__lede">
+        Five things worth knowing before anyone picks up a scalpel: what the
+        world's medical organizations say, what the foreskin is, how the
+        health claims look in absolute numbers, what the procedure risks, and
+        what caring for an intact child actually involves.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--content">
+      <SectionIntro
+        eyebrow="Section 1"
+        heading="What medical organizations say"
+        lede="The international picture is easy to summarize: no national medical association in the world recommends routine infant circumcision. The disagreement between countries is only about whether parents may choose it — or whether the choice belongs to the boy himself, later."
+      />
+      <PositionList items={positions} />
+      <p class="section-note">
+        The American statement is the most favorable one on this list, and
+        even it does not recommend the procedure. Several European bodies
+        state plainly that the decision should wait for the person it
+        affects.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading evidence-prose">
+      <SectionIntro
+        eyebrow="Section 2"
+        heading="What the foreskin is and does"
+      />
+      <p>
+        The foreskin is not a defect or a leftover. It is normal, healthy
+        tissue: a mobile, double-layered fold that covers and protects the
+        glans, keeps its surface soft, and glides during movement. Anatomical
+        studies describe specialized, richly innervated mucosa — Taylor's 1996
+        work identified a distinctly innervated band near the tip, and later
+        work mapped the tissue in more detail.
+      </p>
+      <p>
+        How much circumcision changes adult sensation is genuinely debated,
+        and this site will not pretend otherwise. One study (Sorrells 2007)
+        found the most sensitive regions of the penis to fine touch are in
+        tissue circumcision removes; another (Bossio 2016) found smaller
+        differences and is often cited the other way. What is not debated is
+        the anatomy: the tissue is functional, and removing it is not
+        trimming something inert.
+      </p>
+      <SourceList
+        sources={[
+          sources.taylor1996,
+          sources.coldTaylor1999,
+          sources.sorrells2007,
+          sources.bossio2016,
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading evidence-prose">
+      <SectionIntro
+        eyebrow="Section 3"
+        heading="The health claims, in proportion"
+        lede="Most claimed benefits are real but small, or real but relevant to adults — and none of them, per any medical body, adds up to a recommendation. Absolute numbers matter more than relative percentages."
+      />
+      <h3>Urinary tract infections</h3>
+      <p>
+        Circumcision does reduce UTIs in the first year. But the baseline
+        risk for an intact boy is about 1%, so a systematic review estimated
+        roughly 111 circumcisions to prevent a single UTI — an infection that
+        is ordinarily diagnosed and treated with antibiotics, as it is in
+        girls, whose UTI rates are higher. Surgery is not how medicine
+        normally prevents a treatable 1% risk.
+      </p>
+      <h3>Penile cancer</h3>
+      <p>
+        Penile cancer is very rare — on the order of 1 case per 100,000 men
+        per year — and its major risk factors are HPV, smoking, and phimosis.
+        The American Cancer Society discusses circumcision in its risk-factor
+        pages and does not recommend it as a cancer-prevention measure.
+      </p>
+      <h3>HIV and other STIs</h3>
+      <p>
+        The strongest evidence for circumcision comes from three randomized
+        trials of adult volunteers in high-HIV-prevalence African countries,
+        which found reduced female-to-male transmission. That is the best
+        case for the procedure, so it deserves a straight answer: those
+        trials studied consenting adults in epidemiological settings very
+        unlike the United States; condoms are far more protective; and a
+        newborn faces no sexual transmission risk at all. Nothing about HIV
+        prevention requires operating on an infant — the person the foreskin
+        belongs to can weigh that evidence himself at an age when it is
+        actually relevant.
+      </p>
+      <SourceList
+        sources={[
+          sources.singhGrewal2005,
+          sources.aapTechReport,
+          sources.acsPenileCancer,
+          sources.cochraneHiv,
+          sources.frisch2013,
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading evidence-prose">
+      <SectionIntro
+        eyebrow="Section 4"
+        heading="What the procedure risks"
+        lede="Circumcision is surgery, and it has surgery's failure modes. Listed flatly, without pictures:"
+      />
+      <ul class="risk-list">
+        <li>Bleeding and infection — the most common acute complications.</li>
+        <li>Meatal stenosis — narrowing of the urinary opening, occurring almost exclusively in circumcised boys.</li>
+        <li>Adhesions and skin bridges, which can require further procedures.</li>
+        <li>Removal of too much or too little tissue; unsatisfactory results needing revision.</li>
+        <li>Rare but severe injuries, including damage to the glans.</li>
+        <li>
+          Pain. Newborns feel it fully, local anesthesia does not eliminate
+          it, and a Lancet study found circumcised infants showed stronger
+          pain responses at routine vaccinations months later.
+        </li>
+      </ul>
+      <p>
+        Reported complication rates vary widely with the operator, setting,
+        and how long problems are tracked — the AAP's own technical report
+        acknowledged the true rate is unknown. Every complication here is
+        incurred to remove tissue that was healthy.
+      </p>
+      <SourceList
+        sources={[
+          sources.weiss2010,
+          sources.aapTechReport,
+          sources.taddio1997,
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading evidence-prose">
+      <SectionIntro
+        eyebrow="Section 5"
+        heading="Caring for an intact child"
+        lede="The claim that an intact penis is unsanitary or hard to care for has the facts exactly backwards. Intact care is the absence of a task."
+      />
+      <p>
+        The rule, straight from the AAP's parent guidance: <strong>do not
+        retract the foreskin — wipe the outside like a finger, and nothing
+        more</strong>. In infancy the foreskin is naturally fused to the
+        glans. It separates on its own timeline, often over years, and the
+        boy himself will be the first person who can and should retract it,
+        gently, in the bath.
+      </p>
+      <p>
+        Forced retraction — by a parent or a clinician — is what causes the
+        pain, tearing, and scarring that get blamed on the foreskin itself.
+        You may decline it at any exam, and it is worth saying so out loud at
+        checkups, because not every practice has caught up with its own
+        professional guidance.
+      </p>
+      <p>
+        Compare the two newborns honestly: the intact baby needs nothing
+        done; the circumcised baby has an open surgical wound healing inside
+        a diaper. One of these is the easier hygiene story, and it is not the
+        one the myth says.
+      </p>
+      <SourceList
+        sources={[
+          sources.healthyChildrenCare,
+          sources.docCare,
+          sources.ywbCare,
+        ]}
+      />
+    </div>
+  </section>
+
+  <CalloutPanel
+    heading="Seen enough to want the short version?"
+    body="The common claims — unsanitary, match dad, prevents disease, he won't remember — each get a direct answer."
+    primaryLabel="Common claims, answered"
+    primaryHref="/faq"
+    secondaryLabel="What you can do"
+    secondaryHref="/take-action"
+  />
+</Layout>
+
+<style>
+  .evidence-head {
+    padding-bottom: var(--space-5);
+  }
+
+  .evidence-head h1 {
+    margin-bottom: var(--space-4);
+  }
+
+  .evidence-head__lede {
+    font-size: var(--step-1);
+    line-height: 1.7;
+    color: var(--color-body);
+  }
+
+  .evidence-prose p {
+    margin-bottom: var(--space-4);
+    line-height: 1.75;
+  }
+
+  .evidence-prose h3 {
+    margin: var(--space-5) 0 var(--space-3);
+  }
+
+  .section-note {
+    margin: var(--space-5) 0 0;
+    font-size: var(--step-0);
+    color: var(--color-body);
+    max-width: var(--measure-reading);
+  }
+
+  .risk-list {
+    margin: 0 0 var(--space-4);
+    padding-left: var(--space-6);
+    line-height: 1.65;
+  }
+
+  .risk-list li + li {
+    margin-top: var(--space-2);
+  }
+
+  .risk-list li::marker {
+    color: var(--color-teal);
+  }
+</style>

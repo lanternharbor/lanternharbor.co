@@ -1,0 +1,206 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import CalloutPanel from '../components/CalloutPanel.astro';
+import Icon from '../components/Icon.astro';
+
+const pageTitle = 'Take action';
+const pageDescription =
+  'Practical steps: how to talk with expecting parents, what to ask a pediatrician, the exact language for a birth plan, and how to prevent forced retraction at checkups.';
+
+const pediatricianQuestions = [
+  'Do you follow the AAP guidance that an intact foreskin should never be forcibly retracted?',
+  'How many intact patients does your practice care for?',
+  'Will you note "intact — do not retract" in his chart?',
+  'If a foreskin concern ever comes up, what would you try before recommending surgery?',
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} pageKey="take-action">
+  <section class="section section--tight action-head">
+    <div class="container container--reading">
+      <h1>Take action</h1>
+      <p class="action-head__lede">
+        Most circumcisions happen because nobody in the room questioned the
+        default. Almost everything below is a way of asking the question out
+        loud, calmly, before the moment it matters.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading action-prose">
+      <SectionIntro
+        eyebrow="Before the birth"
+        heading="Talking with expecting parents"
+      />
+      <p>
+        You will rarely change a mind by winning an argument. What works is
+        planting one question early: <em>"Have you looked into whether it's
+        actually recommended? It surprised me."</em> Lead with questions, not
+        verdicts. Share one link — the <a href="/evidence">evidence page</a>
+        or a single care guide — rather than ten.
+      </p>
+      <p>
+        Be gentle with circumcised fathers, including the ones doing the
+        deciding. Most were infants when it was done to them and are hearing
+        all of this for the first time while being asked to conclude
+        something uncomfortable about their own bodies. The point is never
+        blame; it is that their son can simply be left whole. One calm
+        conversation before the third trimester outweighs any number of
+        debates in the delivery ward.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading action-prose">
+      <SectionIntro
+        eyebrow="Choosing care"
+        heading="Questions for a pediatrician"
+        lede="You are interviewing for someone who will examine your son dozens of times. These four questions tell you most of what you need to know:"
+      />
+      <ul class="check-list">
+        {pediatricianQuestions.map((q) => (
+          <li>
+            <Icon name="check" size={16} class="check-list__icon" />
+            <span>{q}</span>
+          </li>
+        ))}
+      </ul>
+      <p>
+        Hesitation on the first question is disqualifying — non-retraction
+        has been standard guidance for decades. The rest is about comfort and
+        experience with intact anatomy, which prevents unnecessary
+        "treatment" of a normal, still-fused foreskin.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading action-prose">
+      <SectionIntro
+        eyebrow="At the hospital"
+        heading="Birth-plan and hospital language"
+        lede="Circumcision requires your explicit, signed consent. You do not need to argue or justify — you only need to decline, clearly, to every shift. Copy this into your birth plan:"
+      />
+      <blockquote class="birth-plan">
+        Our son is to remain intact. Do not circumcise him. Do not retract
+        his foreskin for cleaning, examination, or catheter placement —
+        discuss alternatives with us first. We do not consent to any
+        procedure on his genitals.
+      </blockquote>
+      <p>
+        Practical notes: keep the baby with a parent whenever possible; state
+        the plan verbally at intake and at each nursing shift change; and know
+        that "it's hospital routine" is not a consent form. If a consent
+        document for circumcision appears in your paperwork stack, decline to
+        sign it — nothing happens without it.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading action-prose">
+      <SectionIntro
+        eyebrow="Every checkup"
+        heading="Protecting an intact child at the doctor's office"
+      />
+      <p>
+        The main ongoing risk to an intact boy in the United States is not
+        disease — it is a clinician who was never taught intact anatomy
+        retracting the foreskin during an exam. The phrase to know is
+        <strong>forced retraction</strong>: it causes tearing, scarring, and
+        the very problems it gets blamed on, and it contradicts the AAP's own
+        guidance.
+      </p>
+      <p>
+        Say "he's intact — no retraction" at the start of any genital exam,
+        the same way you'd mention an allergy. You may decline any part of an
+        exam, and you may physically stay beside your child during all of it.
+        If a clinician insists retraction is needed for cleaning, that is a
+        sign to find a different clinician — the <a href="/evidence">care
+        section of the evidence page</a> has the guidance to point to.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading action-prose">
+      <SectionIntro
+        eyebrow="Beyond your family"
+        heading="Support the wider effort"
+      />
+      <p>
+        The organizations doing year-round education and advocacy run on
+        donations and volunteers. The <a href="/resources">resources page</a>
+        lists them with a note on what each one does — pick the style that
+        fits you, from printable care guides to physician-led advocacy.
+      </p>
+    </div>
+  </section>
+
+  <CalloutPanel
+    heading="The evidence behind all of this"
+    body="Every claim on this page traces back to the sources collected on the evidence page — medical-organization positions, the research on benefits and risks, and the care guidance."
+    primaryLabel="Read the evidence"
+    primaryHref="/evidence"
+    secondaryLabel="Browse resources"
+    secondaryHref="/resources"
+  />
+</Layout>
+
+<style>
+  .action-head {
+    padding-bottom: var(--space-5);
+  }
+
+  .action-head h1 {
+    margin-bottom: var(--space-4);
+  }
+
+  .action-head__lede {
+    font-size: var(--step-1);
+    line-height: 1.7;
+    color: var(--color-body);
+  }
+
+  .action-prose p {
+    margin-bottom: var(--space-4);
+    line-height: 1.75;
+  }
+
+  .check-list {
+    margin: 0 0 var(--space-4);
+    padding: 0;
+    list-style: none;
+  }
+
+  .check-list li {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    line-height: 1.6;
+  }
+
+  .check-list li + li {
+    margin-top: var(--space-3);
+  }
+
+  .check-list :global(.check-list__icon) {
+    flex-shrink: 0;
+    align-self: center;
+    color: var(--color-teal);
+  }
+
+  .birth-plan {
+    margin: 0 0 var(--space-4);
+    padding: var(--space-5) var(--space-6);
+    border-left: 3px solid var(--color-teal);
+    background-color: var(--color-mist);
+    color: var(--color-ink);
+    font-size: var(--step-1);
+    line-height: 1.7;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+</style>

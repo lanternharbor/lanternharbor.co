@@ -1,0 +1,104 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'ghost';
+  class?: string;
+}
+
+const { href, variant = 'primary', class: className = '', ...rest } = Astro.props;
+
+const isExternal = /^https?:\/\//.test(href) || href.startsWith('mailto:');
+---
+
+<a
+  href={href}
+  class:list={['button', `button--${variant}`, className]}
+  {...(isExternal ? { rel: 'noopener noreferrer' } : {})}
+  {...rest}
+>
+  <slot />
+</a>
+
+<style>
+  .button {
+    --btn-bg: var(--color-teal);
+    --btn-bg-hover: var(--color-teal-deep);
+    --btn-fg: var(--color-paper);
+    --btn-border: var(--color-teal);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55em;
+    padding: 0.85rem 1.6rem;
+    background-color: var(--btn-bg);
+    color: var(--btn-fg);
+    border: 1.5px solid var(--btn-border);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: var(--step-0);
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    letter-spacing: 0.005em;
+    cursor: pointer;
+    transition:
+      background-color var(--transition),
+      border-color var(--transition),
+      color var(--transition),
+      transform var(--transition),
+      box-shadow var(--transition);
+    box-shadow: 0 1px 0 rgba(34, 48, 58, 0.04);
+  }
+
+  .button:hover,
+  .button:focus-visible {
+    background-color: var(--btn-bg-hover);
+    border-color: var(--btn-bg-hover);
+    color: var(--btn-fg);
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .button:active {
+    transform: translateY(0);
+  }
+
+  /* Ghost: outlined, transparent. */
+  .button--ghost {
+    --btn-bg: transparent;
+    --btn-bg-hover: rgba(47, 109, 98, 0.08);
+    --btn-fg: var(--color-teal-deep);
+    --btn-border: rgba(47, 109, 98, 0.4);
+  }
+
+  .button--ghost:hover,
+  .button--ghost:focus-visible {
+    background-color: var(--btn-bg-hover);
+    border-color: var(--color-teal-deep);
+    color: var(--color-teal-deep);
+    box-shadow: none;
+  }
+
+  /* On a dark surface (hero band): primary flips to paper-on-teal, ghost to
+     cream outline. */
+  :global(.on-dark) .button--primary {
+    --btn-bg: var(--color-paper);
+    --btn-bg-hover: #fff;
+    --btn-fg: var(--color-teal-deep);
+    --btn-border: var(--color-paper);
+  }
+
+  :global(.on-dark) .button--ghost {
+    --btn-bg: transparent;
+    --btn-bg-hover: rgba(250, 248, 244, 0.1);
+    --btn-fg: var(--color-paper);
+    --btn-border: rgba(250, 248, 244, 0.45);
+  }
+
+  :global(.on-dark) .button--ghost:hover,
+  :global(.on-dark) .button--ghost:focus-visible {
+    border-color: var(--color-paper);
+    color: var(--color-paper);
+  }
+</style>

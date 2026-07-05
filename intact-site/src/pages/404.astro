@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const pageTitle = 'Page not found';
+const pageDescription = 'That page does not exist.';
+---
+
+<Layout title={pageTitle} description={pageDescription} noindex>
+  <section class="section not-found">
+    <div class="container container--reading">
+      <h1>Page not found</h1>
+      <p class="not-found__body">
+        That page does not exist. The four that do: the evidence, the common
+        claims, what you can do, and the resource list.
+      </p>
+      <div class="not-found__actions">
+        <Button href="/">Back to the start</Button>
+        <Button href="/evidence" variant="ghost">Read the evidence</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .not-found h1 {
+    margin-bottom: var(--space-4);
+  }
+
+  .not-found__body {
+    font-size: var(--step-1);
+    line-height: 1.7;
+    color: var(--color-body);
+    margin-bottom: var(--space-6);
+  }
+
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+</style>
