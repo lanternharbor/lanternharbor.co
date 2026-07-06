@@ -53,7 +53,7 @@ export const positions: Position[] = [
     country: 'Netherlands',
     year: '2010',
     summary:
-      'States that non-therapeutic circumcision of male minors conflicts with the child’s right to bodily integrity, and urges that it be actively discouraged. Endorsed by seven other Dutch medical and surgical societies.',
+      'States that non-therapeutic circumcision of male minors conflicts with the child’s right to bodily integrity, and urges that it be actively discouraged. Endorsed by a group of other Dutch medical and surgical societies.',
     sourceLabel: sources.knmg2010.label,
     sourceUrl: sources.knmg2010.url,
   },

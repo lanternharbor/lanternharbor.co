@@ -91,6 +91,82 @@ export const sources = {
     label: 'WHO/UNAIDS: Male circumcision — global trends and determinants of prevalence, 2007',
     url: 'https://www.unaids.org/en/resources/documents/2007/20071212_jc1360_male_circumcision_en.pdf',
   },
+  morrisPrevalence2016: {
+    label: 'Morris et al., Estimation of country-specific and global prevalence of male circumcision, Popul Health Metr 2016',
+    url: 'https://pophealthmetrics.biomedcentral.com/articles/10.1186/s12963-016-0073-5',
+  },
+  hopkins2025: {
+    label: 'Johns Hopkins Medicine: US newborn male circumcision rates dropped 2012–2022 (2025)',
+    url: 'https://www.hopkinsmedicine.org/news/newsroom/news-releases/2025/09/johns-hopkins-study-newborn-male-circumcision-rates-in-us-dropped-between-2012-and-2022',
+  },
+  castellsague2002: {
+    label: 'Castellsagué et al., Male circumcision, penile HPV infection, and cervical cancer in female partners, NEJM 2002',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/11948269/',
+  },
+  oster1968: {
+    label: 'Øster, Further fate of the foreskin: adhesions, phimosis and smegma among Danish schoolboys, Arch Dis Child 1968',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/5689532/',
+  },
+  phimosisSteroids: {
+    label: 'Topical corticosteroid treatment of phimosis in children, J Urol',
+    url: 'https://www.auajournals.org/doi/10.1097/01.ju.0000048973.26072.eb',
+  },
+  frischStenosis2016: {
+    label: 'Frisch & Simonsen, Non-therapeutic circumcision and urethral stricture disease: Danish register cohorts 1977–2013, Surgery 2016',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/28017691/',
+  },
+  morrisStenosis2017: {
+    label: 'Morris & Krieger, Does circumcision increase meatal stenosis risk? Systematic review and meta-analysis, Urology 2017',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/28826876/',
+  },
+  danishSurgicalNeed: {
+    label: 'Sneppen & Thorup, Foreskin morbidity and surgical need in intact boys (Danish cohort)',
+    url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9110485/',
+  },
+  frischEarp2018: {
+    label: 'Frisch & Earp, Circumcision as a public health measure in developed countries: a critical assessment, Glob Public Health 2018',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/27194066/',
+  },
+  earp2013: {
+    label: 'Earp, The ethics of infant male circumcision, J Med Ethics 2013',
+    url: 'https://doi.org/10.1136/medethics-2013-101517',
+  },
+  gairdner1949: {
+    label: 'Gairdner, The fate of the foreskin: a study of circumcision, BMJ 1949',
+    url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2051968/',
+  },
+  rickwood2000: {
+    label: 'Rickwood et al., Towards evidence based circumcision of English boys: survey of trends in practice, BMJ 2000',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/11009516/',
+  },
+  gollaher1994: {
+    label: 'Gollaher, From ritual to science: the medical transformation of circumcision in America, J Soc Hist 1994',
+    url: 'https://academic.oup.com/jsh/article-abstract/28/1/5/1001216',
+  },
+  sayre1870: {
+    label: 'Sayre 1870, circumcision for "reflex" paralysis — historical summary (Embryo Project)',
+    url: 'https://embryo.asu.edu/pages/partial-paralysis-reflex-irritation-caused-congenital-phimosis-and-adherent-prepuce-1870',
+  },
+  kellogg1888: {
+    label: 'Kellogg, Plain Facts for Old and Young (Segner ed., 1887/1888) — archive.org',
+    url: 'https://archive.org/details/plainfaorold00kell',
+  },
+  lander1997: {
+    label: 'Lander et al., Comparison of ring block, dorsal penile nerve block, and topical anesthesia for neonatal circumcision, JAMA 1997',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/9417009/',
+  },
+  leibowitz2009: {
+    label: 'Leibowitz et al., Determinants and policy implications of male circumcision in the US, Am J Public Health 2009',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/19008503/',
+  },
+  medicaidDecline2021: {
+    label: 'Medicaid coverage withdrawal and newborn circumcision rates across 10 states, 2021',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/33440128/',
+  },
+  jamaPeds2025: {
+    label: 'Yang et al., Trends in US neonatal circumcision 2012–2022, JAMA Pediatrics 2025',
+    url: 'https://doi.org/10.1001/jamapediatrics.2025.2464',
+  },
   docCare: {
     label: 'Doctors Opposing Circumcision — intact care resources',
     url: 'https://www.doctorsopposingcircumcision.org/',

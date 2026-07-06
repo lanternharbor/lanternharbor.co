@@ -1,0 +1,247 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import SourceList from '../components/SourceList.astro';
+import CalloutPanel from '../components/CalloutPanel.astro';
+import { sources } from '../data/sources';
+
+const pageTitle = 'How America became the outlier';
+const pageDescription =
+  'Routine infant circumcision entered American medicine as a Victorian cure for masturbation. The rest of the English-speaking world walked it back; the US did not. A sourced history.';
+---
+
+<Layout title={pageTitle} description={pageDescription} pageKey="history">
+  <section class="section section--tight history-head">
+    <div class="container container--reading">
+      <h1>How America became the outlier</h1>
+      <p class="history-head__lede">
+        The United States is the only country in the world that circumcises a
+        large share of its newborn boys for non-religious, non-medical
+        reasons. It did not arrive there by discovering something the rest of
+        the world missed. It arrived there by not letting go of something the
+        rest of the world abandoned. Here is the sourced history of how that
+        happened.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading history-prose">
+      <SectionIntro
+        eyebrow="1870s–1890s"
+        heading="A Victorian cure for masturbation"
+      />
+      <p>
+        Routine circumcision entered English-speaking medicine in the late
+        1800s, and the problem it was meant to solve was not infection. It was
+        masturbation, then believed to cause everything from epilepsy to
+        insanity. In 1870 the prominent American surgeon Lewis Sayre reported
+        curing a boy's partial paralysis by attending to his foreskin, and the
+        idea spread that the prepuce was a source of nervous "reflex" disease.
+      </p>
+      <p>
+        The most-quoted figure of the era is Dr. John Harvey Kellogg — the
+        cereal magnate and physician — who in <em>Plain Facts for Old and
+        Young</em> recommended circumcision as a remedy for the habit in boys,
+        and was explicit about why the pain was a feature rather than a
+        drawback:
+      </p>
+      <blockquote class="history-quote">
+        "The operation should be performed by a surgeon without administering
+        an anesthetic, as the brief pain attending the operation will have a
+        salutary effect upon the mind, especially if it be connected with the
+        idea of punishment."
+      </blockquote>
+      <p>
+        That is the origin. The practice was not built on evidence that it
+        made children healthier; it was built on a theory of the body that
+        medicine has since discarded entirely. Every modern health rationale —
+        UTIs, HIV, cancer — was attached later, to a procedure that was
+        already looking for a justification.
+      </p>
+      <SourceList
+        sources={[sources.kellogg1888, sources.sayre1870, sources.gollaher1994]}
+      />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading history-prose">
+      <SectionIntro
+        eyebrow="1949 onward"
+        heading="How the rest of the English-speaking world walked it back"
+      />
+      <p>
+        In 1949 the British physician Douglas Gairdner published "The fate of
+        the foreskin" in the <em>BMJ</em>, laying out that the foreskin is
+        normal developing tissue, that infant circumcision carried real risks,
+        and that the deaths it caused were not worth the theoretical benefits.
+        Britain's new National Health Service never covered routine
+        circumcision, and the paper is widely credited with hastening a
+        decline that was already under way. British circumcision fell from
+        roughly a third of boys in the 1930s to a few percent by the 1980s.
+      </p>
+      <p>
+        The rest of the Commonwealth followed the same path. The Canadian
+        Paediatric Society has advised against routine newborn circumcision
+        since 1975. The Royal Australasian College of Physicians concluded the
+        evidence does not warrant it, and Australian public hospitals stopped
+        performing it. In New Zealand, near-universal in the WWII era, routine
+        circumcision collapsed to under 1% of boys by the late 1970s.
+      </p>
+      <p>
+        By the end of the twentieth century every comparable country had
+        reached the same conclusion: healthy foreskins should be left alone.
+        Every country except one.
+      </p>
+      <SourceList
+        sources={[
+          sources.gairdner1949,
+          sources.rickwood2000,
+          sources.cps2015,
+          sources.racpStatement,
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading history-prose">
+      <SectionIntro
+        eyebrow="The American exception"
+        heading="Why the United States kept going"
+      />
+      <p>
+        America did not stay the outlier because its doctors saw evidence
+        others missed. Three ordinary forces kept the practice alive after its
+        original rationale collapsed.
+      </p>
+      <p>
+        <strong>Money.</strong> For decades circumcision was a routine,
+        reimbursed line item. When that changed, behavior changed with it:
+        researchers found newborn circumcision rates were markedly lower in
+        states whose Medicaid programs stopped covering it, and a study of ten
+        states that dropped coverage found circumcision among affected
+        newborns fell by an average of about 21 percentage points afterward.
+        A practice that tracks insurance billing that closely is not being
+        driven by medical necessity.
+      </p>
+      <p>
+        <strong>Habit.</strong> Once a generation of doctors is trained to do
+        something and a generation of parents expects it, the default
+        perpetuates itself. The most common reason given for circumcising a
+        son has long been that his father was circumcised — a reason that is
+        cultural, not clinical.
+      </p>
+      <p>
+        <strong>The "he should match" prophecy.</strong> Parents were told
+        their sons would feel out of place if left intact. That prediction is
+        now failing on its own terms: as fewer boys are circumcised each year,
+        the intact boy is increasingly the one who matches his peers.
+      </p>
+      <SourceList
+        sources={[
+          sources.leibowitz2009,
+          sources.medicaidDecline2021,
+          sources.aapTechReport,
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading history-prose">
+      <SectionIntro
+        eyebrow="A footnote that isn't small"
+        heading="For most of this history, there was no pain relief"
+      />
+      <p>
+        It is worth pausing on one detail. For most of the twentieth century,
+        American infant circumcision was performed with no anesthesia at all —
+        partly on the long-discredited assumption that newborns did not really
+        feel or remember pain. That assumption was tested directly. In a 1997
+        randomized trial in <em>JAMA</em>, the babies circumcised without
+        anesthetic showed such sustained distress — racing heart rates,
+        high-pitched crying throughout, and two infants who became ill
+        afterward with choking and a pause in breathing — that the researchers
+        concluded an anesthetic should be given for every newborn
+        circumcision.
+      </p>
+      <p>
+        Pain control has improved since, but it is still incomplete, and the
+        history matters: a procedure whose Victorian selling point was that the
+        pain taught a lesson was, a century later, still being done to infants
+        who were given nothing for it.
+      </p>
+      <SourceList sources={[sources.lander1997, sources.taddio1997]} />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading history-prose">
+      <SectionIntro
+        eyebrow="Where it stands now"
+        heading="The exception is fading"
+      />
+      <p>
+        The American consensus is quietly dissolving. In-hospital newborn
+        circumcision fell from 64.5% in 1979 to 58.3% in 2010, and a 2025
+        analysis in <em>JAMA Pediatrics</em> put it near 49% by 2022 — meaning
+        about half of recent American boys are now left intact. The regional
+        split is stark: roughly 69% in the Midwest against about 20% in the
+        West. A generation from now, today's parents may find the practice as
+        difficult to explain as their grandparents' reasons already sound.
+      </p>
+      <p>
+        None of this history is an argument by itself — a practice can be old
+        and wrong, or old and right. But it answers the question people rarely
+        ask: not "is circumcision worth it?" so much as "why do we do this at
+        all?" The honest answer is that we started for reasons no one would
+        defend today, and much of the world has already stopped.
+      </p>
+      <SourceList sources={[sources.cdcRates, sources.jamaPeds2025]} />
+    </div>
+  </section>
+
+  <CalloutPanel
+    heading="What the evidence says today"
+    body="History explains how we got here. The evidence page covers where the medical case actually stands now — the organization positions, the anatomy, the health claims, and the risks."
+    primaryLabel="Read the evidence"
+    primaryHref="/evidence"
+    secondaryLabel="Common claims, answered"
+    secondaryHref="/faq"
+  />
+</Layout>
+
+<style>
+  .history-head {
+    padding-bottom: var(--space-5);
+  }
+
+  .history-head h1 {
+    margin-bottom: var(--space-4);
+  }
+
+  .history-head__lede {
+    font-size: var(--step-1);
+    line-height: 1.7;
+    color: var(--color-body);
+  }
+
+  .history-prose p {
+    margin-bottom: var(--space-4);
+    line-height: 1.75;
+  }
+
+  .history-quote {
+    margin: 0 0 var(--space-4);
+    padding: var(--space-5) var(--space-6);
+    border-left: 3px solid var(--color-amber);
+    background-color: rgba(156, 107, 47, 0.06);
+    color: var(--color-ink);
+    font-size: var(--step-1);
+    font-style: italic;
+    line-height: 1.7;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+</style>

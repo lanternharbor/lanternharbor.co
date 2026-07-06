@@ -37,7 +37,7 @@ const pathways = [
 >
   <Hero
     heading="Healthy children are born whole."
-    lede="Routine infant circumcision is surgery on a healthy child who cannot consent to it. No national medical association in the world recommends it. This site collects what the medical organizations and the research actually say, so parents can decide with facts instead of habit."
+    lede="Routine infant circumcision is surgery on a healthy child who cannot consent to it. No national medical association or health authority in the world recommends it routinely. This site collects what the medical organizations and the research actually say, so parents can decide with facts instead of habit."
     primaryLabel="Read the evidence"
     primaryHref="/evidence"
     secondaryLabel="Common claims, answered"
@@ -50,17 +50,20 @@ const pathways = [
         <div class="card card--mist">
           <p class="facts__stat">Zero</p>
           <p class="card__body">
-            National medical associations, anywhere in the world, that
-            recommend routine infant circumcision. The strongest statement in
-            its favor, from the AAP in 2012, stopped short of a
-            recommendation — and expired in 2017.
+            National medical associations or health authorities, anywhere in
+            the world, that recommend routine infant circumcision. The most
+            favorable statements — the AAP’s 2012 policy and the US CDC’s 2014
+            draft — went only as far as "benefits outweigh risks," and both
+            stopped short of recommending it.
           </p>
         </div>
         <div class="card card--mist">
           <p class="facts__stat">About 2 in 3</p>
           <p class="card__body">
-            Men worldwide are intact. Globally, not circumcising is the norm,
-            and US newborn circumcision rates have been declining for decades.
+            Men worldwide are intact, and most who are circumcised are so for
+            religious or cultural reasons, not routine medical practice.
+            Globally, being intact is the norm — and US newborn rates are
+            lower today than they were in 1979.
           </p>
         </div>
         <div class="card card--mist">
@@ -84,6 +87,23 @@ const pathways = [
         <h2 class="card-section__heading">Start where you need to</h2>
       </header>
       <PathwayCards items={[...pathways]} />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <a href="/history" class="history-feature surface-dark on-dark">
+        <div class="history-feature__text">
+          <span class="eyebrow">The history</span>
+          <h2 class="history-feature__heading">America circumcises. Almost no one else does. Here's how that happened.</h2>
+          <p class="history-feature__body">
+            Routine circumcision entered American medicine as a Victorian cure
+            for masturbation. The rest of the English-speaking world let it go.
+            The US didn't — for reasons of money and habit, not evidence.
+          </p>
+        </div>
+        <span class="history-feature__cta">Read the history <span aria-hidden="true">&rarr;</span></span>
+      </a>
     </div>
   </section>
 
@@ -137,5 +157,64 @@ const pathways = [
   .about-note p {
     font-size: var(--step-1);
     line-height: 1.75;
+  }
+
+  .history-feature {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: var(--space-7);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+
+  .history-feature:hover,
+  .history-feature:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .history-feature__heading {
+    margin: 0 0 var(--space-3);
+    font-size: var(--step-3);
+    line-height: 1.2;
+    max-width: 24ch;
+  }
+
+  .history-feature__body {
+    margin: 0;
+    font-size: var(--step-0);
+    line-height: 1.65;
+    max-width: 60ch;
+    color: var(--text-on-dark);
+  }
+
+  .history-feature__cta {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--step-0);
+    color: var(--color-paper);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap var(--transition);
+  }
+
+  .history-feature:hover .history-feature__cta,
+  .history-feature:focus-visible .history-feature__cta {
+    gap: 0.7rem;
+  }
+
+  @media (min-width: 52rem) {
+    .history-feature {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-7);
+    }
+    .history-feature__cta {
+      flex-shrink: 0;
+    }
   }
 </style>
