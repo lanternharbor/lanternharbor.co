@@ -4,8 +4,11 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: real domain once one is registered. Also update src/data/site.ts.
-  site: 'https://wholefromthestart.example',
+  // Canonical URL for <link rel=canonical>, Open Graph, and the sitemap.
+  // Set SITE_URL at build time (the Dockerfile/Fly deploy passes it) so these
+  // are correct on whatever host serves the site; falls back to a placeholder.
+  // TODO: point at the real domain once one is registered.
+  site: process.env.SITE_URL || 'https://wholefromthestart.example',
   integrations: [
     sitemap({
       lastmod: new Date(),

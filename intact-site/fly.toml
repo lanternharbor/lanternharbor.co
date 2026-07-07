@@ -1,0 +1,21 @@
+# Fly.io deployment for the Whole From the Start static site.
+# App name must be globally unique — `fly launch` will confirm or adjust it.
+app = "whole-from-the-start"
+primary_region = "bos"  # Boston — closest Fly region to the South Shore
+
+[build]
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+  [http_service.concurrency]
+    type = "requests"
+    hard_limit = 250
+    soft_limit = 200
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"
