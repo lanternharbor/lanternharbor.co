@@ -1,7 +1,7 @@
 # Fly.io deployment for the Whole From the Start static site.
 # App name must be globally unique — `fly launch` will confirm or adjust it.
 app = "whole-from-the-start"
-primary_region = "bos"  # Boston — closest Fly region to the South Shore
+primary_region = "ewr"  # Newark, NJ — closest active Fly region to the South Shore (bos is deprecated)
 
 [build]
 
