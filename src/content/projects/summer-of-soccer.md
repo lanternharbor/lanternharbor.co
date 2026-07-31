@@ -10,11 +10,11 @@ tech:
   - SQLite
   - Fly.io
 highlights:
+  - Piloted at the Red Rose Irish Pub through the 2026 World Cup — 35 of the 42 regulars signed up in the tournament's first week, and 41 of the 42 played
+  - 1,823 score predictions over six weeks; 21 regulars checked in at the bar 175 times across 34 separate nights — verified repeat visits, not vanity sign-ups
+  - The bar kept a customer list of 27 contacts, a dozen opted in — owned outright, not rented from a platform
   - Multi-tenant by design — every venue gets its own themed leaderboard, prize, and customer list from one codebase and a one-line config
-  - A physical-presence check-in, opt-in capture with timestamped consent, and a sweepstakes-compliant prize wrapper, so the fun stays on the right side of the rules
-  - The same venue config drives both the live game and the printed pitch mockup, so onboarding a new bar is mostly already done
-  - A public South Shore leaderboard ties every participating bar together, turning one venue's game into a regional rivalry that runs across town lines
-  - Match results post automatically from a live feed, and picks are weighted by round, so the stakes climb as the tournament moves toward the final
+  - Physical-presence check-in, timestamped opt-in consent, and a sweepstakes-compliant prize wrapper, so the fun stays on the right side of the rules
 thumbnail: /projects/summer-of-soccer-hero.jpg
 logo: /projects/logos/summer-of-soccer.png
 featured: true
@@ -33,18 +33,18 @@ Summer of Soccer is a score-prediction game built for one bar at a time. A patro
 
 It is multi-tenant from the ground up. One codebase and a one-line venue config run every bar, and the same config that powers the live game also generates the printed table tents and the mockup I walk in with. The board on the TV is the brand surface; the opt-in list, captured with logged consent, is the asset the owner keeps.
 
-Every bar that runs it also feeds a public South Shore leaderboard, so a regular at one pub can see how they stack up against the sharpest predictors across the region, on the TV during the match or on their own phone between rounds. Any South Shore bar is one step from its own live game, with the full World Cup group stage ready to predict.
+Every bar that runs it also feeds a public South Shore leaderboard, so a regular at one pub can see how they stack up against the sharpest predictors across the region, on the TV during the match or on their own phone between rounds. Any South Shore bar can stand up its own live game from the same codebase, its leaderboard ready on day one.
 
 The product ships with the unglamorous parts handled: a physical-presence check, a sweepstakes structure with a no-purchase alternate entry and official rules, age gating, and consent capture built to respect how text-message marketing is supposed to work.
 
 ## The outcome
 
-Summer of Soccer is built, hardened, and live for the 2026 World Cup, starting with Red Rose Irish Pub in East Weymouth. It is a reusable product, not a one-off promotion: the same game runs for football-season pick'em, March Madness, or any venue's slow-night promotion once the tournament is over.
+Summer of Soccer ran at the Red Rose Irish Pub in East Weymouth through the full 2026 World Cup. Sign-up was fast: 35 of the 42 regulars joined in the tournament's opening week, and 41 of the 42 went on to play — a season-long leaderboard race that stayed tight to the final weekend. The number that matters most to an owner: 21 of those regulars checked in at the bar 175 times across 34 separate nights, verified repeat visits rather than vanity sign-ups. And the Red Rose finished with a list of 27 contacts, a dozen of them opted in to hear from the bar again — a customer list it owns outright, not rented from a platform.
 
-For the bar, the value outlasts the event. A temporary crowd becomes a named rivalry, a filled slow night, and a customer list the owner can actually use.
+It is a reusable product, not a one-off promotion: the same game runs for football-season pick'em, March Madness, or any venue's slow-night race once the tournament is over. For the bar, the value outlasts the event — a temporary crowd becomes a named rivalry, a filled slow night, and a customer list the owner can actually use.
 
 ## What it took, what got skipped
 
 The hard part was not the game. It was everything around it: making the check-in honest, keeping the prize compliant, capturing consent properly, and making a leaderboard look good on a television across a loud room. The game itself is simple on purpose, because the people playing came to watch a match, not to learn an app.
 
-Since the first build, the live score feed landed: results now post automatically from the match feed, with manual entry kept only as a backstop. What is still deliberately on hold: the outreach itself, where the list and the consent are captured but the sending waits on the parts that should not be rushed; and any consumer-app ambitions. The product stays narrow, built for the independent bar and the moment in front of it.
+Results posted automatically from the live match feed all tournament, with manual entry kept only as a backstop. What stayed deliberately on hold through the pilot: the outreach itself, where the list and the consent are captured but the sending waits on the parts that should not be rushed; and any consumer-app ambitions. The product stays narrow, built for the independent bar and the moment in front of it.
