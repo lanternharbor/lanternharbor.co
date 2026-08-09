@@ -1,0 +1,425 @@
+/* ------------------------------------------------------------------
+   Whole From the Start — global stylesheet
+   Hand-built, no framework.
+
+   Structure:
+   - Design tokens (:root)
+   - Minimal reset
+   - Base element styles
+   - Layout helpers (.container, .section, .on-dark)
+   - .prose for long-form content
+   - Cards, buttons-adjacent utilities
+------------------------------------------------------------------ */
+
+/* ---- Design tokens ---- */
+:root {
+  /* Colors — sea-glass teal on warm paper. Calm, clinical-credible. */
+  --color-ink:       #22303A;   /* headings */
+  --color-body:      #46545F;   /* body text on paper */
+  --color-paper:     #FAF8F4;   /* page background */
+  --color-teal:      #2F6D62;   /* primary accent — links, buttons */
+  --color-teal-deep: #1E4B43;   /* dark surfaces: hero band, footer */
+  --color-mist:      #E8EFEB;   /* tinted section/card backgrounds */
+  --color-sand:      #D8CDBB;   /* hairline borders */
+  --color-amber:     #9C6B2F;   /* sparing warm accent, text-safe on paper */
+
+  /* Text colors tuned for the two main surfaces */
+  --text-on-light: var(--color-body);
+  --heading-on-light: var(--color-ink);
+  --text-on-dark: rgba(250, 248, 244, 0.9);
+  --heading-on-dark: var(--color-paper);
+
+  /* Type families */
+  --font-heading: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+               'Helvetica Neue', Arial, sans-serif;
+
+  /* Fluid type scale */
+  --step--1: clamp(0.875rem, 0.83rem + 0.22vw, 1rem);         /* small */
+  --step-0:  clamp(1rem, 0.95rem + 0.25vw, 1.125rem);          /* body */
+  --step-1:  clamp(1.125rem, 1.05rem + 0.4vw, 1.313rem);       /* large body / lede */
+  --step-2:  clamp(1.375rem, 1.25rem + 0.6vw, 1.625rem);       /* h3 */
+  --step-3:  clamp(1.625rem, 1.45rem + 0.9vw, 2rem);           /* h2 */
+  --step-4:  clamp(2rem, 1.7rem + 1.5vw, 2.75rem);             /* h1 */
+  --step-5:  clamp(2.5rem, 2rem + 2.75vw, 4rem);               /* hero h1 */
+
+  /* Spacing scale — 4px base */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.5rem;
+  --space-6:  2rem;
+  --space-7:  3rem;
+  --space-8:  4rem;
+  --space-9:  6rem;
+  --space-10: 8rem;
+
+  /* Layout widths */
+  --measure-intro:   44rem;
+  --measure-reading: 45rem;
+  --measure-content: 58rem;
+  --measure-wide:    72rem;
+
+  /* Other */
+  --radius: 0.5rem;
+  --border-subtle: 1px solid var(--color-sand);
+  --border-subtle-dark: 1px solid rgba(250, 248, 244, 0.14);
+  --shadow-soft:
+    0 1px 2px rgba(34, 48, 58, 0.04),
+    0 8px 24px rgba(34, 48, 58, 0.08);
+  --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---- Minimal reset ---- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  scroll-behavior: smooth;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* ---- Base ---- */
+html {
+  font-family: var(--font-body);
+  font-size: 100%;
+  line-height: 1.65;
+  color: var(--text-on-light);
+  background-color: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: var(--step-0);
+  font-weight: 400;
+  background-color: var(--color-paper);
+}
+
+main { flex: 1; }
+
+/* Headings — Lora, ink */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--heading-on-light);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-2); }
+
+/* Links */
+a {
+  color: var(--color-teal);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(47, 109, 98, 0.35);
+  transition: color var(--transition), text-decoration-color var(--transition);
+}
+
+a:hover, a:focus-visible {
+  color: var(--color-teal-deep);
+  text-decoration-color: currentColor;
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: var(--border-subtle);
+  margin: var(--space-7) 0;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-mist);
+  color: var(--color-ink);
+}
+
+/* ---- Dark-surface overrides (hero band, footer) ---- */
+.on-dark {
+  color: var(--text-on-dark);
+}
+.on-dark h1, .on-dark h2, .on-dark h3,
+.on-dark h4, .on-dark h5, .on-dark h6 {
+  color: var(--heading-on-dark);
+}
+.on-dark a {
+  color: var(--color-paper);
+  text-decoration-color: rgba(250, 248, 244, 0.4);
+}
+.on-dark a:hover, .on-dark a:focus-visible {
+  color: #fff;
+}
+.on-dark ::selection {
+  background-color: var(--color-paper);
+  color: var(--color-teal-deep);
+}
+.on-dark hr {
+  border-top: var(--border-subtle-dark);
+}
+.on-dark :focus-visible {
+  outline-color: var(--color-paper);
+}
+
+/* ---- Layout helpers ---- */
+.container {
+  width: 100%;
+  max-width: var(--measure-wide);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+@media (min-width: 48rem) {
+  .container { padding-inline: var(--space-7); }
+}
+
+.container--reading { max-width: var(--measure-reading); }
+.container--content { max-width: var(--measure-content); }
+
+.section {
+  padding-block: var(--space-9);
+}
+.section--loose {
+  padding-block: var(--space-10);
+}
+.section--tight {
+  padding-block: var(--space-7);
+}
+@media (max-width: 47.99rem) {
+  .section { padding-block: var(--space-8); }
+  .section--loose { padding-block: var(--space-9); }
+}
+
+/* Surfaces */
+.surface-dark {
+  background-color: var(--color-teal-deep);
+  color: var(--text-on-dark);
+}
+.surface-mist {
+  background-color: var(--color-mist);
+}
+
+/* ---- Prose — long-form content ---- */
+.prose {
+  max-width: var(--measure-reading);
+  margin-inline: auto;
+  font-size: var(--step-1);
+  line-height: 1.75;
+}
+
+.prose > * + * { margin-top: var(--space-5); }
+
+.prose h1 {
+  font-size: var(--step-4);
+  margin-top: var(--space-9);
+  margin-bottom: var(--space-5);
+}
+.prose > h1:first-child { margin-top: 0; }
+
+.prose h2 {
+  font-size: var(--step-3);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
+}
+
+.prose h3 {
+  font-size: var(--step-2);
+  margin-top: var(--space-7);
+  margin-bottom: var(--space-3);
+}
+
+.prose p { margin-block: 0; }
+
+.prose ul, .prose ol {
+  margin-block: 0;
+  padding-left: var(--space-6);
+}
+
+.prose li + li { margin-top: var(--space-2); }
+
+.prose ul li::marker { color: var(--color-teal); }
+.prose ol li::marker { color: var(--color-teal); font-weight: 600; }
+
+.prose blockquote {
+  margin-inline: 0;
+  padding: var(--space-4) var(--space-6);
+  border-left: 3px solid var(--color-teal);
+  background-color: var(--color-mist);
+  color: var(--color-ink);
+  font-size: var(--step-1);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.prose strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.prose em { font-style: italic; }
+
+.prose hr { margin: var(--space-7) 0; }
+
+/* Links inside prose keep underline — readers expect it */
+.prose a {
+  color: var(--color-teal);
+  text-decoration-color: rgba(47, 109, 98, 0.45);
+  font-weight: 500;
+}
+.prose a:hover, .prose a:focus-visible {
+  color: var(--color-teal-deep);
+}
+
+/* ---- Eyebrow / small caps label ---- */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  display: inline-block;
+  margin-bottom: var(--space-3);
+}
+.on-dark .eyebrow {
+  color: rgba(250, 248, 244, 0.75);
+}
+
+/* ---- Skip-link ---- */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-teal-deep);
+  color: var(--color-paper);
+  text-decoration: none;
+  border-radius: var(--radius);
+  z-index: 100;
+  font-weight: 500;
+  box-shadow: var(--shadow-soft);
+}
+.skip-link:focus { top: var(--space-4); color: var(--color-paper); }
+
+/* ---- Card grid ---- */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+@media (min-width: 44rem) {
+  .card-grid--2 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 56rem) {
+  .card-grid--3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+.card {
+  padding: var(--space-6);
+  background-color: #fff;
+  border: var(--border-subtle);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+}
+
+.card--mist {
+  background-color: var(--color-mist);
+  border-color: transparent;
+}
+
+.card__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--step-2);
+  line-height: 1.2;
+  color: var(--color-ink);
+  margin: 0 0 var(--space-3);
+}
+
+.card__body {
+  margin: 0;
+  font-size: var(--step-0);
+  line-height: 1.6;
+  color: var(--color-body);
+}
+
+.card__link {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--step-0);
+  color: var(--color-teal);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color var(--transition), gap var(--transition);
+}
+.card__link:hover,
+.card__link:focus-visible {
+  color: var(--color-teal-deep);
+  gap: 0.6rem;
+}
+
+/* Section header used above a card grid */
+.card-section__header {
+  max-width: var(--measure-intro);
+  margin-bottom: var(--space-7);
+}
+.card-section__heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--step-3);
+  line-height: 1.2;
+  color: var(--color-ink);
+  margin: 0 0 var(--space-3);
+}
+.card-section__lede {
+  margin: 0;
+  font-size: var(--step-1);
+  line-height: 1.6;
+  color: var(--color-body);
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

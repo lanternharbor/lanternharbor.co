@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import CalloutPanel from '../components/CalloutPanel.astro';
+import { faqItems } from '../data/faq';
+
+const pageTitle = 'Common claims, answered';
+const pageDescription =
+  'Direct, sourced answers to the usual claims about infant circumcision: that intact is unsanitary, that he should match dad, that it prevents disease, that he won’t remember it, and more.';
+
+// FAQPage structured data for rich snippets. Uses the plain-text answers.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answerPlain,
+    },
+  })),
+};
+---
+
+<Layout title={pageTitle} description={pageDescription} pageKey="faq">
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <FaqAccordion
+    items={faqItems}
+    heading="Common claims, answered"
+    lede="These are the things people say — to expecting parents, in hospital rooms, at family dinners. Each one gets a calm answer and its sources. The claims are common; the evidence behind them is thinner than their confidence suggests."
+  />
+
+  <CalloutPanel
+    heading="Want the full picture?"
+    body="The evidence page walks through the medical-organization positions, the anatomy, the health claims, and the risks — with every source linked."
+    primaryLabel="Read the evidence"
+    primaryHref="/evidence"
+    secondaryLabel="What you can do"
+    secondaryHref="/take-action"
+  />
+</Layout>

@@ -1,0 +1,220 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import PathwayCards from '../components/PathwayCards.astro';
+import CalloutPanel from '../components/CalloutPanel.astro';
+import { site } from '../data/site';
+
+const pathways = [
+  {
+    icon: 'book-open',
+    title: 'The evidence',
+    body: 'What medical organizations around the world actually say, what the foreskin does, and how the health claims hold up when you look at the absolute numbers.',
+    href: '/evidence',
+    linkLabel: 'Read the evidence',
+  },
+  {
+    icon: 'help-circle',
+    title: 'Common claims',
+    body: 'Unsanitary. Should match dad. Prevents disease. He will not remember. Each claim answered calmly, with sources.',
+    href: '/faq',
+    linkLabel: 'See the answers',
+  },
+  {
+    icon: 'shield',
+    title: 'Take action',
+    body: 'How to talk with expecting parents, what to ask a pediatrician, and the exact language to put in a birth plan.',
+    href: '/take-action',
+    linkLabel: 'Protect a child',
+  },
+] as const;
+---
+
+<Layout
+  title={site.name}
+  description={site.description}
+  pageKey="home"
+>
+  <Hero
+    heading="Healthy children are born whole."
+    lede="Routine infant circumcision is surgery on a healthy child who cannot consent to it. No national medical association or health authority in the world recommends it routinely. This site collects what the medical organizations and the research actually say, so parents can decide with facts instead of habit."
+    primaryLabel="Read the evidence"
+    primaryHref="/evidence"
+    secondaryLabel="Common claims, answered"
+    secondaryHref="/faq"
+  />
+
+  <section class="section facts">
+    <div class="container">
+      <div class="card-grid card-grid--3">
+        <div class="card card--mist">
+          <p class="facts__stat">Zero</p>
+          <p class="card__body">
+            National medical associations or health authorities, anywhere in
+            the world, that recommend routine infant circumcision. The most
+            favorable statements — the AAP’s 2012 policy and the US CDC’s 2014
+            draft — went only as far as "benefits outweigh risks," and both
+            stopped short of recommending it.
+          </p>
+        </div>
+        <div class="card card--mist">
+          <p class="facts__stat">About 2 in 3</p>
+          <p class="card__body">
+            Men worldwide are intact, and most who are circumcised are so for
+            religious or cultural reasons, not routine medical practice.
+            Globally, being intact is the norm — and US newborn rates are
+            lower today than they were in 1979.
+          </p>
+        </div>
+        <div class="card card--mist">
+          <p class="facts__stat">Wipe, don't retract</p>
+          <p class="card__body">
+            The whole of intact infant care, per the AAP's own guidance. No
+            special cleaning, no retraction — simpler than caring for a
+            surgical wound in a diaper.
+          </p>
+        </div>
+      </div>
+      <p class="facts__note">
+        Each of these is sourced on the <a href="/evidence">evidence page</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <header class="card-section__header">
+        <h2 class="card-section__heading">Start where you need to</h2>
+      </header>
+      <PathwayCards items={[...pathways]} />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <a href="/history" class="history-feature surface-dark on-dark">
+        <div class="history-feature__text">
+          <span class="eyebrow">The history</span>
+          <h2 class="history-feature__heading">America circumcises. Almost no one else does. Here's how that happened.</h2>
+          <p class="history-feature__body">
+            Routine circumcision entered American medicine as a Victorian cure
+            for masturbation. The rest of the English-speaking world let it go.
+            The US didn't — for reasons of money and habit, not evidence.
+          </p>
+        </div>
+        <span class="history-feature__cta">Read the history <span aria-hidden="true">&rarr;</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container--reading about-note">
+      <h2>About this site</h2>
+      <p>
+        This site was put together by a parent who went looking for the actual
+        evidence before his own son was born, and found that it did not
+        support what everyone around him was insisting. It is educational, not
+        medical advice. Every claim links to its source. There is no graphic
+        content anywhere on the site.
+      </p>
+    </div>
+  </section>
+
+  <CalloutPanel
+    heading="Expecting, or know someone who is?"
+    body="A few minutes of reading before the birth is all it takes. The decision is permanent; the research is worth an evening."
+    primaryLabel="What you can do"
+    primaryHref="/take-action"
+    secondaryLabel="Browse resources"
+    secondaryHref="/resources"
+  />
+</Layout>
+
+<style>
+  .facts {
+    padding-block: var(--space-8);
+  }
+
+  .facts__stat {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--step-3);
+    color: var(--color-teal-deep);
+    line-height: 1.1;
+  }
+
+  .facts__note {
+    margin: var(--space-5) 0 0;
+    font-size: var(--step--1);
+    color: var(--color-body);
+  }
+
+  .about-note h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .about-note p {
+    font-size: var(--step-1);
+    line-height: 1.75;
+  }
+
+  .history-feature {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: var(--space-7);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+
+  .history-feature:hover,
+  .history-feature:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .history-feature__heading {
+    margin: 0 0 var(--space-3);
+    font-size: var(--step-3);
+    line-height: 1.2;
+    max-width: 24ch;
+  }
+
+  .history-feature__body {
+    margin: 0;
+    font-size: var(--step-0);
+    line-height: 1.65;
+    max-width: 60ch;
+    color: var(--text-on-dark);
+  }
+
+  .history-feature__cta {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--step-0);
+    color: var(--color-paper);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap var(--transition);
+  }
+
+  .history-feature:hover .history-feature__cta,
+  .history-feature:focus-visible .history-feature__cta {
+    gap: 0.7rem;
+  }
+
+  @media (min-width: 52rem) {
+    .history-feature {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-7);
+    }
+    .history-feature__cta {
+      flex-shrink: 0;
+    }
+  }
+</style>

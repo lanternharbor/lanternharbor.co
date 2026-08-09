@@ -1,0 +1,30 @@
+---
+import type { Organization } from '../data/organizations';
+import Icon from './Icon.astro';
+
+interface Props {
+  org: Organization;
+}
+
+const { org } = Astro.props;
+---
+
+<article class="card">
+  <h3 class="card__title org-card__title">{org.name}</h3>
+  <p class="card__body">{org.description}</p>
+  <a href={org.url} class="card__link" rel="noopener noreferrer">
+    Visit site
+    <Icon name="external-link" size={14} class="org-card__ext" />
+  </a>
+</article>
+
+<style>
+  .org-card__title {
+    font-size: var(--step-1);
+  }
+
+  .card__link :global(.org-card__ext) {
+    display: inline-block;
+    opacity: 0.7;
+  }
+</style>
